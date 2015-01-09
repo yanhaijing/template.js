@@ -26,15 +26,72 @@
     }
 }(this, function(root) {
     'use strict';
+    var o = {
+        sTag: '<%',//开始标签
+        eTag: '%>',//结束标签
+        compress: false//是否压缩html
+    };
+    function isObj(obj) {
+        return Object.prototype.toString.call(obj) !== '[object Object]';
+    }
+    function extend() {
+        var target = arguments[0] || {};
+        var arrs = slice.call(arguments, 1);
+        var len = arrs.length;
+     
+        for (var i = 0; i < len; i++) {
+            var arr = arrs[i];
+            for (var name in arr) {
+                target[name] = arr[name];
+            }
+     
+        }
+        return target;
+    }
+    function encodeHTML(source) {
+        return String(source)
+            .replace(/&/g,'&amp;')
+            .replace(/</g,'&lt;')
+            .replace(/>/g,'&gt;')
+            .replace(/\\/g,'&#92;')
+            .replace(/"/g,'&quot;')
+            .replace(/'/g,'&#39;');
+    };
     function compile(tpl) {
-        var reg = /<%(.*?)%>/g;
-        var regblock = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g;
+        var reg = new RegExp(o.sTag + '(.*?)' + o.eTag, 'g');// /<%(.*?)%>/g;
+        // var regblock = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g;
         var match;
         var point = 0;
         var code = '';
         function add(line, js) {
-            js? code += line.match(regblock) ? line + '\n' : 'com_yanhaijing_templatejs_r.push(' + line + ');\n' :
-                    code += 'com_yanhaijing_templatejs_r.push("' + line.replace(/"/g, '\\"') + '");\n';        
+            //非js
+            if (!js) {
+                code += 'com_yanhaijing_templatejs_r.push("' + line.replace(/"/g, '\\"') + '");\n';
+                return 0;
+            }   
+            //原生js
+            if (line.search(/^(:|=)/) === -1) {
+                code += line + '\n';
+                return 1;
+            }
+            var html;
+            if (line.search(/^=/) !== -1) {
+                //默认输出
+                html = line.slice(1);
+                code += 'com_yanhaijing_templatejs_r.push(com_yanhaijing_templatejs_encodeHTML(' + html + '));\n';
+                return 2;
+            } else if (line.search(/^:=/) !== -1) {
+                //不转义
+                html = line.slice(2);
+                code += 'com_yanhaijing_templatejs_r.push(' + html + ');\n';
+                return 3;
+            } else if (line.search(/^:u=/) !== -1) {
+                //URL转义
+                html = line.slice(3);
+                code += 'com_yanhaijing_templatejs_r.push(com_yanhaijing_templatejs_encodeHTML(' + html + '));\n';
+                return 4;
+            }
+            return 5;
         }
         while(match = reg.exec(tpl)){
             add(tpl.slice(point, match.index));
@@ -43,8 +100,9 @@
         }
         add(tpl.substr(point, tpl.length - point));
 
-        code = '\nvar r = (function (com_yanhaijing_templatejs_data) {var com_yanhaijing_templatejs_str = "", com_yanhaijing_templatejs_r = [];\nfor(var key in com_yanhaijing_templatejs_data) {\ncom_yanhaijing_templatejs_str+=("var " + key + "=com_yanhaijing_templatejs_data[\'" + key + "\'];");\n}\neval(com_yanhaijing_templatejs_str);\n' + code + ';\nreturn com_yanhaijing_templatejs_r}(data));\nreturn r.join("");';
-        return new Function('data', code.replace(/[\r\t\n]/g, ''));
+        code = '\nvar r = (function (com_yanhaijing_templatejs_data, com_yanhaijing_templatejs_encodeHTML) {var com_yanhaijing_templatejs_str = "", com_yanhaijing_templatejs_r = [];\nfor(var key in com_yanhaijing_templatejs_data) {\ncom_yanhaijing_templatejs_str+=("var " + key + "=com_yanhaijing_templatejs_data[\'" + key + "\'];");\n}\neval(com_yanhaijing_templatejs_str);\n' + code + ';\nreturn com_yanhaijing_templatejs_r}(data, encodeHTML));\nreturn r.join("");';
+        console.log(code);
+        return new Function('data', 'encodeHTML', code.replace(/[\r\t\n]/g, ''));
     }
     function template(tpl, data) {
         if (typeof tpl !== 'string') {
@@ -52,15 +110,22 @@
         }
 
         var fn = compile(tpl);
-        console.log(fn);
-        if (Object.prototype.toString.call(data) !== '[object Object]') {
+        if (isObj(data)) {
             return function (data) {
-                fn.call(null, data);
+                var html;
+                return html = fn.call(null, data, encodeHTML), o.compress ? html.replace(/\s/g, '') : html;
             };
         }
-
-        return fn.call(null, data);
+        var html;
+        return html = fn.call(null, data, encodeHTML), o.compress ? html.replace(/\s/g, '') : html;
     }
-    template.version = 0.1.0;
+    template.config = function (data) {
+        if (!isObj(data)) {
+            return 0;
+        }
+        o = extend(o, data);
+        return true;
+    };
+    template.version = '0.1.0';
     return template;
 }));

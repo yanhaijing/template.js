@@ -8,14 +8,16 @@
     <div id="wp"></div>
     <script id="tpl" type="text/html">
     <table>
+    <%var test = 'sdfdsfdsf';%>
     <%for (var i = 1; i < 5; i++) {%>
-    <tr><td><%name%></td><td><%age%></td></tr>
+    <tr><td><%=name%></td><td><%=age%></td><td><%=html%></td><td><%:=text%></td><td><%:u=url%></td><td><%=test%></td></tr>
     <%}%>
     </table>
     </script>
     <script src="template.js"></script>
     <script>
-    var html = template(document.getElementById('tpl').innerHTML, {name: '颜海镜', age: '123'});
+    var html = template(document.getElementById('tpl').innerHTML, {name: '颜海镜', age: '123', url: 'http://yanhaijing.com?name=颜海镜', html: '<div>', text: '"'});
+    console.log(html);
     document.getElementById('wp').innerHTML = html;
     </script>
 </body>
