@@ -5,11 +5,18 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="wp"></div>
     <script id="tpl" type="text/html">
+    <table>
     <%for (var i = 1; i < 5; i++) {%>
-    <p>abc<%this.name%>abc</p>
+    <tr><td><%name%></td><td><%age%></td></tr>
     <%}%>
+    </table>
     </script>
     <script src="template.js"></script>
+    <script>
+    var html = template(document.getElementById('tpl').innerHTML, {name: '颜海镜', age: '123'});
+    document.getElementById('wp').innerHTML = html;
+    </script>
 </body>
 </html>
