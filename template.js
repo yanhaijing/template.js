@@ -88,7 +88,7 @@
             } else if (line.search(/^:u=/) !== -1) {
                 //URL转义
                 html = line.slice(3);
-                code += 'com_yanhaijing_templatejs_r.push(com_yanhaijing_templatejs_encodeHTML(' + html + '));\n';
+                code += 'com_yanhaijing_templatejs_r.push(encodeURI(' + html + '));\n';
                 return 4;
             }
             return 5;
