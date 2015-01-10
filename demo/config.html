@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>config demo</title>
+</head>
+<body>
+    <script src="../template.js"></script>
+    <script>
+    template.config({sTag: '<#', eTag: '#>'});
+    var tpl1 = '<div><#:=name#></div>';
+    console.log('<##>:', template(tpl1, {name: '更改tag<##>'}));
+
+    template.config({sTag: '{{', eTag: '}}'});
+    var tpl1 = '<div>{{:=name}}</div>';
+    console.log('{{}}:', template(tpl1, {name: '更改tag{{}}'}));
+
+    template.config({sTag: '<%', eTag: '#>'});
+    var tpl1 = '<div><%:=name#></div>';
+    console.log('<%#>:', template(tpl1, {name: '不一致也可以哦，更改tag<%#>'})); 
+
+    template.config({sTag: '<%', eTag: '%>', compress: true});
+    var tpl1 = '<div>空格会被压缩 空格 空格 </div>';
+    console.log('compress:', template(tpl1, {}));   
+    </script>
+</body>
+</html>

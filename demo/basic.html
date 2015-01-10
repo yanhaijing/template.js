@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>基本用例</title>
+    <style>
+        table{border-collapse: collapse;}
+        td{border: 1px solid #000;}
+    </style>
+</head>
+<body>
+    <div id="wp"></div>
+    <script id="tpl" type="text/html">
+    <table>
+    <caption>for循环输出两次</caption>
+    <%var test = '输出自定义变量';%>
+    <%for (var i = 0; i < 2; i++) {%>
+    <tr><td>&lt;%=name%>html转义(默认)</td><td><%=html%></td></tr>
+    <tr><td>&lt;%:=name%>文本输出</td><td><%:=html%></td></tr>
+    <tr><td>&lt;%:u=name%>URI转义</td><td><%:u=url%></td></tr>
+    <tr><td>var</td><td><%:=test%></td></tr>
+    <%if (true) {%>
+        <tr><td>if</td><td>if 语句</td></tr>
+    <%}%>
+    <%}%>
+    </table>
+    </script>
+    <script src="../template.js"></script>
+    <script>
+    var html = template(document.getElementById('tpl').innerHTML, {name: '颜海镜', url: 'http://yanhaijing.com?name=颜海镜', html: '<div>', text: '"不进行html转义'});
+    var html = template(document.getElementById('tpl').innerHTML, {
+            html: '<div id="test">template.js "</div>',
+            url: 'http://yanhaijing.com?name=颜海镜'
+        });
+    console.log(html);
+    document.getElementById('wp').innerHTML = html;
+    </script>
+</body>
+</html>

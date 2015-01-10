@@ -1,5 +1,7 @@
-/**
- * 模版引擎
+/*!
+ * template.js v0.1.0 (https://github.com/yanhaijing/template.js)
+ * Copyright 2015 yanhaijing. All Rights Reserved
+ * Licensed under MIT (https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
  */
 ;(function(root, factory) {
     var template = factory(root);
@@ -32,11 +34,11 @@
         compress: false//是否压缩html
     };
     function isObj(obj) {
-        return Object.prototype.toString.call(obj) !== '[object Object]';
+        return Object.prototype.toString.call(obj) === '[object Object]';
     }
     function extend() {
         var target = arguments[0] || {};
-        var arrs = slice.call(arguments, 1);
+        var arrs = Array.prototype.slice.call(arguments, 1);
         var len = arrs.length;
      
         for (var i = 0; i < len; i++) {
@@ -101,7 +103,6 @@
         add(tpl.substr(point, tpl.length - point));
 
         code = '\nvar r = (function (com_yanhaijing_templatejs_data, com_yanhaijing_templatejs_encodeHTML) {var com_yanhaijing_templatejs_str = "", com_yanhaijing_templatejs_r = [];\nfor(var key in com_yanhaijing_templatejs_data) {\ncom_yanhaijing_templatejs_str+=("var " + key + "=com_yanhaijing_templatejs_data[\'" + key + "\'];");\n}\neval(com_yanhaijing_templatejs_str);\n' + code + ';\nreturn com_yanhaijing_templatejs_r}(data, encodeHTML));\nreturn r.join("");';
-        console.log(code);
         return new Function('data', 'encodeHTML', code.replace(/[\r\t\n]/g, ''));
     }
     function template(tpl, data) {
@@ -110,7 +111,7 @@
         }
 
         var fn = compile(tpl);
-        if (isObj(data)) {
+        if (!isObj(data)) {
             return function (data) {
                 var html;
                 return html = fn.call(null, data, encodeHTML), o.compress ? html.replace(/\s/g, '') : html;

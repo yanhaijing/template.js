@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>requirejs demo</title>
+    </head>
+
+    <body>
+        <script src="js/require.js"></script>
+        <script>
+            requirejs.config({
+                baseUrl: '../',
+            });
+            
+            require(['template'], function (template) {
+                var html = template('<div><%=name%></div>', {name: '颜海镜'});
+                console.log(html);
+            });
+        </script>
+    </body>
+</html>
