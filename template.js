@@ -61,14 +61,13 @@
     };
     function compile(tpl) {
         var reg = new RegExp(o.sTag + '(.*?)' + o.eTag, 'g');// /<%(.*?)%>/g;
-        // var regblock = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g;
         var match;
         var point = 0;
         var code = '';
         function add(line, js) {
             //非js
             if (!js) {
-                code += 'com_yanhaijing_templatejs_r.push("' + line.replace(/"/g, '\\"') + '");\n';
+                code += '__r__.push("' + line.replace(/"/g, '\\"') + '");\n';
                 return 0;
             }   
             //原生js
@@ -80,17 +79,17 @@
             if (line.search(/^=/) !== -1) {
                 //默认输出
                 html = line.slice(1);
-                code += 'com_yanhaijing_templatejs_r.push(com_yanhaijing_templatejs_encodeHTML(' + html + '));\n';
+                code += '__r__.push(__encodeHTML__(' + html + '));\n';
                 return 2;
             } else if (line.search(/^:=/) !== -1) {
                 //不转义
                 html = line.slice(2);
-                code += 'com_yanhaijing_templatejs_r.push(' + html + ');\n';
+                code += '__r__.push(' + html + ');\n';
                 return 3;
             } else if (line.search(/^:u=/) !== -1) {
                 //URL转义
                 html = line.slice(3);
-                code += 'com_yanhaijing_templatejs_r.push(encodeURI(' + html + '));\n';
+                code += '__r__.push(encodeURI(' + html + '));\n';
                 return 4;
             }
             return 5;
@@ -102,7 +101,7 @@
         }
         add(tpl.substr(point, tpl.length - point));
 
-        code = '\nvar r = (function (com_yanhaijing_templatejs_data, com_yanhaijing_templatejs_encodeHTML) {var com_yanhaijing_templatejs_str = "", com_yanhaijing_templatejs_r = [];\nfor(var key in com_yanhaijing_templatejs_data) {\ncom_yanhaijing_templatejs_str+=("var " + key + "=com_yanhaijing_templatejs_data[\'" + key + "\'];");\n}\neval(com_yanhaijing_templatejs_str);\n' + code + ';\nreturn com_yanhaijing_templatejs_r}(data, encodeHTML));\nreturn r.join("");';
+        code = '\nvar r = (function (__data__, __encodeHTML__) {var __str__ = "", __r__ = [];\nfor(var key in __data__) {\n__str__+=("var " + key + "=__data__[\'" + key + "\'];");\n}\neval(__str__);\n' + code + ';\nreturn __r__}(data, encodeHTML));\nreturn r.join("");';
         return new Function('data', 'encodeHTML', code.replace(/[\r\t\n]/g, ''));
     }
     function template(tpl, data) {
