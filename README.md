@@ -42,6 +42,10 @@ template.js 一款javascript模板引擎，简单，好用。
 	$ bower install template.js
 	$ bower install git://github.com/yanhaijing/template.js.git
 
+###spm
+
+	$ spm install template.js
+
 ###Node
 
 	$ npm install template_js
