@@ -1,4 +1,4 @@
-#[template.js](https://github.com/yanhaijing/template.js) [![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt) [![spm package](http://spmjs.io/badge/template.js)](http://spmjs.io/package/template.js)
+#[template.js](https://github.com/yanhaijing/template.js) [![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt) [![release](https://img.shields.io/badge/release-v0.1.0-orange.svg)](https://github.com/yanhaijing/template.js/releases/tag/v0.1.0) [![spm package](http://spmjs.io/badge/template.js)](http://spmjs.io/package/template.js)
 
 template.js 一款javascript模板引擎，简单，好用。
 
@@ -46,7 +46,7 @@ template.js 一款javascript模板引擎，简单，好用。
 
 	$ spm install template.js
 
-###Node
+###npm
 
 	$ npm install template_js
 	$ npm install yanhaijing/template.js
