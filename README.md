@@ -1,4 +1,4 @@
-#[template.js](https://github.com/yanhaijing/template.js) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
+#[template.js](https://github.com/yanhaijing/template.js) [![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
 
 template.js 一款javascript模板引擎，简单，好用。
 
@@ -79,7 +79,7 @@ template.js 一款javascript模板引擎，简单，好用。
 
 ##报告问题
 
-- [Issues](https://github.com/yanhaijing/data.js/issues "report question")
+- [Issues](https://github.com/yanhaijing/template.js/issues "report question")
 
 ##作者
 
