@@ -36,5 +36,14 @@
     "template.js",
     "js"
   ],
-  "main": "template.js"
+  "main": "template.js",
+  "spm": {
+    "main": "template.js",
+    "ignore": [
+      "demo",
+      "doc",
+      "test",
+      "node_modules"
+    ]
+  }
 }
