@@ -94,7 +94,7 @@ template.js 一款javascript模板引擎，简单，好用。
 
 	$ spm publish
 
-###发布bower
+###发布Bower
 	
 	$ bower register template.js git://github.com/yanhaijing/template.js.git
 
