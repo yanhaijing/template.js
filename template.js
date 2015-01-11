@@ -119,11 +119,11 @@
         var html;
         return html = fn.call(null, data, encodeHTML), o.compress ? html.replace(/\s/g, '') : html;
     }
-    template.config = function (data) {
-        if (!isObj(data)) {
-            return 0;
+    template.config = function (option) {
+        if (!isObj(option)) {
+            return false;
         }
-        o = extend(o, data);
+        o = extend(o, option);
         return true;
     };
     template.version = '0.1.0';

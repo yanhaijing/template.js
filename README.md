@@ -2,6 +2,10 @@
 
 template.js 一款javascript模板引擎，简单，好用。
 
+##功能概述
+
+提供一套模板语法，用户可以写一个模板区块，每次根据传入的数据，生成对应数据产生的HTML片段，渲染不同的效果。
+
 ##特性
 
 - 模版编译，渲染
@@ -47,7 +51,7 @@ template.js 一款javascript模板引擎，简单，好用。
 
 ###编写模版
 
-使用一个type="text/html"的script标签存放模板：
+使用一个type="text/html"的script标签存放模板，或者放到字符串中：
 
 	<script id="tpl" type="text/html">
 	<ul>
