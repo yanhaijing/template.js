@@ -81,6 +81,19 @@ template.js 一款javascript模板引擎，简单，好用。
 
 如果你想为template.js贡献代码，请采用fork + pull request 方式，并在发起pr前先将master上超前的代码rebase到自己的分支上。
 
+###发布npm
+	
+	$ npm publish
+
+###发布spm
+临时将package.json中的名字修改为 template.js	
+
+	$ spm publish
+
+###发布bower
+	
+	$ bower register template.js git://github.com/yanhaijing/template.js.git
+
 ##报告问题
 
 - [Issues](https://github.com/yanhaijing/template.js/issues "report question")
