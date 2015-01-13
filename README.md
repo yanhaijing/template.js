@@ -60,19 +60,21 @@ template.js 一款javascript模板引擎，简单，好用。
 	<script id="tpl" type="text/html">
 	<ul>
 		<%for(var i = 0; i < list.length; i++) {%>
-		<li>list[i].name</li>
+		<li><%:=list[i].name%></li>
 		<%}%>
 	</ul>
 	</script>
 
 ###渲染模板
 
-	template(tpl, {list: [name: yan]});
+	var tpl = document.getElementById('tpl').innerHTML;
+	template(tpl, {list: [{name: "yan"},{name: "haijing"}]});
 
 输出结果：
 
 	<ul>
 		<li>yan</li>
+		<li>haijing</li>
 	</ul>
 
 更多例子，请见目录下的[demo](demo)目录。
