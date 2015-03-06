@@ -110,7 +110,7 @@
 
         function render(data) {
             var html = Render(data, encodeHTML);
-            html = o.compress ? html.replace(/\s/g, '') : html;
+            html = opt.compress ? html.replace(/\s/g, '') : html;
             return html;
         }
 
