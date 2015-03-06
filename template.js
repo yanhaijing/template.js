@@ -1,5 +1,5 @@
 /*!
- * template.js v0.1.0 (https://github.com/yanhaijing/template.js)
+ * template.js v0.2.0 (https://github.com/yanhaijing/template.js)
  * Copyright 2015 yanhaijing. All Rights Reserved
  * Licensed under MIT (https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
  */
@@ -119,13 +119,17 @@
         var html;
         return html = fn.call(null, data, encodeHTML), o.compress ? html.replace(/\s/g, '') : html;
     }
+
     template.config = function (option) {
-        if (!isObj(option)) {
-            return false;
+        if (isObj(option)) {
+            o = extend(o, option);
         }
-        o = extend(o, option);
-        return true;
+        
+        return extend({}, o);
     };
-    template.version = '0.1.0';
+
+    template.__compile = compile;
+    template.__encodeHTML = encodeHTML;
+    template.version = '0.2.0';
     return template;
 }));
