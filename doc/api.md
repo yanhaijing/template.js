@@ -40,7 +40,7 @@ template函数会返回渲染数据的字符串，若缺省数据会返回编译
 配置template.js的自定义选项。
 
 - option {Object} 配置的对象参数
-- return {Boolean} 是否配置成功
+- return {Object} 配置对象的镜像
 
 ###可配置参数
 
