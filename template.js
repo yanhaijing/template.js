@@ -59,8 +59,8 @@
             .replace(/"/g,'&quot;')
             .replace(/'/g,'&#39;');
     };
-    function compile(tpl) {
-        var reg = new RegExp(o.sTag + '(.*?)' + o.eTag, 'g');// /<%(.*?)%>/g;
+    function compiler(tpl, opt) {
+        var reg = new RegExp(opt.sTag + '(.*?)' + opt.eTag, 'g');// /<%(.*?)%>/g;
         var match;
         var point = 0;
         var code = '';
@@ -104,6 +104,21 @@
         code = '\nvar r = (function (__data__, __encodeHTML__) {var __str__ = "", __r__ = [];\nfor(var key in __data__) {\n__str__+=("var " + key + "=__data__[\'" + key + "\'];");\n}\neval(__str__);\n' + code + ';\nreturn __r__}(data, encodeHTML));\nreturn r.join("");';
         return new Function('data', 'encodeHTML', code.replace(/[\r\t\n]/g, ''));
     }
+    function compile(tpl, opt) {
+        opt = extend({}, o, opt);
+        var Render = compiler(tpl, opt);
+
+        function render(data) {
+            var html = Render(data, encodeHTML);
+            html = o.compress ? html.replace(/\s/g, '') : html;
+            return html;
+        }
+
+        render.toString = function () {
+            return Render.toString();
+        };
+        return render;
+    }
     function template(tpl, data) {
         if (typeof tpl !== 'string') {
             return '';
@@ -111,13 +126,10 @@
 
         var fn = compile(tpl);
         if (!isObj(data)) {
-            return function (data) {
-                var html;
-                return html = fn.call(null, data, encodeHTML), o.compress ? html.replace(/\s/g, '') : html;
-            };
+            return fn;
         }
-        var html;
-        return html = fn.call(null, data, encodeHTML), o.compress ? html.replace(/\s/g, '') : html;
+
+        return fn(data);
     }
 
     template.config = function (option) {
@@ -128,8 +140,8 @@
         return extend({}, o);
     };
 
-    template.__compile = compile;
     template.__encodeHTML = encodeHTML;
+    template.__compile = compile;
     template.version = '0.2.0';
     return template;
 }));
