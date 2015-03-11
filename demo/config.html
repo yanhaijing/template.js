@@ -22,6 +22,10 @@
     template.config({sTag: '<%', eTag: '%>', compress: true});
     var tpl1 = '<div>空格会被压缩  空格  空格</div>';
     console.log('compress:', template(tpl1, {}));   
+
+    template.config({sTag: '<%', eTag: '%>', escape: false});
+    var tpl1 = '<div>默认输出不进行转义<%=html%></div>';
+    console.log('escape:', template(tpl1, {html: '<div>html</div>'}));
     </script>
 </body>
 </html>

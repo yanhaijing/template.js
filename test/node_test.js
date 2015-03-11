@@ -76,6 +76,10 @@ exports.data_js = {
     t.config({sTag: '<%', eTag: '%>', compress: true});
     assert.ok(t(tpl, {}) === '<div> </div>', 'compress');
 
+    var tpl = '<%=html%>';
+    t.config({sTag: '<%', eTag: '%>', compress: false, escape: false});
+    assert.ok(t(tpl, {html: '<div>'}) === '<div>', 'escape');
+
     test.done();
   }
 };

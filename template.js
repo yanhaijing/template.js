@@ -31,7 +31,8 @@
     var o = {
         sTag: '<%',//开始标签
         eTag: '%>',//结束标签
-        compress: false//是否压缩html
+        compress: false,//是否压缩html
+        escape: true//默认输出是否进行HTML转义
     };
     function isObj(obj) {
         return Object.prototype.toString.call(obj) === '[object Object]';
@@ -82,11 +83,12 @@
             if (line.search(/^=/) !== -1) {
                 //默认输出
                 html = line.slice(1);
-                code += '__r__.push(__encodeHTML__(' + html + '));\n';
+                html = opt.escape ? ('__encodeHTML__(' + html + ')') : html;
+                code += '__r__.push(' + html + ');\n';
                 return 2;
             } else if (line.search(/^:h=/) !== -1) {
                 //HTML转义输出
-                html = line.slice(1);
+                html = line.slice(3);
                 code += '__r__.push(__encodeHTML__(' + html + '));\n';
                 return 3;
             } else if (line.search(/^:=/) !== -1) {

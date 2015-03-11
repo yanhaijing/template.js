@@ -10,7 +10,7 @@ template.js遵循简单好用的原则，所有接口都设计简单，职责单
 开始标签和结束标签（如：<% 与 %>）包裹起来的语句则为模板的逻辑表达式。
 
 ###输出表达式
-对内容进行html编码输出：
+默认输出(是否转码有escape参数决定)：
 
 	<%=content%>
 
@@ -18,7 +18,11 @@ template.js遵循简单好用的原则，所有接口都设计简单，职责单
 	
 	<%:=content%>
 
-对URL进行编码输出：
+对输出内容进行HTML转义:
+
+	<%:h=content%>
+
+对输出内容惊醒URL编码：
 
 	<%:u=content%>
 
@@ -47,11 +51,12 @@ template函数会返回渲染数据的字符串，若缺省数据会返回编译
 - sTag {String} 开始标签 默认为 '<%'
 - eTag {String} 结束标签 默认为 '%>'
 - compress {Boolean} 是否压缩输出的html 默认为false
+- escape {Boolean} 默认是否对输出内容进行html转义 默认为true
 
 [演示](../demo/config.html)
 
 ##template.noConflict+
-在以原是方式使用template.js时会存在改函数（在模块化开发环境中不会存在），用来释放template.js占用的全局变量template。同时会返回Data。
+在以原是方式使用template.js时会存在改函数（在模块化开发环境中不会存在），用来释放template.js占用的全局变量template。同时会返回template。
 
 - return {Function} template
 

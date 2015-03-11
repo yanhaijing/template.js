@@ -46,4 +46,9 @@ QUnit.test( "template.config", function( assert ) {
     var tpl = '<div>  </div>';
     t.config({sTag: '<%', eTag: '%>', compress: true});
     assert.ok(t(tpl, {}) === '<div> </div>', 'compress');
+
+    //测试escape
+    var tpl = '<%=html%>';
+    t.config({sTag: '<%', eTag: '%>', compress: false, escape: false});
+    assert.ok(t(tpl, {html: '<div>'}) === '<div>', 'escape');
 });
