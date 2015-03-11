@@ -70,9 +70,9 @@ exports.data_js = {
     t.config({sTag: '<%', eTag: '#>'});
     assert.ok(t(tpl, {name: 123}) === '123', 'eTag');
 
-    var tpl = '<div> </div>';
+    var tpl = '<div>  </div>';
     t.config({sTag: '<%', eTag: '%>', compress: true});
-    assert.ok(t(tpl, {}) === '<div></div>', 'compress');
+    assert.ok(t(tpl, {}) === '<div> </div>', 'compress');
 
     test.done();
   }

@@ -59,6 +59,9 @@
             .replace(/"/g,'&quot;')
             .replace(/'/g,'&#39;');
     };
+    function compress(html) {
+        return html.replace(/\s+/g, ' ').replace(/<!--[\w\W]*?-->/g, '');
+    }
     function compiler(tpl, opt) {
         var reg = new RegExp(opt.sTag + '(.*?)' + opt.eTag, 'g');// /<%(.*?)%>/g;
         var match;
@@ -110,7 +113,7 @@
 
         function render(data) {
             var html = Render(data, encodeHTML);
-            html = opt.compress ? html.replace(/\s/g, '') : html;
+            html = opt.compress ? compress(html) : html;
             return html;
         }
 
