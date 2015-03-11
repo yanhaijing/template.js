@@ -20,7 +20,7 @@
     console.log('<%#>:', template(tpl1, {name: '不一致也可以哦，更改tag<%#>'})); 
 
     template.config({sTag: '<%', eTag: '%>', compress: true});
-    var tpl1 = '<div>空格会被压缩 空格 空格 </div>';
+    var tpl1 = '<div>空格会被压缩  空格  空格</div>';
     console.log('compress:', template(tpl1, {}));   
     </script>
 </body>
