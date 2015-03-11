@@ -75,7 +75,7 @@
             }   
             //原生js
             if (line.search(/^(:|=)/) === -1) {
-                code += line + ';\n';
+                code += line + '\n';
                 return 1;
             }
             var html;
