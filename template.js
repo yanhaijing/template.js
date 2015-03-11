@@ -84,18 +84,24 @@
                 html = line.slice(1);
                 code += '__r__.push(__encodeHTML__(' + html + '));\n';
                 return 2;
+            } else if (line.search(/^:h=/) !== -1) {
+                //HTML转义输出
+                html = line.slice(1);
+                code += '__r__.push(__encodeHTML__(' + html + '));\n';
+                return 3;
             } else if (line.search(/^:=/) !== -1) {
                 //不转义
                 html = line.slice(2);
                 code += '__r__.push(' + html + ');\n';
-                return 3;
+                return 4;
             } else if (line.search(/^:u=/) !== -1) {
                 //URL转义
                 html = line.slice(3);
                 code += '__r__.push(encodeURI(' + html + '));\n';
-                return 4;
+                return 5;
             }
-            return 5;
+
+            return -1;
         }
         while(match = reg.exec(tpl)){
             add(tpl.slice(point, match.index));

@@ -11,6 +11,8 @@ QUnit.test( "template", function( assert ) {
     assert.ok(t(tpl2, {name: 123}) === '<div>123</div>', '输出简答变量');
     var tpl2 = '<div><%=html%></div>';
     assert.ok(t(tpl2, {html: '<div id="test">'}) === '<div>&lt;div id=&quot;test&quot;&gt;</div>', '输出html');
+    var tpl2 = '<div><%:h=html%></div>';
+    assert.ok(t(tpl2, {html: '<div id="test">'}) === '<div>&lt;div id=&quot;test&quot;&gt;</div>', '输出html');
 
     var tpl3 = '<div><%:=text%></div>';
     assert.ok(t(tpl3, {text: '<div>'}) === '<div><div></div>', '输出变量');

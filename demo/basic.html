@@ -15,8 +15,9 @@
     <caption>for循环输出两次</caption>
     <%var test = '输出自定义变量';%>
     <%for (var i = 0; i < 2; i++) {%>
-    <tr><td>&lt;%=html%>html转义(默认)</td><td><%=html%></td></tr>
-    <tr><td>&lt;%:=html%>文本输出</td><td><%:=html%></td></tr>
+    <tr><td>&lt;%=html%>默认</td><td><%=html%></td></tr>
+    <tr><td>&lt;%:h=html%>html转义</td><td><%=html%></td></tr>
+    <tr><td>&lt;%:=html%>不转义</td><td><%:=html%></td></tr>
     <tr><td>&lt;%:u=url%>URI转义</td><td><%:u=url%></td></tr>
     <tr><td>var</td><td><%:=test%></td></tr>
     <tr><td>&lt;%=test + 1%>表达式</td><td><%=test + 1%></td></tr>
