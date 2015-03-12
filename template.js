@@ -112,8 +112,8 @@
         }
         add(tpl.substr(point, tpl.length - point));
 
-        code = '\nvar r = (function (__data__, __encodeHTML__) {var __str__ = "", __r__ = [];\nfor(var key in __data__) {\n__str__+=("var " + key + "=__data__[\'" + key + "\'];");\n}\neval(__str__);\n' + code + ';\nreturn __r__}(data, encodeHTML));\nreturn r.join("");';
-        return new Function('data', 'encodeHTML', code.replace(/[\r\t\n]/g, ''));
+        code = '\nvar r = (function (__data__, __encodeHTML__) {var __str__ = "", __r__ = [];\nfor(var key in __data__) {\n__str__+=("var " + key + "=__data__[\'" + key + "\'];");\n}\neval(__str__);\n' + code + ';\nreturn __r__}(__data__, __encodeHTML__));\nreturn r.join("");';
+        return new Function('__data__', '__encodeHTML__', code.replace(/[\r\t\n]/g, ''));
     }
     function compile(tpl, opt) {
         opt = extend({}, o, opt);
