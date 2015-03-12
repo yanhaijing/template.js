@@ -1,5 +1,5 @@
 /*!
- * template.js v0.3.0 (https://github.com/yanhaijing/template.js)
+ * template.js v0.3.1 (https://github.com/yanhaijing/template.js)
  * Copyright 2015 yanhaijing. All Rights Reserved
  * Licensed under MIT (https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
  */
@@ -153,6 +153,6 @@
 
     template.__encodeHTML = encodeHTML;
     template.__compile = compile;
-    template.version = '0.3.0';
+    template.version = '0.3.1';
     return template;
 }));
