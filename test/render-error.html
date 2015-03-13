@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>渲染错误</title>
+    <style>
+        table{border-collapse: collapse;}
+        td{border: 1px solid #000;}
+    </style>
+</head>
+<body>
+    <div id="wp"></div>
+    <script id="tpl" type="text/html">
+    <%=a%>
+    </script>
+    <script src="../template.js"></script>
+    <script>
+    var tpl = document.getElementById('tpl').innerHTML;
+    var html = template(tpl, {});
+    document.getElementById('wp').innerHTML = html;
+    </script>
+</body>
+</html>
