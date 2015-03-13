@@ -32,7 +32,8 @@
         sTag: '<%',//开始标签
         eTag: '%>',//结束标签
         compress: false,//是否压缩html
-        escape: true//默认输出是否进行HTML转义
+        escape: true, //默认输出是否进行HTML转义
+        error: function (e) {}//错误回调
     };
     function isObj(obj) {
         return Object.prototype.toString.call(obj) === '[object Object]';
@@ -62,6 +63,21 @@
     };
     function compress(html) {
         return html.replace(/\s+/g, ' ').replace(/<!--[\w\W]*?-->/g, '');
+    }
+    function handelError(e) {
+        var message = 'template.js error\n\n';
+
+        for (var key in e) {
+            message += '<' + key + '>\n' + e[key] + '\n\n';
+        }
+        message += '<message>\n' + e.message + '\n\n';
+        console && console.error && console.error(message);
+
+        o.error(e);
+
+        return function () {
+            return 'template.js error';
+        };
     }
     function compiler(tpl, opt) {
         var reg = new RegExp(opt.sTag + '(.*?)' + opt.eTag, 'g');// /<%(.*?)%>/g;
@@ -113,16 +129,39 @@
         add(tpl.substr(point, tpl.length - point));
 
         code = '\nvar r = (function (__data__, __encodeHTML__) {var __str__ = "", __r__ = [];\nfor(var key in __data__) {\n__str__+=("var " + key + "=__data__[\'" + key + "\'];");\n}\neval(__str__);\n' + code + ';\nreturn __r__}(__data__, __encodeHTML__));\nreturn r.join("");';
-        return new Function('__data__', '__encodeHTML__', code.replace(/[\r\t\n]/g, ''));
+        code = code.replace(/[\r\t\n]/g, '');
+        try {
+            var Render = new Function('__data__', '__encodeHTML__', code); 
+            return Render;
+        } catch(e) {
+            e.temp = 'function anonymous(__data__, __encodeHTML__) {' + code + '}';
+            throw e;
+        }  
     }
     function compile(tpl, opt) {
         opt = extend({}, o, opt);
-        var Render = compiler(tpl, opt);
+
+        try {
+            var Render = compiler(tpl, opt);
+        } catch(e) {
+            e.name = 'CompileError';
+            e.tpl = tpl;
+            e.render = e.temp;
+            delete e.temp;
+            return handelError(e);
+        }
 
         function render(data) {
-            var html = Render(data, encodeHTML);
-            html = opt.compress ? compress(html) : html;
-            return html;
+            try {
+                var html = Render(data, encodeHTML);
+                html = opt.compress ? compress(html) : html;
+                return html;
+            } catch(e) {
+                e.name = 'RenderError';
+                e.tpl = tpl;
+                e.render = Render.toString();
+                return handelError(e);
+            }            
         }
 
         render.toString = function () {
