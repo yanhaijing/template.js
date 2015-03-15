@@ -79,11 +79,10 @@
             return 'template.js error';
         };
     }
-    function compiler(tpl, opt) {
-        var reg = new RegExp(opt.sTag + '(.*?)' + opt.eTag, 'g');// /<%(.*?)%>/g;
-        var match;
-        var point = 0;
+    function analyze(tpl, opt) {
         var code = '';
+        var sTag = opt.sTag;
+        var eTag = opt.eTag;
         function add(line, js) {
             //非js
             if (!js) {
@@ -121,14 +120,43 @@
 
             return -1;
         }
-        while(match = reg.exec(tpl)){
-            add(tpl.slice(point, match.index));
-            add(match[1], true);
-            point = match.index + match[0].length;
-        }
-        add(tpl.substr(point, tpl.length - point));
 
-        code = '\nvar r = (function (__data__, __encodeHTML__) {var __str__ = "", __r__ = [];\nfor(var key in __data__) {\n__str__+=("var " + key + "=__data__[\'" + key + "\'];");\n}\neval(__str__);\n' + code + ';\nreturn __r__}(__data__, __encodeHTML__));\nreturn r.join("");';
+        var tokens = tpl.split(sTag);
+
+        for (var i = 0, len = tokens.length; i < len; i++) {
+            var token = tokens[i].split(eTag);
+
+            if (token.length === 1) {
+                add(token[0]);
+            } else {
+                add(token[0], true);
+                if (token[1]) {
+                    add(token[1]);
+                }
+            }
+        }
+
+        return code;
+    }
+    function compiler(tpl, opt) {
+        var mainCode = analyze(tpl, opt);
+
+        var headerCode = '\n' + 
+        'var r = (' + 
+            'function (__data__, __encodeHTML__) {' + 
+                'var __str__ = "", __r__ = [];\n' + 
+                'for(var key in __data__) {\n' + 
+                    '__str__+=("var " + key + "=__data__[\'" + key + "\'];");\n' + 
+                '}\n' + 
+                'eval(__str__);\n';
+
+        var footerCode = ';\n' + 
+                'return __r__;\n' + 
+            '}(__data__, __encodeHTML__));\n' + 
+        'return r.join("");';
+
+        var code = headerCode + mainCode + footerCode;
+
         code = code.replace(/[\r\t\n]/g, '');
         try {
             var Render = new Function('__data__', '__encodeHTML__', code); 
