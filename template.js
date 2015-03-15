@@ -79,46 +79,43 @@
             return 'template.js error';
         };
     }
-    function analyze(tpl, opt) {
+    function parse(tpl, opt) {
         var code = '';
         var sTag = opt.sTag;
         var eTag = opt.eTag;
-        function add(line, js) {
-            //非js
-            if (!js) {
-                code += '__r__.push("' + line.replace(/"/g, '\\"') + '");\n';
-                return 0;
-            }   
-            //原生js
-            if (line.search(/^(:|=)/) === -1) {
-                code += line + '\n';
-                return 1;
-            }
+        var escape = opt.escape;
+        function parsehtml(line) {
+            return '__r__.push("' + line.replace(/"/g, '\\"') + '");\n';
+        }
+        function parsejs(line) {              
             var html;
             if (line.search(/^=/) !== -1) {
                 //默认输出
                 html = line.slice(1);
-                html = opt.escape ? ('__encodeHTML__(' + html + ')') : html;
-                code += '__r__.push(' + html + ');\n';
-                return 2;
-            } else if (line.search(/^:h=/) !== -1) {
-                //HTML转义输出
-                html = line.slice(3);
-                code += '__r__.push(__encodeHTML__(' + html + '));\n';
-                return 3;
-            } else if (line.search(/^:=/) !== -1) {
-                //不转义
-                html = line.slice(2);
-                code += '__r__.push(' + html + ');\n';
-                return 4;
-            } else if (line.search(/^:u=/) !== -1) {
-                //URL转义
-                html = line.slice(3);
-                code += '__r__.push(encodeURI(' + html + '));\n';
-                return 5;
+                html = escape ? ('__encodeHTML__(' + html + ')') : html;
+                return '__r__.push(' + html + ');\n';
             }
 
-            return -1;
+            if (line.search(/^:h=/) !== -1) {
+                //HTML转义输出
+                html = line.slice(3);
+                return '__r__.push(__encodeHTML__(' + html + '));\n';
+            }
+
+            if (line.search(/^:=/) !== -1) {
+                //不转义
+                html = line.slice(2);
+                return '__r__.push(' + html + ');\n';
+            }
+
+            if (line.search(/^:u=/) !== -1) {
+                //URL转义
+                html = line.slice(3);
+                return '__r__.push(encodeURI(' + html + '));\n';
+            }
+
+            //原生js
+            return line + '\n';
         }
 
         var tokens = tpl.split(sTag);
@@ -127,11 +124,11 @@
             var token = tokens[i].split(eTag);
 
             if (token.length === 1) {
-                add(token[0]);
+                code += parsehtml(token[0]);
             } else {
-                add(token[0], true);
+                code += parsejs(token[0], true);
                 if (token[1]) {
-                    add(token[1]);
+                    code += parsehtml(token[1]);
                 }
             }
         }
@@ -139,7 +136,7 @@
         return code;
     }
     function compiler(tpl, opt) {
-        var mainCode = analyze(tpl, opt);
+        var mainCode = parse(tpl, opt);
 
         var headerCode = '\n' + 
         'var r = (' + 
