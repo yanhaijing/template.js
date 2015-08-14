@@ -22,7 +22,7 @@ template.js遵循简单好用的原则，所有接口都设计简单，职责单
 
 	<%:h=content%>
 
-对输出内容惊醒URL编码：
+对输出内容进行URL编码：
 
 	<%:u=content%>
 
