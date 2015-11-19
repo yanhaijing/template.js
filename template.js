@@ -125,14 +125,14 @@
             if (line.search(/^=/) !== -1) {
                 //默认输出
                 html = line.slice(1);
-                html = escape ? ('__encodeHTML__(' + html + ')') : html;
+                html = escape ? ('encodeHTML(' + html + ')') : html;
                 return ';__r__.push(' + html + ')\n';
             }
 
             if (line.search(/^:h=/) !== -1) {
                 //HTML转义输出
                 html = line.slice(3);
-                return ';__r__.push(__encodeHTML__(' + html + '))\n';
+                return ';__r__.push(encodeHTML(' + html + '))\n';
             }
 
             if (line.search(/^:=/) !== -1) {
@@ -171,30 +171,38 @@
     function compiler(tpl, opt) {
         var mainCode = parse(tpl, opt);
 
-        var headerCode = '\n' + 
-        '    var r = (function (__data__, __encodeHTML__) {\n' + 
-        '        var __str__ = "", __r__ = [];\n' + 
-        '        for(var key in __data__) {\n' + 
-        '            __str__+=("var " + key + "=__data__[\'" + key + "\'];");\n' + 
-        '        }\n' + 
-        '        eval(__str__);\n\n' + 
-        ';/*---------------*/\n';
+        var headerCode = '\n"use strict";\nvar __r__ = [];\n';
 
-        var footerCode = ';/*---------------*/\n\n' + 
-        '        return __r__;\n' + 
-        '    }(__data__, __encodeHTML__));\n' + 
-        '    return r.join("");\n';
+        var footerCode = ';return __r__.join("");\n';
 
         var code = headerCode + mainCode + footerCode;
-        console.log('function (__data__, __encodeHTML__) {', code, '}');
-        code = code.replace(/[\r\t\n]/g, '');
-        try {
-            var Render = new Function('__data__', '__encodeHTML__', code); 
-            return Render;
-        } catch(e) {
-            e.temp = 'function anonymous(__data__, __encodeHTML__) {' + code + '}';
-            throw e;
-        }  
+
+        console.log('function (data) {', code, '}');
+
+        code = code.replace(/[\n]/g, '');
+        console.log(code);
+        var Render = function (data) {
+            var keyArr = [];
+            var valArr = [];
+            data.encodeHTML = encodeHTML;
+            for(var key in data) {
+                keyArr.push('"' + key + '"');
+                valArr.push(data[key]);
+            }
+            var source = 'new Function(' + keyArr.join(',') + ', \'' + code + '\')';
+            console.log(source);
+            var fn = eval(source);
+            return fn.apply(null, valArr);
+        }
+        console.log(Render.toString());
+        return Render;
+        
+        // try {
+        //     var Render = new Function('__data__', '__encodeHTML__', code); 
+        // } catch(e) {
+        //     e.temp = 'function anonymous(__data__, __encodeHTML__) {' + code + '}';
+        //     throw e;
+        // }  
     }
     function compile(tpl, opt) {
         opt = extend({}, o, opt);
