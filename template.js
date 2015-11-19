@@ -139,21 +139,21 @@
         var mainCode = parse(tpl, opt);
 
         var headerCode = '\n' + 
-        'var r = (' + 
-            'function (__data__, __encodeHTML__) {' + 
-                'var __str__ = "", __r__ = [];\n' + 
-                'for(var key in __data__) {\n' + 
-                    '__str__+=("var " + key + "=__data__[\'" + key + "\'];");\n' + 
-                '}\n' + 
-                'eval(__str__);\n';
+        '   var r = (function (__data__, __encodeHTML__) {\n' + 
+        '       var __str__ = "", __r__ = [];\n' + 
+        '       for(var key in __data__) {\n' + 
+        '           __str__+=("var " + key + "=__data__[\'" + key + "\'];");\n' + 
+        '       }\n' + 
+        '       eval(__str__);\n' + 
+        ';\n';
 
         var footerCode = ';\n' + 
-                'return __r__;\n' + 
-            '}(__data__, __encodeHTML__));\n' + 
-        'return r.join("");';
+        '       return __r__;\n' + 
+        '   }(__data__, __encodeHTML__));\n' + 
+        '   return r.join("");\n';
 
         var code = headerCode + mainCode + footerCode;
-
+        console.log('function (__data__, __encodeHTML__) {', code, '}');
         code = code.replace(/[\r\t\n]/g, '');
         try {
             var Render = new Function('__data__', '__encodeHTML__', code); 
