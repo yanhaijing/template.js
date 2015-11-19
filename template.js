@@ -35,8 +35,36 @@
         escape: true, //默认输出是否进行HTML转义
         error: function (e) {}//错误回调
     };
-    function isObj(obj) {
-        return Object.prototype.toString.call(obj) === '[object Object]';
+    var toString = {}.toString;
+
+    function getType(x) {
+        if(x === null){
+            return 'null';
+        }
+
+        var t= typeof x;
+
+        if(t !== 'object'){
+            return t;
+        }
+
+        var c = toString.call(x).slice(8, -1).toLowerCase();
+        if(c !== 'object'){
+            return c;
+        }
+
+        if(x.constructor==Object){
+            return c;
+        }
+
+        return 'unkonw';
+    }
+
+    function isObject(obj) {
+        return getType(obj) === 'object';
+    }
+    function isFunction(fn) {
+        return getType(fn) === 'function';
     }
     function extend() {
         var target = arguments[0] || {};
@@ -64,6 +92,9 @@
     function compress(html) {
         return html.replace(/\s+/g, ' ').replace(/<!--[\w\W]*?-->/g, '');
     }
+    function trim(str) {
+        return isFunction(str.trim) ? str.trim() : str.replace(/^\s+|\s+$/g, '');
+    }
     function handelError(e) {
         var message = 'template.js error\n\n';
 
@@ -85,7 +116,9 @@
         var eTag = opt.eTag;
         var escape = opt.escape;
         function parsehtml(line) {
-            return '__r__.push("' + line.replace(/"/g, '\\"') + '");\n';
+            // 双引号转义，换行符替换为空格
+            line = line.replace(/"/g, '\\"').replace(/\n/g, ' ');
+            return ';__r__.push("' + line + '")\n';
         }
         function parsejs(line) {              
             var html;
@@ -93,29 +126,29 @@
                 //默认输出
                 html = line.slice(1);
                 html = escape ? ('__encodeHTML__(' + html + ')') : html;
-                return '__r__.push(' + html + ');\n';
+                return ';__r__.push(' + html + ')\n';
             }
 
             if (line.search(/^:h=/) !== -1) {
                 //HTML转义输出
                 html = line.slice(3);
-                return '__r__.push(__encodeHTML__(' + html + '));\n';
+                return ';__r__.push(__encodeHTML__(' + html + '))\n';
             }
 
             if (line.search(/^:=/) !== -1) {
                 //不转义
                 html = line.slice(2);
-                return '__r__.push(' + html + ');\n';
+                return ';__r__.push(' + html + ')\n';
             }
 
             if (line.search(/^:u=/) !== -1) {
                 //URL转义
                 html = line.slice(3);
-                return '__r__.push(encodeURI(' + html + '));\n';
+                return ';__r__.push(encodeURI(' + html + '))\n';
             }
 
             //原生js
-            return line + '\n';
+            return ';' + line + '\n';
         }
 
         var tokens = tpl.split(sTag);
@@ -139,18 +172,18 @@
         var mainCode = parse(tpl, opt);
 
         var headerCode = '\n' + 
-        '   var r = (function (__data__, __encodeHTML__) {\n' + 
-        '       var __str__ = "", __r__ = [];\n' + 
-        '       for(var key in __data__) {\n' + 
-        '           __str__+=("var " + key + "=__data__[\'" + key + "\'];");\n' + 
-        '       }\n' + 
-        '       eval(__str__);\n' + 
-        ';\n';
+        '    var r = (function (__data__, __encodeHTML__) {\n' + 
+        '        var __str__ = "", __r__ = [];\n' + 
+        '        for(var key in __data__) {\n' + 
+        '            __str__+=("var " + key + "=__data__[\'" + key + "\'];");\n' + 
+        '        }\n' + 
+        '        eval(__str__);\n\n' + 
+        ';/*---------------*/\n';
 
-        var footerCode = ';\n' + 
-        '       return __r__;\n' + 
-        '   }(__data__, __encodeHTML__));\n' + 
-        '   return r.join("");\n';
+        var footerCode = ';/*---------------*/\n\n' + 
+        '        return __r__;\n' + 
+        '    }(__data__, __encodeHTML__));\n' + 
+        '    return r.join("");\n';
 
         var code = headerCode + mainCode + footerCode;
         console.log('function (__data__, __encodeHTML__) {', code, '}');
@@ -200,7 +233,7 @@
         }
 
         var fn = compile(tpl);
-        if (!isObj(data)) {
+        if (!isObject(data)) {
             return fn;
         }
 
@@ -208,7 +241,7 @@
     }
 
     template.config = function (option) {
-        if (isObj(option)) {
+        if (isObject(option)) {
             o = extend(o, option);
         }
         
