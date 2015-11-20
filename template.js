@@ -179,7 +179,7 @@
 
         console.log('function (data) {', code, '}');
 
-        code = code.replace(/[\n]/g, '');
+        code = code.replace(/[\n]/g, '').replace(/\'/g, "\\'");
         console.log(code);
         var Render = function (data) {
             var keyArr = [];
