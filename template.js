@@ -63,9 +63,6 @@
     function isObject(obj) {
         return getType(obj) === 'object';
     }
-    function isFunction(fn) {
-        return getType(fn) === 'function';
-    }
     function extend() {
         var target = arguments[0] || {};
         var arrs = Array.prototype.slice.call(arguments, 1);
@@ -91,9 +88,6 @@
     };
     function compress(html) {
         return html.replace(/\s+/g, ' ').replace(/<!--[\w\W]*?-->/g, '');
-    }
-    function trim(str) {
-        return isFunction(str.trim) ? str.trim() : str.replace(/^\s+|\s+$/g, '');
     }
     function handelError(e) {
         var message = 'template.js error\n\n';
