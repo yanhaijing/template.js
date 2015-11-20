@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+"use strict";
+function test() {
+    var data = {a: 1, b: 2};
+    var keyArr = [];
+    var valArr = [];
+    for(var key in data) {
+        keyArr.push('"' + key + '"');
+        valArr.push(data[key]);
+    }
+
+    var str2 = 'console.log(a, b);';
+    var str = `new Function(${keyArr.join(",")}, "${str2}")`;
+    console.log(str);
+    var fn = eval(str);
+    console.log(fn);
+    fn.apply(null, valArr);
+    //var fn = new Function('arr', str);
+    //fn(arr);
+}
+test();
+</script>
+</body>
+</html>

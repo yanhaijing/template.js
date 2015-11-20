@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script id="tpl" type="text/html">
+<%var i = 0%>
+<%var len = 3;%>
+<%var a = 1%>
+<%/*注释注释*/%>
+<%for(i = 0; i < len; i++) {%>
+<div>数字：<%=i%> <%=i+1%></div>
+<%}%>
+
+    <div>123</div> 
+123 
+</script>
+<script src="template.js"></script>
+<script>
+    console.log(template(document.getElementById('tpl').innerHTML, {a: 1, b: 2}));
+</script>
+</body>
+</html>
