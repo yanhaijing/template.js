@@ -1,5 +1,5 @@
 /*!
- * template.js v0.4.0 (https://github.com/yanhaijing/template.js)
+ * template.js v0.5.0 (https://github.com/yanhaijing/template.js)
  * Copyright 2015 yanhaijing. All Rights Reserved
  * Licensed under MIT (https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
  */
@@ -179,7 +179,7 @@
         '    return r.join("");\n';
 
         var code = headerCode + mainCode + footerCode;
-
+        code = code.replace(/[\r]/g, ' '); // ie 7 8 会报错，不知道为什么
         try {
             var Render = new Function('__data__', '__encodeHTML__', code); 
             Render.toString = function () {
@@ -245,6 +245,6 @@
 
     template.__encodeHTML = encodeHTML;
     template.__compile = compile;
-    template.version = '0.4.0';
+    template.version = '0.5.0';
     return template;
 }));
