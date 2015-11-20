@@ -116,8 +116,8 @@
         var eTag = opt.eTag;
         var escape = opt.escape;
         function parsehtml(line) {
-            // 双引号转义，换行符替换为空格
-            line = line.replace(/"/g, '\\"').replace(/\n/g, ' ');
+            // 单双引号转义，换行符替换为空格
+            line = line.replace(/('|")/g, '\\$1').replace(/\n/g, ' ');
             return ';__r__.push("' + line + '")\n';
         }
         function parsejs(line) {              
@@ -177,19 +177,20 @@
         '        for(var key in __data__) {\n' + 
         '            __str__+=("var " + key + "=__data__[\'" + key + "\'];");\n' + 
         '        }\n' + 
-        '        eval(__str__);\n\n' + 
-        ';/*---------------*/\n';
+        '        eval(__str__);\n\n';
 
-        var footerCode = ';/*---------------*/\n\n' + 
-        '        return __r__;\n' + 
+        var footerCode = '\n' + 
+        '        ;return __r__;\n' + 
         '    }(__data__, __encodeHTML__));\n' + 
         '    return r.join("");\n';
 
         var code = headerCode + mainCode + footerCode;
-        console.log('function (__data__, __encodeHTML__) {', code, '}');
-        code = code.replace(/[\r\t\n]/g, '');
+
         try {
             var Render = new Function('__data__', '__encodeHTML__', code); 
+            Render.toString = function () {
+                return mainCode;
+            }
             return Render;
         } catch(e) {
             e.temp = 'function anonymous(__data__, __encodeHTML__) {' + code + '}';

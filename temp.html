@@ -6,20 +6,34 @@
 </head>
 <body>
 <script id="tpl" type="text/html">
+<!-- html 注释 -->
 <%var i = 0%>
 <%var len = 3;%>
-<%var a = 1%>
+<%var a = 1; b = 3%>
+a=<%=a%>
+b=<%=b%>
+<%=a + '1 "2"' + "2"%>
 <%/*注释注释*/%>
 <%for(i = 0; i < len; i++) {%>
 <div>数字：<%=i%> <%=i+1%></div>
 <%}%>
 
-    <div>123</div> 
+    <div class="test" id='test'>123</div> 
 123 
+<%if ('1') {
+    console.log("123")
+}%>
 </script>
 <script src="template.js"></script>
 <script>
-    console.log(template(document.getElementById('tpl').innerHTML, {a: 1, b: 2}));
+    var tpl = template(document.getElementById('tpl').innerHTML);
+    console.log(tpl.toString());
+    console.log(tpl.toString().replace(/\n/g, ' '));
+    console.log(tpl({a: 2, b: 2}));
+
+    template.config({compress: true});
+    var tpl = template(document.getElementById('tpl').innerHTML);
+    console.log(tpl({a: 2, b: 3}));
 </script>
 </body>
 </html>
