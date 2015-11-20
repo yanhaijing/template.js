@@ -194,6 +194,9 @@
             var fn = eval(source);
             return fn.apply(null, valArr);
         }
+        Render.toString = function () {
+            return code;
+        };
         console.log(Render.toString());
         return Render;
         
