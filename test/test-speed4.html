@@ -1,0 +1,250 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>test-speed4</title>
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/highcharts.js"></script>
+
+<script src="../template.js"></script>
+<script src="js/template-0.5.0.js"></script>
+<script src="js/template-0.4.0.js"></script>
+<script src="js/template-0.3.1.js"></script>
+<script src="js/template-0.2.0.js"></script>
+<script src="js/template-0.1.0.js"></script>
+
+
+<script>
+var mytemplate010 = template.noConflict();
+var mytemplate020 = template.noConflict();
+var mytemplate031 = template.noConflict();
+var mytemplate040 = template.noConflict();
+var mytemplate050 = template.noConflict();
+var mytemplate = template.noConflict();
+
+// 数据量
+var length = 100;
+// 渲染次数
+var number = 10000;
+
+var data = {
+    list: []
+};
+
+for (var i = 0; i < length; i ++) {
+    data.list.push({
+        index: i,
+        user: '<strong style="color:red">糖饼</strong>',
+        site: 'http://www.planeart.cn',
+        weibo: 'http://weibo.com/planeart',
+        QQweibo: 'http://t.qq.com/tangbin'  
+    }); 
+};
+
+
+// 待测试的引擎列表
+var testList = [
+    {
+        name: 'template.js',
+        tester: function () {
+            var template=mytemplate;
+            for (var i = 0; i < number; i ++) {
+                var tpl = template(document.getElementById('baidu-template').innerHTML);
+                tpl(data);
+            }
+        }
+    },
+    {
+        name: 'template.js v0.5.0',
+        tester: function () {
+            var template=mytemplate050;
+            for (var i = 0; i < number; i ++) {
+                var tpl = template(document.getElementById('baidu-template').innerHTML);
+                tpl(data);
+            }
+        }
+    },
+    {
+        name: 'template.js v0.4.0',
+        tester: function () {
+            var template=mytemplate040;
+            for (var i = 0; i < number; i ++) {
+                var tpl = template(document.getElementById('baidu-template').innerHTML);
+                tpl(data);
+            }
+        }
+    },
+    {
+        name: 'template.js v0.3.1',
+        tester: function () {
+            var template=mytemplate031;
+            for (var i = 0; i < number; i ++) {
+                var tpl = template(document.getElementById('baidu-template').innerHTML);
+                tpl(data);
+            }
+        }
+    },
+    {
+        name: 'template.js v0.2.0',
+        tester: function () {
+            var template=mytemplate020;
+            for (var i = 0; i < number; i ++) {
+                var tpl = template(document.getElementById('baidu-template').innerHTML);
+                tpl(data);
+            }
+        }
+    },
+    {
+        name: 'template.js v0.1.0',
+        tester: function () {
+            var template=mytemplate010;
+            for (var i = 0; i < number; i ++) {
+                var tpl = template(document.getElementById('baidu-template').innerHTML);
+                tpl(data);
+            }
+        }
+    }
+];
+
+
+var startTest = function () {
+
+    var Timer = function (){
+        this.startTime = + new Date;
+    };
+
+    Timer.prototype.stop = function(){
+        return + new Date - this.startTime;
+    };
+    
+    var colors = Highcharts.getOptions().colors;
+    var categories = [];
+
+    for (var i = 0; i < testList.length; i ++) {
+        categories.push(testList[i].name);
+    }
+
+    var chart = new Highcharts.Chart({
+        chart: {
+            renderTo: 'container',
+            height: categories.length * 40,
+            type: 'bar'
+        },
+
+        title: {
+            text: 'JavaScript 模板引擎负荷测试'
+        },
+
+        subtitle: {
+            text: length + ' 条数据 × ' + number + ' 次渲染'
+        },
+                
+        xAxis: {
+            categories: categories,
+            labels: {
+                align: 'right',
+                style: {
+                    fontSize: '12px',
+                    fontFamily: 'Verdana, sans-serif'
+                }
+            }
+        },
+
+        yAxis: {
+            min: 0,
+            title: {
+                text: '耗时(毫秒)'
+            }
+        },
+
+        legend: {
+            enabled: false
+        },
+
+        tooltip: {
+            formatter: function() {
+                return '<b>'+ this.x +'</b><br/>'+
+                    this.y + '毫秒';
+            }
+
+        },
+
+        credits: {
+            enabled: false
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true,
+                    formatter: function () {
+                        return this.y + 'ms';
+                    }
+                }
+            }
+        },
+        series: [{
+            data : []
+        }]
+
+    });
+    
+    var log = function (message) {
+        document.getElementById('log').innerHTML = message;
+    };
+    
+    var tester = function (target) {
+    
+        
+        var time = new Timer;
+        target.tester();
+        var endTime = time.stop();
+        
+        chart.series[0].addPoint({
+            color: colors.shift(),
+            y: endTime
+        });
+        
+        
+        if (!testList.length) {
+            log('测试已完成，请不要迷恋速度');
+            return;
+        }
+
+        target = testList.shift();
+        
+        log('正在测试: ' + target.name + '..');
+        
+        setTimeout(function () {
+            tester(target);
+        }, 500);
+        
+    };
+    
+    var target = testList.shift();
+    log('正在测试: ' + target.name + '..');
+    tester(target);
+
+};
+</script>
+
+
+<!-- template 的模板 -->
+<script id="baidu-template" type="text/tmpl">
+<ul>
+    <% for (var val, i = 0, l = list.length; i < l; i ++) { %>
+        <% val = list[i]; %>
+        <li>用户: <%:=val.user%>/ 网站：<%:=val.site%></li>
+    <% } %>
+</ul>
+</script>
+
+</head>
+
+<body>
+<h1>引擎编译+渲染速度测试</h1>
+<p><strong><script>document.write(length)</script></strong> 条数据 × <strong><script>document.write(number)</script></strong> 次编译+渲染测试</p>
+<p><em>建议在拥有 v8 javascript 引擎的 chrome 浏览器上进行测试，避免浏览器停止响应</em></p>
+<p><button id="button-test" onclick="this.disabled=true;startTest()" style="padding: 5px;">开始测试&raquo;</button> <span id="log" style="font-size:12px"><script>for (var i = 0; i < testList.length; i ++) {document.write(testList[i].name + '; ')}</script></span></p>
+<div id="container" style="min-width: 400px; margin: 0 auto"></div>
+</body>
+</html>
