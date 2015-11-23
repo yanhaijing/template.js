@@ -1,5 +1,6 @@
 /*!
  * template.js v0.5.0 (https://github.com/yanhaijing/template.js)
+ * API https://github.com/yanhaijing/template.js/blob/master/doc/api.md
  * Copyright 2015 yanhaijing. All Rights Reserved
  * Licensed under MIT (https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
  */
