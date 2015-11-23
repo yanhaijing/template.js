@@ -119,26 +119,26 @@
             if (line.search(/^=/) !== -1) {
                 //默认输出
                 html = line.slice(1);
-                html = escape ? ('__encodeHTML__(' + html + ')') : html;
+                html = escape ? ('__encodeHTML__(typeof (' + html + ') === "undefined" ? "" : ' + html + ')') : html;
                 return ';__r__.push(' + html + ')\n';
             }
 
             if (line.search(/^:h=/) !== -1) {
                 //HTML转义输出
                 html = line.slice(3);
-                return ';__r__.push(__encodeHTML__(' + html + '))\n';
+                return ';__r__.push(__encodeHTML__(typeof (' + html + ') === "undefined" ? "" : ' + html + '))\n';
             }
 
             if (line.search(/^:=/) !== -1) {
                 //不转义
                 html = line.slice(2);
-                return ';__r__.push(' + html + ')\n';
+                return ';__r__.push(typeof (' + html + ') === "undefined" ? "" : ' + html + ')\n';
             }
 
             if (line.search(/^:u=/) !== -1) {
                 //URL转义
                 html = line.slice(3);
-                return ';__r__.push(encodeURI(' + html + '))\n';
+                return ';__r__.push(typeof (' + html + ') === "undefined" ? "" : encodeURI(' + html + '))\n';
             }
 
             //原生js
