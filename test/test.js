@@ -9,8 +9,10 @@ QUnit.test( "template", function( assert ) {
 
     var tpl2 = '<div><%=name%></div>';
     assert.ok(t(tpl2, {name: 123}) === '<div>123</div>', '输出简答变量');
+
     var tpl2 = '<div><%=html%></div>';
     assert.ok(t(tpl2, {html: '<div id="test">'}) === '<div>&lt;div id=&quot;test&quot;&gt;</div>', '输出html');
+    
     var tpl2 = '<div><%:h=html%></div>';
     assert.ok(t(tpl2, {html: '<div id="test">'}) === '<div>&lt;div id=&quot;test&quot;&gt;</div>', '输出html');
 
@@ -21,17 +23,22 @@ QUnit.test( "template", function( assert ) {
     assert.ok(t(tpl3, {url: 'http://yanhaijing.com?page=颜海镜'}) === 'http://yanhaijing.com?page=%E9%A2%9C%E6%B5%B7%E9%95%9C', '输出url');
 
     var tpl = '<%var name = 123;%><%=name%>';
-    console.log(t(tpl, {}));
-    assert.ok(t(tpl, {}) === '123', '自定义变量');
+    assert.ok(t(tpl, {}) === '123', 'var name= 123; 自定义变量');
 
-    var tpl = '<%for(var i = 0; i < 2; i++) {%>a<%}%>';
-    assert.ok(t(tpl, {}) === 'aa', 'for语句');
+    var tpl = '<%var a = 1%><%=a%>';
+    assert.ok(t(tpl, {}) === '1', '省略结尾分号不会报错');
 
     var tpl = '<%if (1) {%>a<%}%>';
     assert.ok(t(tpl, {}) === 'a', 'if语句');
 
+    var tpl = '<%for(var i = 0; i < 2; i++) {%>a<%}%>';
+    assert.ok(t(tpl, {}) === 'aa', 'for语句');
+
     var tpl = '<%var a = 3;while(a--) {%>a<%}%>';
     assert.ok(t(tpl, {}) === 'aaa', 'while语句');
+
+    var tpl = '<%=a%>';
+    assert.ok(t(tpl, {}) === '', '引用空变量返回空字符串');
 });
 
 QUnit.test( "template.config", function( assert ) {
