@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #wrap div:nth-of-type(2n) {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap"></div>
+<script src="../template.js"></script>
+<script type="text/html" id="tpl">
+    <div>
+        渲染字符串：<%=str.slice(0, 10)%>(<%=str.length%>长度)，<%=count%>次，共<%=time%>ms, 平均<%=averTime%>ms
+    </div>
+</script>
+<script>
+
+var tpl = template(document.getElementById('tpl').innerHTML);
+
+function repeat(str, count) {
+    var str2 = '';
+    for (var i = 0; i < count; i++) {
+        str2 += str;
+    }
+    return str2;
+}
+var str = 'yanhaijing';
+var str1 = repeat(str, 1);
+var str2 = repeat(str, 10);
+var str3 = repeat(str, 100);
+
+var count = 100000;
+
+run([
+    function() {joinStr(str1, count);},
+    function() {concatStr(str1, count);},
+    function() {joinStr(str2, count);},
+    function() {concatStr(str2, count);},
+    function() {joinStr(str3, count);},
+    function() {concatStr(str3, count);},
+]); 
+function run(arr) {
+    var fn = arr.shift();
+    if (!fn) {
+        return 1;
+    }
+
+    window.setTimeout(function () {
+        fn();
+        run(arr);
+    }, 1000);
+}
+function joinStr(str, count) {
+    var arr = [];
+    var time = (new Date).getTime();
+    for (var i = 0; i < 100000; i++) {
+        arr.push(str2);
+    }
+    var temp = arr.join('');
+    var time = (new Date).getTime() - time;
+    temp = null;
+    write(str, count, time, time/count);
+}
+function concatStr(str, count) {
+    var str2 = '';
+    var time = (new Date).getTime();
+    for (var i = 0; i < 100000; i++) {
+        str2 += str;
+    }
+    var time = (new Date).getTime() - time;
+    str2 = null;
+    write(str, count, time, time/count);
+}
+
+function write(str, count, time, averTime) {
+    document.getElementById('wrap').innerHTML += tpl({str: str, count: count, time: time, averTime: averTime});
+}
+</script>
+</body>
+</html>
