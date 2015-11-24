@@ -113,7 +113,7 @@
         function parsehtml(line) {
             // 单双引号转义，换行符替换为空格
             line = line.replace(/('|")/g, '\\$1').replace(/\n/g, ' ');
-            return ';__r__.push("' + line + '")\n';
+            return ';__code__ += ("' + line + '")\n';
         }
         function parsejs(line) {              
             var html;
@@ -121,25 +121,25 @@
                 //默认输出
                 html = line.slice(1);
                 html = escape ? ('__encodeHTML__(typeof (' + html + ') === "undefined" ? "" : ' + html + ')') : html;
-                return ';__r__.push(' + html + ')\n';
+                return ';__code__ += (' + html + ')\n';
             }
 
             if (line.search(/^:h=/) !== -1) {
                 //HTML转义输出
                 html = line.slice(3);
-                return ';__r__.push(__encodeHTML__(typeof (' + html + ') === "undefined" ? "" : ' + html + '))\n';
+                return ';__code__ += (__encodeHTML__(typeof (' + html + ') === "undefined" ? "" : ' + html + '))\n';
             }
 
             if (line.search(/^:=/) !== -1) {
                 //不转义
                 html = line.slice(2);
-                return ';__r__.push(typeof (' + html + ') === "undefined" ? "" : ' + html + ')\n';
+                return ';__code__ += (typeof (' + html + ') === "undefined" ? "" : ' + html + ')\n';
             }
 
             if (line.search(/^:u=/) !== -1) {
                 //URL转义
                 html = line.slice(3);
-                return ';__r__.push(typeof (' + html + ') === "undefined" ? "" : encodeURI(' + html + '))\n';
+                return ';__code__ += (typeof (' + html + ') === "undefined" ? "" : encodeURI(' + html + '))\n';
             }
 
             //原生js
@@ -167,17 +167,17 @@
         var mainCode = parse(tpl, opt);
 
         var headerCode = '\n' + 
-        '    var r = (function (__data__, __encodeHTML__) {\n' + 
-        '        var __str__ = "", __r__ = [];\n' + 
+        '    var html = (function (__data__, __encodeHTML__) {\n' + 
+        '        var __str__ = "", __code__ = "";\n' + 
         '        for(var key in __data__) {\n' + 
         '            __str__+=("var " + key + "=__data__[\'" + key + "\'];");\n' + 
         '        }\n' + 
         '        eval(__str__);\n\n';
 
         var footerCode = '\n' + 
-        '        ;return __r__;\n' + 
+        '        ;return __code__;\n' + 
         '    }(__data__, __encodeHTML__));\n' + 
-        '    return r.join("");\n';
+        '    return html;\n';
 
         var code = headerCode + mainCode + footerCode;
         code = code.replace(/[\r]/g, ' '); // ie 7 8 会报错，不知道为什么
