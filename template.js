@@ -100,10 +100,13 @@
         console && console.error && console.error(message);
 
         o.error(e);
-
-        return function () {
+        function error() {
             return 'template.js error';
-        };
+        }
+        error.toString = function () {
+            return '__str__ = "template.js error"';
+        }
+        return error;
     }
     function parse(tpl, opt) {
         var code = '';
