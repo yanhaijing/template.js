@@ -248,6 +248,8 @@
     };
 
     template.__encodeHTML = encodeHTML;
+    template.__compress = compress;
+    template.__handelError = handelError;
     template.__compile = compile;
     template.version = '0.5.0';
     return template;
