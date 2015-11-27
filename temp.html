@@ -5,6 +5,7 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="wrap"></div>
 <script id="tpl" type="text/html">
 <!-- html 注释 -->
 <%var i = 0%>
@@ -19,7 +20,7 @@ c=<%=c%>(空字符串)
 <div>数字：<%=i%> <%=i+1%></div>
 <%}%>
 
-    <div class="test" id='test'>123</div> 
+    <div class="test" id='test'>12\t3</div> 
 123 
 <%if ('1') {
     console.log("123")
@@ -28,9 +29,12 @@ c=<%=c%>(空字符串)
 <script src="template.js"></script>
 <script>
     var tpl = template(document.getElementById('tpl').innerHTML);
+    var html = tpl({a: 2, b: 2});
     console.log(tpl.toString());
     console.log(tpl.toString().replace(/\n/g, ' '));
-    console.log(tpl({a: 2, b: 2}));
+    console.log(html);
+
+    document.getElementById('wrap').innerHTML = html;
 
     template.config({compress: true});
     var tpl = template(document.getElementById('tpl').innerHTML);

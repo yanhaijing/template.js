@@ -104,7 +104,7 @@
             return 'template.js error';
         }
         error.toString = function () {
-            return '__str__ = "template.js error"';
+            return '__code__ = "template.js error"';
         }
         return error;
     }
