@@ -2,3 +2,7 @@ demo
 test
 node_modules
 doc
+.travis.yml
+bower.json
+Gruntfile.js
+temp.html
