@@ -217,7 +217,7 @@
                 e.name = 'RenderError';
                 e.tpl = tpl;
                 e.render = Render.toString();
-                return handelError(e);
+                return handelError(e)();
             }            
         }
 
