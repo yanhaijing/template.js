@@ -36,9 +36,10 @@
         escape: true, //默认输出是否进行HTML转义
         error: function (e) {}//错误回调
     };
+    var functionMap = {}; //内部函数对象
     var toString = {}.toString;
-
-    function getType(x) {
+    var slice = [].slice;
+    function type(x) {
         if(x === null){
             return 'null';
         }
@@ -62,11 +63,17 @@
     }
 
     function isObject(obj) {
-        return getType(obj) === 'object';
+        return type(obj) === 'object';
+    }
+    function isFunction(fn) {
+        return type(fn) === 'function';
+    }
+    function isString(str) {
+        return type(str) === 'string';
     }
     function extend() {
         var target = arguments[0] || {};
-        var arrs = Array.prototype.slice.call(arguments, 1);
+        var arrs = slice.call(arguments, 1);
         var len = arrs.length;
      
         for (var i = 0; i < len; i++) {
@@ -77,6 +84,10 @@
      
         }
         return target;
+    }
+    function clone() {
+        var args = slice.call(arguments);
+        return extend.apply(null, [{}].concat(args));
     }
     function encodeHTML(source) {
         return String(source)
@@ -170,7 +181,7 @@
         var mainCode = parse(tpl, opt);
 
         var headerCode = '\n' + 
-        '    var html = (function (__data__, __encodeHTML__) {\n' + 
+        '    var html = (function (__data__) {\n' + 
         '        var __str__ = "", __code__ = "";\n' + 
         '        for(var key in __data__) {\n' + 
         '            __str__+=("var " + key + "=__data__[\'" + key + "\'];");\n' + 
@@ -179,24 +190,24 @@
 
         var footerCode = '\n' + 
         '        ;return __code__;\n' + 
-        '    }(__data__, __encodeHTML__));\n' + 
+        '    }(__data__));\n' + 
         '    return html;\n';
 
         var code = headerCode + mainCode + footerCode;
         code = code.replace(/[\r]/g, ' '); // ie 7 8 会报错，不知道为什么
         try {
-            var Render = new Function('__data__', '__encodeHTML__', code); 
+            var Render = new Function('__data__', code); 
             Render.toString = function () {
                 return mainCode;
             }
             return Render;
         } catch(e) {
-            e.temp = 'function anonymous(__data__, __encodeHTML__) {' + code + '}';
+            e.temp = 'function anonymous(__data__) {' + code + '}';
             throw e;
         }  
     }
     function compile(tpl, opt) {
-        opt = extend({}, o, opt);
+        opt = clone(o, opt);
 
         try {
             var Render = compiler(tpl, opt);
@@ -209,8 +220,9 @@
         }
 
         function render(data) {
+            data = clone({__encodeHTML__: encodeHTML}, functionMap, data);
             try {
-                var html = Render(data, encodeHTML);
+                var html = Render(data);
                 html = opt.compress ? compress(html) : html;
                 return html;
             } catch(e) {
@@ -243,9 +255,19 @@
         if (isObject(option)) {
             o = extend(o, option);
         }
-        
-        return extend({}, o);
+        return clone(o);
     };
+
+    template.registerFunction = function(name, fn) {
+        if (!isString(name)) {
+            return clone(functionMap);
+        }
+        if (!isFunction(fn)) {
+            return functionMap[name];
+        }
+
+        return functionMap[name] = fn;
+    }
 
     template.__encodeHTML = encodeHTML;
     template.__compress = compress;
