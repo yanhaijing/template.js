@@ -1,5 +1,5 @@
 /*!
- * template.js v0.6.0 (https://github.com/yanhaijing/template.js)
+ * template.js v0.6.1 (https://github.com/yanhaijing/template.js)
  * API https://github.com/yanhaijing/template.js/blob/master/doc/api.md
  * Copyright 2015 yanhaijing. All Rights Reserved
  * Licensed under MIT (https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
@@ -251,6 +251,6 @@
     template.__compress = compress;
     template.__handelError = handelError;
     template.__compile = compile;
-    template.version = '0.6.0';
+    template.version = '0.6.1';
     return template;
 }));

@@ -1,5 +1,5 @@
 /*!
- * template.js v0.6.0 (https://github.com/yanhaijing/template.js)
+ * template.js v0.6.1 (https://github.com/yanhaijing/template.js)
  * API https://github.com/yanhaijing/template.js/blob/master/doc/api.md
  * Copyright 2015 yanhaijing. All Rights Reserved
  * Licensed under MIT (https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
@@ -97,14 +97,14 @@
             message += '<' + key + '>\n' + e[key] + '\n\n';
         }
         message += '<message>\n' + e.message + '\n\n';
-        console && console.error && console.error(message);
+        typeof console !== 'undefined' && console.error && console.error(message);
 
         o.error(e);
         function error() {
             return 'template.js error';
         }
         error.toString = function () {
-            return '__str__ = "template.js error"';
+            return '__code__ = "template.js error"';
         }
         return error;
     }
@@ -251,6 +251,6 @@
     template.__compress = compress;
     template.__handelError = handelError;
     template.__compile = compile;
-    template.version = '0.6.0';
+    template.version = '0.6.1';
     return template;
 }));
