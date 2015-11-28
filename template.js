@@ -97,7 +97,7 @@
             message += '<' + key + '>\n' + e[key] + '\n\n';
         }
         message += '<message>\n' + e.message + '\n\n';
-        console && console.error && console.error(message);
+        typeof console !== 'undefined' && console.error && console.error(message);
 
         o.error(e);
         function error() {
