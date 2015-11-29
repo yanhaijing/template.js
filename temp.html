@@ -11,9 +11,9 @@
 <%var i = 0%>
 <%var len = 3;%>
 <%var a = 1; b = 3%>
-a=<%=a%>
-b=<%=b%>
-c=<%=c%>(空字符串)
+a=<%:=a%>
+b=<%:h=b%>
+c=<%:u=c%>(空字符串)
 <%=a + '1 "2"' + "2"%>
 <%/*注释注释*/%>
 <%for(i = 0; i < len; i++) {%>
@@ -28,6 +28,7 @@ c=<%=c%>(空字符串)
 </script>
 <script src="template.js"></script>
 <script>
+    // template.config({escape: false});
     var tpl = template(document.getElementById('tpl').innerHTML);
     var html = tpl({a: 2, b: 2});
     console.log(tpl.toString());

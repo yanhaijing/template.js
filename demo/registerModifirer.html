@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>registerModifier</title>
+</head>
+<body>
+    <div id="wp"></div>
+    <script id="tpl" type="text/html">
+    <%:up='yanhaijing'%>
+    </script>
+    <script src="../template.js"></script>
+    <script>
+        template.registerModifier('up', function (str) {
+            return str.toUpperCase();
+        });
+        console.log(template.registerModifier());
+        console.log(template.registerModifier('up'));
+    </script>
+    <script>
+
+    var html = template(document.getElementById('tpl').innerHTML, {});
+
+    console.log(html);
+    document.getElementById('wp').innerHTML = html;
+    template.unregisterModifier('up');
+    console.log(template.registerModifier('up'));
+    </script>
+</body>
+</html>
