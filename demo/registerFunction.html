@@ -49,6 +49,8 @@
 
     console.log(html);
     document.getElementById('wp').innerHTML = html;
+    template.unregisterFunction('dateFormat');
+    console.log(template.registerFunction('dateFormat'));
     </script>
 </body>
 </html>

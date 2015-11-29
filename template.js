@@ -268,6 +268,13 @@
 
         return functionMap[name] = fn;
     }
+    template.unregisterFunction = function (name) {
+        if (!isString(name)) {
+            return false;
+        }
+        delete functionMap[name];
+        return true;
+    }
 
     template.__encodeHTML = encodeHTML;
     template.__compress = compress;
