@@ -78,11 +78,14 @@ template.js 一款javascript模板引擎，简单，好用。
 		<li>haijing</li>
 	</ul>
 
-更多例子，请见目录下的[demo](demo)目录。
+更多例子，请见[demo](demo)目录。
 
 ## 文档
 
 [API](doc/api.md)
+
+## 测试
+template.js 包含完整的单元测试和性能测试。详情请见[test](test)目录。
 
 ## 自动化
 ### Fis
@@ -123,7 +126,16 @@ template.js从0.2.0开始支持[fis](http://fis.baidu.com/)，详情请看[这�
 
 ## 更新日志
 
-[更新日志](CHANGELOG.md)
+[CHANGELOG.md](CHANGELOG.md)
+
+## 计划列表
+[TODO.md](TODO.md)
+
+## 谁在使用
+- [百度经验](http://jingyan.baidu.com/)
+- [百度师傅](http://shifu.baidu.com/)
+
+想了解都有谁在使用，[点击这里](https://github.com/yanhaijing/template.js/issues/6)。
 
 ## 相关链接
 
