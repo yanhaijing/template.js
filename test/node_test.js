@@ -51,18 +51,23 @@ exports.data_js = {
     assert.ok(t(tpl3, {url: 'http://yanhaijing.com?page=颜海镜'}) === 'http://yanhaijing.com?page=%E9%A2%9C%E6%B5%B7%E9%95%9C', '输出url');
 
     var tpl = '<%var name = 123;%><%=name%>';
-    console.log(t(tpl, {}));
-    assert.ok(t(tpl, {}) === '123', '自定义变量');
+    assert.ok(t(tpl, {}) === '123', 'var name= 123; 自定义变量');
 
-    var tpl = '<%for(var i = 0; i < 2; i++) {%>a<%}%>';
-    assert.ok(t(tpl, {}) === 'aa', 'for语句');
+    var tpl = '<%var a = 1%><%=a%>';
+    assert.ok(t(tpl, {}) === '1', '省略结尾分号不会报错');
 
     var tpl = '<%if (1) {%>a<%}%>';
     assert.ok(t(tpl, {}) === 'a', 'if语句');
 
+    var tpl = '<%for(var i = 0; i < 2; i++) {%>a<%}%>';
+    assert.ok(t(tpl, {}) === 'aa', 'for语句');
+
     var tpl = '<%var a = 3;while(a--) {%>a<%}%>';
     assert.ok(t(tpl, {}) === 'aaa', 'while语句');
 
+    var tpl = '<%=a%>';
+    assert.ok(t(tpl, {}) === '', '引用空变量返回空字符串');
+        
     //===========================================
     var tpl = '<#=name%>';
     t.config({sTag: '<#'});
@@ -79,6 +84,20 @@ exports.data_js = {
     var tpl = '<%=html%>';
     t.config({sTag: '<%', eTag: '%>', compress: false, escape: false});
     assert.ok(t(tpl, {html: '<div>'}) === '<div>', 'escape');
+
+    //==========================================
+    t.registerModifier('uc', function (data) {
+        return data.toUpperCase();
+    });
+    var tpl = '<%:uc="yan"%>';
+    assert.ok(t(tpl, {}) === 'YAN', t(tpl, {}) === 'YAN');
+    
+
+    t.registerFunction('upperCase', function (data) {
+        return data.toUpperCase();
+    });
+    var tpl = '<%=upperCase("yan")%>';
+    assert.ok(t(tpl, {}) === 'YAN', t(tpl, {}) === 'YAN');
 
     test.done();
   }

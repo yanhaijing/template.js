@@ -107,7 +107,7 @@
             .replace(/\\/g,'&#92;')
             .replace(/"/g,'&quot;')
             .replace(/'/g,'&#39;');
-    };
+    }
     function compress(html) {
         return html.replace(/\s+/g, ' ').replace(/<!--[\w\W]*?-->/g, '');
     }

@@ -59,3 +59,17 @@ QUnit.test( "template.config", function( assert ) {
     t.config({sTag: '<%', eTag: '%>', compress: false, escape: false});
     assert.ok(t(tpl, {html: '<div>'}) === '<div>', 'escape');
 });
+QUnit.test( "template modifier&function", function( assert ) {
+    t.registerModifier('uc', function (data) {
+        return data.toUpperCase();
+    });
+    var tpl = '<%:uc="yan"%>';
+    assert.ok(t(tpl, {}) === 'YAN', t(tpl, {}) === 'YAN');
+    
+
+    t.registerFunction('upperCase', function (data) {
+        return data.toUpperCase();
+    });
+    var tpl = '<%=upperCase("yan")%>';
+    assert.ok(t(tpl, {}) === 'YAN', t(tpl, {}) === 'YAN');
+});
