@@ -7,6 +7,7 @@
 <script src="js/highcharts.js"></script>
 
 <script src="../template.js"></script>
+<script src="js/template-0.7.0.js"></script>
 <script src="js/template-0.6.1.js"></script>
 <script src="js/template-0.5.0.js"></script>
 <script src="js/template-0.4.0.js"></script>
@@ -22,6 +23,7 @@ var mytemplate031 = template.noConflict();
 var mytemplate040 = template.noConflict();
 var mytemplate050 = template.noConflict();
 var mytemplate061 = template.noConflict();
+var mytemplate070 = template.noConflict();
 var mytemplate = template.noConflict();
 
 // 数据量
@@ -51,7 +53,16 @@ var testList = [
         tester: function () {
             var template=mytemplate;
             for (var i = 0; i < number; i ++) {
-                var tpl = template(document.getElementById('baidu-template').innerHTML);
+                var tpl = template(document.getElementById('template-tpl').innerHTML);
+            }
+        }
+    },
+    {
+        name: 'template.js v0.7.0',
+        tester: function () {
+            var template=mytemplate070;
+            for (var i = 0; i < number; i ++) {
+                var tpl = template(document.getElementById('template-tpl').innerHTML);
             }
         }
     },
@@ -60,7 +71,7 @@ var testList = [
         tester: function () {
             var template=mytemplate061;
             for (var i = 0; i < number; i ++) {
-                var tpl = template(document.getElementById('baidu-template').innerHTML);
+                var tpl = template(document.getElementById('template-tpl').innerHTML);
             }
         }
     },
@@ -69,7 +80,7 @@ var testList = [
         tester: function () {
             var template=mytemplate050;
             for (var i = 0; i < number; i ++) {
-                var tpl = template(document.getElementById('baidu-template').innerHTML);
+                var tpl = template(document.getElementById('template-tpl').innerHTML);
             }
         }
     },
@@ -78,7 +89,7 @@ var testList = [
         tester: function () {
             var template=mytemplate040;
             for (var i = 0; i < number; i ++) {
-                var tpl = template(document.getElementById('baidu-template').innerHTML);
+                var tpl = template(document.getElementById('template-tpl').innerHTML);
             }
         }
     },
@@ -87,7 +98,7 @@ var testList = [
         tester: function () {
             var template=mytemplate031;
             for (var i = 0; i < number; i ++) {
-                var tpl = template(document.getElementById('baidu-template').innerHTML);
+                var tpl = template(document.getElementById('template-tpl').innerHTML);
             }
         }
     },
@@ -96,7 +107,7 @@ var testList = [
         tester: function () {
             var template=mytemplate020;
             for (var i = 0; i < number; i ++) {
-                var tpl = template(document.getElementById('baidu-template').innerHTML);
+                var tpl = template(document.getElementById('template-tpl').innerHTML);
             }
         }
     },
@@ -105,7 +116,7 @@ var testList = [
         tester: function () {
             var template=mytemplate010;
             for (var i = 0; i < number; i ++) {
-                var tpl = template(document.getElementById('baidu-template').innerHTML);
+                var tpl = template(document.getElementById('template-tpl').innerHTML);
             }
         }
     }
@@ -234,7 +245,7 @@ var startTest = function () {
 
 
 <!-- template 的模板 -->
-<script id="baidu-template" type="text/tmpl">
+<script id="template-tpl" type="text/tmpl">
 <ul>
     <% for (var val, i = 0, l = list.length; i < l; i ++) { %>
         <% val = list[i]; %>
