@@ -1,4 +1,4 @@
-# [template.js](https://github.com/yanhaijing/template.js) [![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![release](https://img.shields.io/badge/release-v0.7.0-orange.svg)](https://github.com/yanhaijing/template.js/releases/tag/v0.7.0) [![spm package](http://spmjs.io/badge/template.js)](http://spmjs.io/package/template.js) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
+# [template.js](https://github.com/yanhaijing/template.js) [![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js) [![release](https://img.shields.io/badge/release-v0.7.0-orange.svg)](https://github.com/yanhaijing/template.js/releases/tag/v0.7.0) [![spm package](http://spmjs.io/badge/template.js)](http://spmjs.io/package/template.js) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
 
 template.js 一款javascript模板引擎，简单，好用。
 
@@ -95,6 +95,12 @@ template.js从0.2.0开始支持[fis](http://fis.baidu.com/)，详情请看[这�
 
 如果你想为template.js贡献代码，请采用fork + pull request 方式，并在发起pr前先将master上超前的代码rebase到自己的分支上。
 
+在目录运行如下命令，完成验证测试编译过程，确保无误：
+
+	$ npm install -g mocha@~2.3.4 # 安装mocha
+	$ npm install # 安装依赖
+	$ mocha test # 运行测试代码
+	
 ### 发布npm
 	
 	$ npm publish
@@ -122,7 +128,7 @@ template.js从0.2.0开始支持[fis](http://fis.baidu.com/)，详情请看[这�
 
 ## 为什么会有这个项目
 
-已经有了那么多现成的模板引擎，为什么我还要重新发明轮子呢。其实主要是《[只有20行Javascript代码！手把手教你写一个页面模板引擎](http://blog.jobbole.com/56689/)》读这篇文章的产物，并结合了BaiduTemplate和artTemplate的特色，还有我自己的一些想法。如果你像我一样好奇，那么可以尝试，但下面提到的引擎，显然成熟得多。
+已经有了那么多现成的模板引擎，为什么我还要重新发明轮子呢。其实主要是《[只有20行Javascript代码！手把手教你写一个页面模板引擎](http://blog.jobbole.com/56689/)》读这篇文章的产物，并结合了BaiduTemplate和artTemplate的特色，还有我自己的一些想法。如果你像我一样好奇，那么可以尝试。
 
 ## 更新日志
 
