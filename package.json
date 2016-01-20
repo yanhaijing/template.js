@@ -25,11 +25,10 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "mocha test"
   },
   "devDependencies": {
-    "grunt-contrib-nodeunit": "~0.3.3",
-    "grunt": "~0.4.5"
+    "expect.js": "~0.3.1"
   },
   "keywords": [
     "template",

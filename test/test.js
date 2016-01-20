@@ -1,75 +1,119 @@
+/**
+ * @file 测试文件
+ * @author 颜海镜
+ * @date 2016年1月20日 21:55:57
+ */
+
+var expect = require('expect.js');
+var template = require('../template.js');
 var t = template;
 
-module('template.js');
-QUnit.test( "template", function( assert ) {
-    assert.ok(typeof t('') === 'function', '编译');
+describe('template.js', function() {
+    this.timeout(1000);
 
-    var tpl1 = '<div>123</div>';
-    assert.ok(t(tpl1, {}) === tpl1, "简单html");
+    describe('template', function() {
+        it('编译', function() {
+            expect(typeof t('')).to.equal('function');
+        });
 
-    var tpl2 = '<div><%=name%></div>';
-    assert.ok(t(tpl2, {name: 123}) === '<div>123</div>', '输出简答变量');
+        it('简单html', function() {
+            var tpl1 = '<div>123</div>';
+            expect(t(tpl1, {})).to.equal(tpl1);
+        });
 
-    var tpl2 = '<div><%=html%></div>';
-    assert.ok(t(tpl2, {html: '<div id="test">'}) === '<div>&lt;div id=&quot;test&quot;&gt;</div>', '输出html');
-    
-    var tpl2 = '<div><%:h=html%></div>';
-    assert.ok(t(tpl2, {html: '<div id="test">'}) === '<div>&lt;div id=&quot;test&quot;&gt;</div>', '输出html');
+        it('输出简单变量', function() {
+            var tpl2 = '<div><%=name%></div>';
+            expect(t(tpl2, {name: 123})).to.equal('<div>123</div>');
+        });
 
-    var tpl3 = '<div><%:=text%></div>';
-    assert.ok(t(tpl3, {text: '<div>'}) === '<div><div></div>', '输出变量');
+        it('输出html', function() {
+            var tpl2 = '<div><%=html%></div>';
+            expect(t(tpl2, {html: '<div id="test">'})).to.equal('<div>&lt;div id=&quot;test&quot;&gt;</div>');
+            
+            var tpl2 = '<div><%:h=html%></div>';
+            expect(t(tpl2, {html: '<div id="test">'})).to.equal('<div>&lt;div id=&quot;test&quot;&gt;</div>');
+        });
 
-    var tpl3 = '<%:u=url%>';
-    assert.ok(t(tpl3, {url: 'http://yanhaijing.com?page=颜海镜'}) === 'http://yanhaijing.com?page=%E9%A2%9C%E6%B5%B7%E9%95%9C', '输出url');
+        it('输出变量', function() {
+            var tpl3 = '<div><%:=text%></div>';
+            expect(t(tpl3, {text: '<div>'})).to.equal('<div><div></div>');
+        });
 
-    var tpl = '<%var name = 123;%><%=name%>';
-    assert.ok(t(tpl, {}) === '123', 'var name= 123; 自定义变量');
+        it('输出url', function() {
+            var tpl3 = '<%:u=url%>';
+            expect(t(tpl3, {url: 'http://yanhaijing.com?page=颜海镜'})).to.equal('http://yanhaijing.com?page=%E9%A2%9C%E6%B5%B7%E9%95%9C');
+        });
 
-    var tpl = '<%var a = 1%><%=a%>';
-    assert.ok(t(tpl, {}) === '1', '省略结尾分号不会报错');
+        it('自定义变量', function() {
+            var tpl = '<%var name = 123;%><%=name%>';
+            expect(t(tpl, {})).to.equal('123');
+        });
 
-    var tpl = '<%if (1) {%>a<%}%>';
-    assert.ok(t(tpl, {}) === 'a', 'if语句');
+        it('省略结尾分号不会报错', function() {
+            var tpl = '<%var a = 1%><%=a%>';
+            expect(t(tpl, {})).to.equal('1');
+        });
 
-    var tpl = '<%for(var i = 0; i < 2; i++) {%>a<%}%>';
-    assert.ok(t(tpl, {}) === 'aa', 'for语句');
+        it('if语句', function() {
+            var tpl = '<%if (1) {%>a<%}%>';
+            expect(t(tpl, {})).to.equal('a');
+        });
 
-    var tpl = '<%var a = 3;while(a--) {%>a<%}%>';
-    assert.ok(t(tpl, {}) === 'aaa', 'while语句');
+        it('for语句', function() {
+            var tpl = '<%for(var i = 0; i < 2; i++) {%>a<%}%>';
+            expect(t(tpl, {})).to.equal('aa');
+        });
 
-    var tpl = '<%=a%>';
-    assert.ok(t(tpl, {}) === '', '引用空变量返回空字符串');
-});
-
-QUnit.test( "template.config", function( assert ) {
-    var tpl = '<#=name%>';
-    t.config({sTag: '<#'});
-    assert.ok(t(tpl, {name: 123}) === '123', 'sTag');
-
-    var tpl = '<%=name#>';
-    t.config({sTag: '<%', eTag: '#>'});
-    assert.ok(t(tpl, {name: 123}) === '123', 'eTag');
-
-    var tpl = '<div>  </div>';
-    t.config({sTag: '<%', eTag: '%>', compress: true});
-    assert.ok(t(tpl, {}) === '<div> </div>', 'compress');
-
-    //测试escape
-    var tpl = '<%=html%>';
-    t.config({sTag: '<%', eTag: '%>', compress: false, escape: false});
-    assert.ok(t(tpl, {html: '<div>'}) === '<div>', 'escape');
-});
-QUnit.test( "template modifier&function", function( assert ) {
-    t.registerModifier('uc', function (data) {
-        return data.toUpperCase();
+        it('while语句', function() {
+            var tpl = '<%var a = 3;while(a--) {%>a<%}%>';
+            expect(t(tpl, {})).to.equal('aaa');
+        });
+         
+        it('引用空变量返回空字符串', function() {
+            var tpl = '<%=a%>';
+            expect(t(tpl, {})).to.equal('');
+        });
     });
-    var tpl = '<%:uc="yan"%>';
-    assert.ok(t(tpl, {}) === 'YAN', t(tpl, {}) === 'YAN');
-    
 
-    t.registerFunction('upperCase', function (data) {
-        return data.toUpperCase();
+    describe('template.config', function() {
+        it('sTag & eTag', function() {
+            var tpl = '<#=name%>';
+            t.config({sTag: '<#'});
+            expect(t(tpl, {name: 123})).to.equal('123');
+
+            var tpl = '<%=name#>';
+            t.config({sTag: '<%', eTag: '#>'});
+            expect(t(tpl, {name: 123})).to.equal('123');
+        });
+            
+        it('compress', function() {
+            var tpl = '<div>  </div>';
+            t.config({sTag: '<%', eTag: '%>', compress: true});
+            expect(t(tpl, {})).to.equal('<div> </div>');
+        });
+
+        it('测试escape', function() {
+            var tpl = '<%=html%>';
+            t.config({sTag: '<%', eTag: '%>', compress: false, escape: false});
+            expect(t(tpl, {html: '<div>'})).to.equal('<div>');
+        });
     });
-    var tpl = '<%=upperCase("yan")%>';
-    assert.ok(t(tpl, {}) === 'YAN', t(tpl, {}) === 'YAN');
+
+    describe('template modifier&function', function() {
+        it('registerModifier', function() {
+            t.registerModifier('uc', function (data) {
+                return data.toUpperCase();
+            });
+            var tpl = '<%:uc="yan"%>';
+            expect(t(tpl, {})).to.equal('YAN');
+        });
+
+        it('registerFunction', function() {
+            t.registerFunction('upperCase', function (data) {
+                return data.toUpperCase();
+            });
+            var tpl = '<%=upperCase("yan")%>';
+            expect(t(tpl, {})).to.equal('YAN');
+        });
+    });
 });
