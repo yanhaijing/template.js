@@ -1,5 +1,5 @@
 /*!
- * template.js v0.7.0 (https://github.com/yanhaijing/template.js)
+ * template.js v0.7.1 (https://github.com/yanhaijing/template.js)
  * API https://github.com/yanhaijing/template.js/blob/master/doc/api.md
  * Copyright 2015 yanhaijing. All Rights Reserved
  * Licensed under MIT (https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
@@ -144,7 +144,7 @@
         }
         function parsejs(line) {              
             //var reg = /^(:?)(.*?)=(.*)$/;
-            var reg = /^(?:=|:(.*?)=)(.*)$/
+            var reg = /^(?:=|(:.*?)=)(.*)$/
             var html;
             var arr;
             var modifier;
@@ -153,9 +153,9 @@
             // :h=123 [':h=123', 'h', '123']
             if (arr = reg.exec(line)) {
                 html = arr[2]; // 输出
-                if (isString(arr[1])) {
+                if (Boolean(arr[1])) {
                     // :开头
-                    modifier = arr[1];
+                    modifier = arr[1].slice(1);
                 } else {
                     // = 开头
                     modifier = escape ? 'h' : '';
@@ -306,6 +306,6 @@
     template.__compress = compress;
     template.__handelError = handelError;
     template.__compile = compile;
-    template.version = '0.7.0';
+    template.version = '0.7.1';
     return template;
 }));
