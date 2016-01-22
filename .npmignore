@@ -1,8 +1,11 @@
 demo
+doc
 test
 node_modules
-doc
+.gitignore
 .travis.yml
 bower.json
-Gruntfile.js
 temp.html
+temp2.html
+CHANGELOG.md
+TODO.md
