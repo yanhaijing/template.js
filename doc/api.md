@@ -102,7 +102,7 @@ template函数会返回渲染数据的字符串，若缺省数据会返回编译
 [演示](../demo/registerModifier.html)
 
 ## template.noConflict+
-在以原是方式使用template.js时会存在改函数（在模块化开发环境中不会存在），用来释放template.js占用的全局变量template。同时会返回template。
+在以原始方式使用template.js时会存在改函数（在模块化开发环境中不会存在），用来释放template.js占用的全局变量template。同时会返回template。
 
 - return {Function} template
 
