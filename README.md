@@ -91,6 +91,9 @@ template.js 包含完整的单元测试和性能测试。详情请见[test](test
 ### Fis
 template.js从0.2.0开始支持[fis](http://fis.baidu.com/)，详情请看[这里](https://github.com/yanhaijing/fis-parser-template)。
 
+### webpack
+template.js从0.6.1开始支持[webpack](http://webpack.github.io/)，详情请看[这里](https://github.com/yanhaijing/template-loader)
+
 ## 贡献指南
 
 如果你想为template.js贡献代码，请采用fork + pull request 方式，并在发起pr前先将master上超前的代码rebase到自己的分支上。
