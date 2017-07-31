@@ -1,6 +1,6 @@
-# [template.js](https://github.com/yanhaijing/template.js) [![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js) [![release](https://img.shields.io/badge/release-v0.7.1-orange.svg)](https://github.com/yanhaijing/template.js/releases/tag/v0.7.1) [![spm package](http://spmjs.io/badge/template.js)](http://spmjs.io/package/template.js) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
+# [template.js](https://github.com/yanhaijing/template.js) [![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js) [![release](https://img.shields.io/badge/release-v0.7.1-orange.svg)](https://github.com/yanhaijing/template.js/releases/tag/v0.7.1) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
 
-template.js 一款javascript模板引擎，简单，好用。
+template.js 一款javascript模板引擎，简单，好用，支持webpack和fis。
 
 ## 功能概述
 
@@ -22,35 +22,36 @@ template.js 一款javascript模板引擎，简单，好用。
 - Safari 6+ (Mac)
 - iOS 5+ Safari
 - Chrome 23+ (Windows, Mac, Android, iOS, Linux, Chrome OS)
-- Firefox 4+ (Windows, Mac, Android, Linux, Firefox OS)
+- Firefox 4+ (Windows, Mac, Android, Linux)
 - Internet Explorer 6+ (Windows, Windows Phone)
 - Opera 10+ (Windows, linux, Android)
 
+## 下载
+推荐使用npm安装和更新
+	
+	$ npm install template_js
+
+或者你也可以在GitHub，下载源文件或压缩包
+
 ## 如何使用？
+支持全局变量、AMD、commonjs、es6等模块系统
 
 ### 传统用法
 	
 	<script src="template.js"></script>
+	<script>
+		window.template()
+	</script>
 
 ### AMD
 
 	require(['template'], function (template) {
-		***
+		template()
 	});
 
-### Bower
+### commonjs
 
-	$ bower install template.js
-	$ bower install git://github.com/yanhaijing/template.js.git
-
-### spm
-
-	$ spm install template.js
-
-### npm
-
-	$ npm install template_js
-	$ npm install yanhaijing/template.js
+	var template = require('template_js')
 
 ## 快速上手
 
@@ -107,15 +108,6 @@ template.js从0.6.1开始支持[webpack](http://webpack.github.io/)，详情请�
 ### 发布npm
 	
 	$ npm publish
-
-### 发布spm
-临时将package.json中的名字修改为 template.js	
-
-	$ spm publish
-
-### 发布Bower
-	
-	$ bower register template.js git://github.com/yanhaijing/template.js.git
 
 ## 报告问题
 
