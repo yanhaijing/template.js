@@ -27,11 +27,11 @@ template.js 一款javascript模板引擎，简单，好用，支持webpack和fis
 - Opera 10+ (Windows, linux, Android)
 
 ## 下载
-推荐使用npm安装和更新
+第一种方法，推荐使用npm安装和更新
 	
 	$ npm install template_js
 
-或者你也可以在GitHub，下载源文件或压缩包
+第二种方法，或者你也可以在GitHub，下载源文件或压缩包
 
 ## 如何使用？
 支持全局变量、AMD、commonjs、es6等模块系统
