@@ -136,6 +136,7 @@ template.js从0.6.1开始支持[webpack](http://webpack.github.io/)，详情请�
 - [百度知道](http://zhidao.baidu.com/)
 - [百度经验](http://jingyan.baidu.com/)
 - [百度师傅](http://shifu.baidu.com/)
+- 美团外卖
 
 想了解都有谁在使用，[点击这里](https://github.com/yanhaijing/template.js/issues/6)。
 
