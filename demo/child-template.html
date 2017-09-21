@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟子模版</title>
+    <style>
+        table{border-collapse: collapse;}
+        td{border: 1px solid #000;}
+    </style>
+</head>
+<body>
+    <div id="wp"></div>
+
+    <script id="tpl" type="text/html">
+        <h1>国内新闻</h1>
+        <%:=newsListTpl({list: list1, newsTpl: newsTpl})%>
+        <h1>国际新闻</h1>
+        <%:=newsListTpl({list: list2, newsTpl: newsTpl})%>
+    </script>
+
+    <script id="child-tpl" type="text/html">
+        <ul>
+            <%list.forEach(function (news) {%>
+                <%:=newsTpl(news)%>
+            <%})%>
+        </ul>
+    </script>
+    
+    <script id="sub-child-tpl" type="text/html">
+        <li>
+            <%=tilte%>
+            <%=desc%>
+        </li>
+    </script>
+    <script src="../template.js"></script>
+    <script>
+
+    var tpl = template(document.getElementById('tpl').innerHTML);
+    var childTpl = template(document.getElementById('child-tpl').innerHTML);
+    var subChildTpl = template(document.getElementById('sub-child-tpl').innerHTML);
+
+
+    var html = tpl({
+        newsListTpl: childTpl,
+        newsTpl: subChildTpl,
+        list1: [
+            {title: '标题1', desc: '描述1'},
+            {title: '标题2', desc: '描述2'},
+            {title: '标题3', desc: '描述3'},
+        ],
+        list2: [
+            {title: '标题1', desc: '描述1'},
+            {title: '标题2', desc: '描述2'},
+            {title: '标题3', desc: '描述3'},
+        ],
+    })
+
+    console.log(html);
+    document.getElementById('wp').innerHTML = html;
+    </script>
+</body>
+</html>
