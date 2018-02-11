@@ -29,8 +29,10 @@ template.js 一款javascript模板引擎，简单，好用，支持webpack和fis
 
 ## 下载
 第一种方法，推荐使用npm安装和更新
-	
-	$ npm install template_js
+
+```bash
+$ npm install template_js
+```
 
 第二种方法，或者你也可以在GitHub，下载源文件或压缩包
 
@@ -38,21 +40,27 @@ template.js 一款javascript模板引擎，简单，好用，支持webpack和fis
 支持全局变量、AMD、commonjs、es6等模块系统
 
 ### 传统用法
-	
-	<script src="template.js"></script>
-	<script>
-		window.template()
-	</script>
+
+```html
+<script src="template.js"></script>
+<script>
+    window.template()
+</script>
+```
 
 ### AMD
 
-	require(['template'], function (template) {
-		template()
-	});
+```js
+require(['template'], function (template) {
+    template()
+});
+```
 
 ### commonjs
 
-	var template = require('template_js')
+```js
+var template = require('template_js')
+```
 
 ## 快速上手
 
@@ -60,25 +68,31 @@ template.js 一款javascript模板引擎，简单，好用，支持webpack和fis
 
 使用一个type="text/html"的script标签存放模板，或者放到字符串中：
 
-	<script id="tpl" type="text/html">
-	<ul>
-		<%for(var i = 0; i < list.length; i++) {%>
-		<li><%:=list[i].name%></li>
-		<%}%>
-	</ul>
-	</script>
+```html
+<script id="tpl" type="text/html">
+<ul>
+    <%for(var i = 0; i < list.length; i++) {%>
+    <li><%:=list[i].name%></li>
+    <%}%>
+</ul>
+</script>
+```
 
 ### 渲染模板
 
-	var tpl = document.getElementById('tpl').innerHTML;
-	template(tpl, {list: [{name: "yan"},{name: "haijing"}]});
+```js
+var tpl = document.getElementById('tpl').innerHTML;
+template(tpl, {list: [{name: "yan"},{name: "haijing"}]});
+```
 
 输出结果：
 
-	<ul>
-		<li>yan</li>
-		<li>haijing</li>
-	</ul>
+```html
+<ul>
+    <li>yan</li>
+    <li>haijing</li>
+</ul>
+```
 
 更多例子，请见[demo](demo)目录。
 
@@ -102,13 +116,17 @@ template.js从0.6.1开始支持[webpack](http://webpack.github.io/)，详情请�
 
 在目录运行如下命令，完成验证测试编译过程，确保无误：
 
-	$ npm install -g mocha@~2.3.4 # 安装mocha
-	$ npm install # 安装依赖
-	$ mocha test # 运行测试代码
-	
+```bash
+$ npm install -g mocha@~2.3.4 # 安装mocha
+$ npm install # 安装依赖
+$ mocha test # 运行测试代码
+```
+
 ### 发布npm
-	
-	$ npm publish
+
+```  bash
+$ npm publish
+```
 
 ## 报告问题
 
