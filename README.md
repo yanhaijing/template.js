@@ -157,6 +157,7 @@ $ npm publish
 - [百度师傅](http://shifu.baidu.com/)
 - 美团外卖
 - [58金融](https://npm.taobao.org/package/jr58)
+- 神州泰岳
 
 想了解都有谁在使用，[点击这里](https://github.com/yanhaijing/template.js/issues/6)。
 
