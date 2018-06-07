@@ -158,6 +158,7 @@ $ npm publish
 - 美团外卖
 - [58金融](https://npm.taobao.org/package/jr58)
 - 神州泰岳
+- 优信
 
 想了解都有谁在使用，[点击这里](https://github.com/yanhaijing/template.js/issues/6)。
 
