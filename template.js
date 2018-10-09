@@ -66,7 +66,7 @@
             return c;
         }
 
-        return 'unkonw';
+        return 'unknown';
     }
 
     function isObject(obj) {
