@@ -2,13 +2,13 @@
 
 English | [简体中文](./README.zh-CN.md)
 
-一款javascript模板引擎，简单，好用，支持webpack和fis。
+A javascript template engine, simple, easy & extras, support webpack and fis
 
-## 功能概述
+## Introduction
 
 提供一套模板语法，用户可以写一个模板区块，每次根据传入的数据，生成对应数据产生的HTML片段，渲染不同的效果。
 
-## 特性
+## Features
 
 - 模版编译，渲染
 - 支持所有主流浏览器及Node（UMD）
@@ -19,7 +19,7 @@ English | [简体中文](./README.zh-CN.md)
 - 伪子模版
 - 功能专一，简单好用
 
-## 兼容性
+## Compatibility
 
 - Node 0.10+
 - Safari 6+ (Mac)
