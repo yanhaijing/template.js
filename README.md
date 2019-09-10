@@ -1,4 +1,4 @@
-# [template.js](https://github.com/yanhaijing/template.js) [![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js) [![release](https://img.shields.io/badge/release-v0.7.1-orange.svg)](https://github.com/yanhaijing/template.js/releases/tag/v0.7.1) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
+# [template.js](https://github.com/yanhaijing/template.js) [![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js) [![release](https://img.shields.io/badge/release-v0.8.0-orange.svg)](https://github.com/yanhaijing/template.js/releases/tag/v0.7.1) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
 
 English | [简体中文](./README.zh-CN.md)
 
@@ -119,14 +119,15 @@ template.js从0.6.1开始支持[webpack](http://webpack.github.io/)，详情请�
 在目录运行如下命令，完成验证测试编译过程，确保无误：
 
 ```bash
-$ npm install -g mocha@~2.3.4 # 安装mocha
 $ npm install # 安装依赖
 $ mocha test # 运行测试代码
 ```
 
 ### 发布npm
 
-```  bash
+```bash
+$ git tag 0.8.0
+$ git push --tags
 $ npm publish
 ```
 

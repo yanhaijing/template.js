@@ -26,20 +26,39 @@ c=<%:u=c%>(空字符串)
     console.log("123")
 }%>
 </script>
+<script  id="tpl666" type="text/html">
+1
+2
+
+
+3
+</script>
 <script src="template.js"></script>
 <script>
+    console.log('==================')
+    var tpl666 = template(document.getElementById('tpl666').innerHTML);
+    console.log(tpl666.toString())
+    var html = tpl666({a: 2, b: 2});
+    console.log('---html', html)
+    console.log('==================')
+
+
     // template.config({escape: false});
     var tpl = template(document.getElementById('tpl').innerHTML);
     var html = tpl({a: 2, b: 2});
     console.log(tpl.toString());
+    console.log('-----------------');
     console.log(tpl.toString().replace(/\n/g, ' '));
-    console.log(html);
-
+    console.log('-----------------');
+    console.log('---html', html);
     document.getElementById('wrap').innerHTML = html;
+
+    console.log('==================')
 
     template.config({compress: true});
     var tpl = template(document.getElementById('tpl').innerHTML);
-    console.log(tpl({a: 2, b: 3}));
+    console.log('---html', tpl({a: 2, b: 3}));
+
 </script>
 </body>
 </html>

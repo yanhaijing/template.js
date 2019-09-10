@@ -1,8 +1,7 @@
 {
   "name": "template_js",
-  "description": "template.js 一款javascript模板引擎，简单，好用。",
-  "version": "0.7.1-1",
-  "homepage": "https://github.com/yanhaijing/template.js",
+  "description": "A javascript template engine, simple, easy & extras, support webpack and fis",
+  "version": "0.8.0",
   "author": {
     "name": "yanhaijing",
     "email": "yanhaijing@yeah.net",
@@ -28,21 +27,13 @@
     "test": "mocha test"
   },
   "devDependencies": {
-    "expect.js": "~0.3.1"
+    "expect.js": "~0.3.1",
+    "mocha": "^3.5.3"
   },
   "keywords": [
     "template",
     "template.js",
     "js"
   ],
-  "main": "template.js",
-  "spm": {
-    "main": "template.js",
-    "ignore": [
-      "demo",
-      "doc",
-      "test",
-      "node_modules"
-    ]
-  }
+  "main": "template.js"
 }

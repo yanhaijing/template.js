@@ -139,8 +139,13 @@
         var escape = opt.escape;
         function parsehtml(line) {
             // 单双引号转义，换行符替换为空格
-            line = line.replace(/('|")/g, '\\$1').replace(/\n/g, ' ');
-            return ';__code__ += ("' + line + '")\n';
+            line = line.replace(/('|")/g, '\\$1');
+            var lineList = line.split('\n');
+            var code = '';
+            for (var i = 0; i < lineList.length; i++) {
+                code += ';__code__ += ("' + lineList[i] + (i === lineList.length - 1 ? '")\n' : '\\n")\n');
+            }
+            return code;
         }
         function parsejs(line) {              
             //var reg = /^(:?)(.*?)=(.*)$/;
@@ -182,7 +187,6 @@
                 }
             }
         }
-
         return code;
     }
     function compiler(tpl, opt) {

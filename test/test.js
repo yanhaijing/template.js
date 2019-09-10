@@ -21,6 +21,11 @@ describe('template.js', function() {
             expect(t(tpl1, {})).to.equal(tpl1);
         });
 
+        it('多行html', function() {
+            var tpl1 = '<div>123</div>\n123';
+            expect(t(tpl1, {})).to.equal('<div>123</div>\n123');
+        });
+
         it('输出简单变量', function() {
             var tpl2 = '<div><%=name%></div>';
             expect(t(tpl2, {name: 123})).to.equal('<div>123</div>');
