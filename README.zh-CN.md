@@ -1,4 +1,4 @@
-# [template.js](https://github.com/yanhaijing/template.js) [![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js) [![release](https://img.shields.io/badge/release-v0.8.0-orange.svg)](https://github.com/yanhaijing/template.js/releases/tag/v0.7.1) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
+# [template.js](https://github.com/yanhaijing/template.js) [![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js) [![release](https://img.shields.io/badge/release-v0.8.0-orange.svg)](https://github.com/yanhaijing/template.js/releases/tag/v0.8.0) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
 
 [English](./README.md) | 简体中文
 
@@ -126,7 +126,7 @@ $ mocha test # 运行测试代码
 ### 发布npm
 
 ```bash
-$ git tag 0.8.0
+$ git tag v0.8.0
 $ git push --tags
 $ npm publish
 ```
