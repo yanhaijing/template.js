@@ -139,10 +139,6 @@ $ npm publish
 
 - [yanhaijing](http://yanhaijing.com "yanhaijing")
 
-## 为什么会有这个项目
-
-已经有了那么多现成的模板引擎，为什么我还要重新发明轮子呢。其实主要是《[只有20行Javascript代码！手把手教你写一个页面模板引擎](http://blog.jobbole.com/56689/)》读这篇文章的产物，并结合了BaiduTemplate和artTemplate的特色，还有我自己的一些想法。还在等什么，赶紧来尝试吧。
-
 ## 更新日志
 
 [CHANGELOG.md](CHANGELOG.md)
@@ -168,3 +164,4 @@ $ npm publish
 - [Juicer](http://juicer.name/)
 - [handlebarsjs](http://handlebarsjs.com/)
 - [Jade](http://jade-lang.com/)
+- [只有20行Javascript代码！手把手教你写一个页面模板引擎](https://juejin.im/entry/56258da860b294bcf7955883)
