@@ -110,7 +110,10 @@ template.js 包含完整的单元测试和性能测试。详情请见[test](test
 template.js从0.2.0开始支持[fis](http://fis.baidu.com/)，详情请看[这里](https://github.com/yanhaijing/fis-parser-template)。
 
 ### webpack
-template.js从0.6.1开始支持[webpack](http://webpack.github.io/)，详情请看[这里](https://github.com/yanhaijing/template-loader)
+template.js从0.6.1开始支持[webpack](https://webpack.js.org/)，详情请看[这里](https://github.com/yanhaijing/template-loader)
+
+### rollup
+template.js从0.6.1开始支持[rollup](https://rollupjs.org/guide/en/)，详情请看[这里](https://github.com/yanhaijing/rollup-plugin-templatejs)
 
 ## 贡献指南
 
@@ -161,7 +164,7 @@ $ npm publish
 
 - [BaiduTemplate](http://tangram.baidu.com/BaiduTemplate/)
 - [artTemplate](https://github.com/aui/artTemplate/)
-- [Juicer](http://juicer.name/)
+- [Juicer](https://github.com/PaulGuo/Juicer)
 - [handlebarsjs](http://handlebarsjs.com/)
 - [Jade](http://jade-lang.com/)
 - [只有20行Javascript代码！手把手教你写一个页面模板引擎](https://juejin.im/entry/56258da860b294bcf7955883)
