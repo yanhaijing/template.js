@@ -1,0 +1,11 @@
+{
+    "name": "runtime",
+    "npmname": "@templatejs/runtime",
+    "umdname": "templatejs_runtime",
+    "username": "templatejs",
+    "type": "js",
+    "module": "umd,esm,commonjs",
+    "test": "mocha",
+    "lang": "zh",
+    "version": "1.5.0"
+}

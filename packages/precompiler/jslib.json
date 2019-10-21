@@ -1,0 +1,11 @@
+{
+    "name": "precompiler",
+    "npmname": "@templatejs/precompiler",
+    "umdname": "templatejs_precompiler",
+    "username": "templatejs",
+    "type": "js",
+    "module": "commonjs",
+    "test": "mocha",
+    "lang": "zh",
+    "version": "1.5.0"
+}

@@ -1,0 +1,7 @@
+!index.d.ts
+*.d.ts
+.rpt2_cache
+coverage
+node_modules
+dist
+.nyc_output
