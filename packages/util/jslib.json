@@ -1,0 +1,11 @@
+{
+    "name": "util",
+    "npmname": "@templatejs/util",
+    "umdname": "templatejs_util",
+    "username": "templatejs",
+    "type": "ts",
+    "module": "umd,esm,commonjs",
+    "test": "mocha",
+    "lang": "zh",
+    "version": "1.5.1"
+}
