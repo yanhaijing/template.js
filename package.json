@@ -1,0 +1,19 @@
+{
+  "name": "template_js",
+  "description": "A javascript template engine, simple, easy & extras, support webpack, rollup and fis",
+  "version": "1.0.0",
+  "repository": "git@github.com:yanhaijing/template.js.git",
+  "author": "yanhaijing <yanhaijing@yeah.net>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "devDependencies": {
+    "lerna": "^3.16.4"
+  }
+}
