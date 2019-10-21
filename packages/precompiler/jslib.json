@@ -3,7 +3,7 @@
     "npmname": "@templatejs/precompiler",
     "umdname": "templatejs_precompiler",
     "username": "templatejs",
-    "type": "js",
+    "type": "ts",
     "module": "commonjs",
     "test": "mocha",
     "lang": "zh",

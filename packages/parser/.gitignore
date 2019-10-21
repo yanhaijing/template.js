@@ -1,4 +1,3 @@
-!index.d.ts
 *.d.ts
 .rpt2_cache
 coverage

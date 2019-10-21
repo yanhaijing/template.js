@@ -6,10 +6,13 @@ module.exports = {
     },
     "extends": [
         "eslint:recommended",
+        "plugin:@typescript-eslint/recommended"
     ],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "sourceType": "module"
     },
+    "plugins": ["@typescript-eslint"],
     "rules": {
         "indent": [
             "error",
@@ -28,5 +31,6 @@ module.exports = {
             "always"
         ],
         "no-console": "off",
+        "max-classes-per-file": ["error", 2],
     }
 };

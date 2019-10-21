@@ -3,7 +3,7 @@
     "npmname": "@templatejs/parser",
     "umdname": "templatejs_parser",
     "username": "templatejs",
-    "type": "js",
+    "type": "ts",
     "module": "esm,commonjs",
     "test": "mocha",
     "lang": "zh",
