@@ -1,12 +1,11 @@
 import { parse } from '@templatejs/parser';
 import { extendDeep } from '@jsmini/extend';
-import esprima from 'esprima';
-import { traverse, Syntax } from 'estraverse';
+import { parseScript, Syntax } from 'esprima';
+import { traverse } from 'estraverse';
 
 function getIdentifierName(node) {
     return node && node.name;
 }
-
 function getAssignmentPatternName(node) {
     if (node.left === Syntax.Identifier) {
         return [getIdentifierName(node.left)];
@@ -118,17 +117,14 @@ function hasContext(type) {
 }
 
 interface Opt {
-    sTag: string,
-    eTag: string,
-    escape: boolean,
-    expression: string,
-    compress: boolean,
-    tplName: string,
+    sTag?: string,
+    eTag?: string,
+    escape?: boolean,
+    expression?: string,
+    compress?: boolean,
+    tplName?: string,
 }
 const defaultOpt = {
-    sTag: '<%',
-    eTag: '%>',
-    escape: true,
     compress: false,
     expression: 'template',
     tplName: 'unknown.tpl',
@@ -139,7 +135,7 @@ export function precompile(tpl: string, opt: Opt = defaultOpt): string {
 
     const { expression, compress, tplName } = extendDeep({}, defaultOpt, opt) as Opt;
 
-    let ast = esprima.parseScript(code)
+    let ast = parseScript(code)
             
     // hasContext()
     // { type: '', varList: [] }
@@ -168,11 +164,14 @@ export function precompile(tpl: string, opt: Opt = defaultOpt): string {
                     Syntax.ArrowFunctionExpression,
                     Syntax.FunctionDeclaration,
                     Syntax.FunctionExpression
-                ].indexOf(type) !== -1) {
+                ].indexOf(type as any) !== -1) {
                     // 放入函数名字
+                    // @ts-ignore
                     if (node.id) {
+                        // @ts-ignore
                         currentContext.varList.push(getIdentifierName(node.id));
                     }
+                    // @ts-ignore
                     currentContext.varList = currentContext.varList.concat(getParamsName(node.params));
                 }
             }
@@ -180,6 +179,7 @@ export function precompile(tpl: string, opt: Opt = defaultOpt): string {
                 currentContext.varList = currentContext.varList.concat(getVariableDeclaratorName(node))
             } else if (type === Syntax.Identifier) {
                 // todo check 是否在 context stack
+                // @ts-ignore
                 if (inContextStack(contextStack, node.name)) {
                     return;
                 }

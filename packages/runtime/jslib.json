@@ -1,9 +1,9 @@
 {
     "name": "runtime",
     "npmname": "@templatejs/runtime",
-    "umdname": "templatejs_runtime",
-    "username": "templatejs",
-    "type": "js",
+    "umdname": "template",
+    "username": "yanhaijing",
+    "type": "ts",
     "module": "umd,esm,commonjs",
     "test": "mocha",
     "lang": "zh",

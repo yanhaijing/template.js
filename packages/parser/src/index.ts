@@ -1,9 +1,9 @@
 import { extendDeep } from '@jsmini/extend';
 
 interface Opt {
-    sTag: string,
-    eTag: string,
-    escape: boolean,
+    sTag?: string,
+    eTag?: string,
+    escape?: boolean,
 }
 const defaultOpt = { sTag: '<%', eTag: '%>', escape: true};
 

@@ -5,12 +5,23 @@
   "functions": 0,
   "branches": 75,
   "require": [
-    "@babel/register"
+    "ts-node/register",
+    "source-map-support/register"
   ],
   "reporter": [
     "lcov",
     "text"
   ],
-  "sourceMap": false,
-  "instrument": false
+  "extension": [
+    ".ts"
+  ],
+  "include": [
+    "src/**.ts"
+  ],
+  "exclude": [
+    "**/*.d.ts"
+  ],
+  "sourceMap": true,
+  "instrument": true,
+  "all": true
 }

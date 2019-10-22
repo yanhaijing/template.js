@@ -1,9 +1,9 @@
 {
     "name": "template",
     "npmname": "template_js",
-    "umdname": "template_js",
+    "umdname": "template",
     "username": "yanhaijing",
-    "type": "js",
+    "type": "ts",
     "module": "umd,esm,commonjs",
     "test": "mocha",
     "lang": "zh",

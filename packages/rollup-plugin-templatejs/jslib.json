@@ -3,7 +3,7 @@
     "npmname": "rollup-plugin-templatejs",
     "umdname": "rollup-plugin-templatejs",
     "username": "yanhaijing",
-    "type": "js",
+    "type": "ts",
     "module": "esm,commonjs",
     "test": "mocha",
     "lang": "zh",
