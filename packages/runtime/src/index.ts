@@ -1,12 +1,10 @@
+import { Option as ParserOption } from '@templatejs/parser';
 import { type } from '@jsmini/type';
 import { extend } from '@jsmini/extend';
 
-export interface Option {
-    sTag: string,
-    eTag: string,
-    compress: boolean,
-    escape: boolean,
-    error: Function,
+export interface Option extends ParserOption {
+    compress?: boolean,
+    error?: (e: any) => void,
 }
 let o: Option = {
     sTag: '<%',//开始标签
@@ -16,14 +14,14 @@ let o: Option = {
     error: function (e) {}//错误回调
 };
 
-function clone(...args: any[]) {
+function clone(...args: any[]): object {
     return extend.apply(null, [{}].concat(args));
 }
 
 function nothing<T>(param: T): T{
     return param;
 }
-function encodeHTML(source: string): string {
+function encodeHTML(source: string) {
     return String(source)
         .replace(/&/g, '&amp;')
         .replace(/</g, '&lt;')
@@ -36,29 +34,30 @@ function encodeHTML(source: string): string {
 const functionMap = {}; //内部函数对象
 //修饰器前缀
 const modifierMap = {
-    '': function (param) { return nothing(param) },
-    'h': function (param) { return encodeHTML(param) },
-    'u': function (param) { return encodeURI(param) }
+    '': function (param: any) { return nothing(param) },
+    'h': function (param: any) { return encodeHTML(param) },
+    'u': function (param: any) { return encodeURI(param) }
 };
 
-function consoleAdapter(cmd, msg) {
+function consoleAdapter(cmd: string, msg: string) {
     typeof console !== 'undefined' && console[cmd] && console[cmd](msg);
 }
 
 function runtime() {}
+
 runtime.config = function (option: Option): Option {
     if (type(option) === 'object') {
         o = extend(o, option) as Option;
     }
-    return clone(o);
+    return clone(o) as Option;
 };
-runtime.compress = function (html: string): string {
-    return html.replace(/\s+/g, ' ').replace(/<!--[\w\W]*?-->/g, '');
+runtime.compress = function (html: string) {
+    return String(html).replace(/\s+/g, ' ').replace(/<!--[\w\W]*?-->/g, '');
 }
-runtime.handelError = function handelError(e) {
-    var message = 'template.js error\n\n';
+runtime.handelError = function handelError(e: Error) {
+    let message = 'template.js error\n\n';
 
-    for (var key in e) {
+    for (let key in e) {
         message += '<' + key + '>\n' + e[key] + '\n\n';
     }
     message += '<message>\n' + e.message + '\n\n';
@@ -73,7 +72,7 @@ runtime.handelError = function handelError(e) {
     }
     return error;
 }
-runtime.registerFunction = function (name: string, fn: Function) {
+runtime.registerFunction = function (name: string, fn: (param: any) => any) {
     if (typeof name !== 'string') {
         return clone(functionMap);
     }
@@ -82,7 +81,7 @@ runtime.registerFunction = function (name: string, fn: Function) {
     }
 
     return functionMap[name] = fn;
-}
+};
 runtime.unregisterFunction = function (name: string): boolean {
     if (typeof name !== 'string') {
         return false;
@@ -90,7 +89,7 @@ runtime.unregisterFunction = function (name: string): boolean {
     delete functionMap[name];
     return true;
 }
-runtime.registerModifier = function (name: string, fn: Function) {
+runtime.registerModifier = function (name: string, fn: (param: any) => any) {
     if (typeof name !== 'string') {
         return clone(modifierMap);
     }
@@ -107,6 +106,7 @@ runtime.unregisterModifier = function (name: string): boolean {
     delete modifierMap[name];
     return true;
 }
+
 runtime.encodeHTML = encodeHTML;
 runtime.functionMap = functionMap;
 runtime.modifierMap = modifierMap;

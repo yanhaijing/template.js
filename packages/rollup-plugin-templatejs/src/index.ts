@@ -1,15 +1,9 @@
 import { createFilter } from 'rollup-pluginutils';
 import { extendDeep } from '@jsmini/extend';
-import { precompile } from '@templatejs/precompiler';
+import { precompile, Option as PrecompileOption } from '@templatejs/precompiler';
 
-interface Options {
-    sTag?: string,
-    eTag?: string,
-    escape?: boolean,
-    expression?: string,
-    compress?: boolean,
+export interface Options extends PrecompileOption{
     sandbox?: boolean,
-    tplName?: string,
     include?: string[] | string,
     exclude?: string[] | string,
 };

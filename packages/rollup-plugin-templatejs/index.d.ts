@@ -1,2 +1,14 @@
-export declare function greeter(person: string): string;
-export declare const name = "base";
+import { Option as PrecompileOption } from '@templatejs/precompiler';
+export interface Options extends PrecompileOption {
+    sandbox?: boolean;
+    include?: string[] | string;
+    exclude?: string[] | string;
+}
+export default function (options?: Options): {
+    transform(tpl: string, id: string): {
+        code: string;
+        map: {
+            mappings: string;
+        };
+    };
+};

@@ -1,20 +1,21 @@
 import { extendDeep } from '@jsmini/extend';
 
-interface Opt {
+export interface Option {
     sTag?: string,
     eTag?: string,
     escape?: boolean,
 }
+
 const defaultOpt = { sTag: '<%', eTag: '%>', escape: true};
 
-export function parse(tpl: string, opt: Opt = defaultOpt): string {
-    const { sTag, eTag, escape } = extendDeep({}, defaultOpt, opt) as Opt;
+export function parse(tpl: string, opt: Option = defaultOpt): string {
+    const { sTag, eTag, escape } = extendDeep({}, defaultOpt, opt) as Option;
 
     tpl = String(tpl);
 
     let code = '';
 
-    function parsehtml(line) {
+    function parsehtml(line: string) {
         // 单双引号转义，换行符替换为空格
         line = line.replace(/('|")/g, '\\$1');
         const lineList = line.split('\n');
@@ -24,12 +25,12 @@ export function parse(tpl: string, opt: Opt = defaultOpt): string {
         }
         return code;
     }
-    function parsejs(line) {              
+    function parsejs(line: string) {              
         //var reg = /^(:?)(.*?)=(.*)$/;
-        var reg = /^(?:=|(:.*?)=)(.*)$/
-        var html;
-        var arr;
-        var modifier;
+        const reg = /^(?:=|(:.*?)=)(.*)$/
+        let html: string;
+        let arr: string[];
+        let modifier: string;
 
         // = := :*=
         // :h=123 [':h=123', 'h', '123']
@@ -50,10 +51,10 @@ export function parse(tpl: string, opt: Opt = defaultOpt): string {
         return ';' + line + '\n';
     }
 
-    var tokens = tpl.split(sTag);
+    const tokens = tpl.split(sTag);
 
-    for (var i = 0, len = tokens.length; i < len; i++) {
-        var token = tokens[i].split(eTag);
+    for (let i = 0, len = tokens.length; i < len; i++) {
+        const token = tokens[i].split(eTag);
 
         if (token.length === 1) {
             code += parsehtml(token[0]);

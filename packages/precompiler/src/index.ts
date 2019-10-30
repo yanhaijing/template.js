@@ -1,4 +1,4 @@
-import { parse } from '@templatejs/parser';
+import { parse, Option as ParseOption } from '@templatejs/parser';
 import { extendDeep } from '@jsmini/extend';
 import { parseScript, Syntax } from 'esprima';
 import { traverse } from 'estraverse';
@@ -116,32 +116,30 @@ function hasContext(type) {
     ].indexOf(type) !== -1;
 }
 
-interface Opt {
-    sTag?: string,
-    eTag?: string,
-    escape?: boolean,
+export interface Option extends ParseOption {
     expression?: string,
     compress?: boolean,
     tplName?: string,
 }
+
 const defaultOpt = {
     compress: false,
     expression: 'template',
     tplName: 'unknown.tpl',
 };
 
-export function precompile(tpl: string, opt: Opt = defaultOpt): string {
-    const code = parse(tpl);
+export function precompile(tpl: string, opt: Option = defaultOpt): string {
+    const code = parse(tpl, opt);
 
-    const { expression, compress, tplName } = extendDeep({}, defaultOpt, opt) as Opt;
+    const { expression, compress, tplName } = extendDeep({}, defaultOpt, opt) as Option;
 
-    let ast = parseScript(code)
+    const ast = parseScript(code);
             
     // hasContext()
     // { type: '', varList: [] }
-    let contextStack = [{
+    const contextStack = [{
         type: 'template',
-        varList: ['__code__', '__encodeHTML__', '__modifierMap__'],
+        varList: ['__code__', '__encodeHTML__', '__modifierMap__', '__runtime__'],
     }, {
         type: 'root',
         varList: [],
@@ -194,29 +192,33 @@ export function precompile(tpl: string, opt: Opt = defaultOpt): string {
                 }
             }
         },
-        leave(node, parent){
+        leave(node){
             if (hasContext(node.type)) {
                 contextStack.pop();
             }
         }
     });
   
-var source = `
+const source = `
 function render(__data__) {
+    var __runtime__ = ${expression};
     var __root__ = (typeof self === 'object' && self.self === self && self) ||
         (typeof global === 'object' && global.global === global && global) ||
         this;
-    ${unVarList.map(name => `    var ${name} = __data__['${name}'] || __root__['${name}'];`).join('\n')}
+
+    ${unVarList.map(name => `    var ${name} = __data__['${name}'] || __runtime__.functionMap['${name}'] || __root__['${name}'];`).join('\n')}
+    
     try {
         var __code__ = '';
-        var __encodeHTML__ = ${expression}.__encodeHTML;
+        var __modifierMap__ = __runtime__.modifierMap;
+
         ${code}
 
-        return ${compress ? `${expression}.__compress(__code__)`: `__code__`};
+        return ${compress ? `__runtime__.compress(__code__)`: `__code__`};
     } catch(e) {
         e.name = 'RenderError';
         e.tpl = '${tplName}';
-        ${expression}.__handelError(e);
+        __runtime__.handelError(e);
         return 'template.js error';
     }
 }`;

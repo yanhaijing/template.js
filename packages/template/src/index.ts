@@ -7,7 +7,7 @@ const {
     encodeHTML, compress, handelError, o, functionMap, modifierMap,
 } = runtime;
 
-function clone(...args: any[]) {
+function clone(...args: any[]): object {
     return extend.apply(null, [{}].concat(args));
 }
 
@@ -41,7 +41,7 @@ function compiler(tpl: string, opt: Option = o): Function {
     }
 }
 
-function compile(tpl: string, opt: Option = o): Function {
+function compile(tpl: string, opt: Option = o) {
     opt = clone(o, opt);
 
     try {
@@ -54,7 +54,7 @@ function compile(tpl: string, opt: Option = o): Function {
         return handelError(e);
     }
 
-    function render(data) {
+    function render(data: object): string {
         data = clone(functionMap, data);
         try {
             var html = Render(data, modifierMap);
@@ -74,7 +74,9 @@ function compile(tpl: string, opt: Option = o): Function {
     return render;
 }
 
-function template(tpl: string, data) {
+function template(tpl: string, data: object): string;
+function template(tpl: string): (data: object) => string;
+function template(tpl: string, data?: object) {
     if (typeof tpl !== 'string') {
         return '';
     }
@@ -91,29 +93,32 @@ template.config = function (option: Option) {
     return runtime.config(option);
 };
 
-template.registerFunction = function (name, fn) {
+template.registerFunction = function (name: string, fn: (param: any) => any) {
     return runtime.registerFunction(name, fn);
 }
-template.unregisterFunction = function (name) {
+template.unregisterFunction = function (name: string) {
     return runtime.unregisterFunction(name);
 }
 
-template.registerModifier = function (name, fn) {
+template.registerModifier = function (name: string, fn: (param: any) => any) {
     return runtime.registerModifier(name, fn);
 }
-template.unregisterModifier = function (name) {
+template.unregisterModifier = function (name: string) {
     return runtime.unregisterModifier(name);
 }
 
+// 兼容runtime, 预编译插件可以引用runtime，也可以引用template
 template.encodeHTML = encodeHTML;
 template.compress = compress;
 template.handelError = handelError;
+template.functionMap = functionMap;
+template.modifierMap = modifierMap;
 
 // 兼容旧版本
 template.__encodeHTML = encodeHTML;
 template.__compress = compress;
 template.__handelError = handelError;
 template.__compile = compile;
-template.version = '0.7.1';
+// template.version = '0.7.1';
 
 export default template;

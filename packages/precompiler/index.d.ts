@@ -1,10 +1,7 @@
-interface Opt {
-    sTag?: string;
-    eTag?: string;
-    escape?: boolean;
+import { Option as ParseOption } from '@templatejs/parser';
+export interface Option extends ParseOption {
     expression?: string;
     compress?: boolean;
     tplName?: string;
 }
-export declare function precompile(tpl: string, opt?: Opt): string;
-export {};
+export declare function precompile(tpl: string, opt?: Option): string;
