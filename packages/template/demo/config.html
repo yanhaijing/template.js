@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>config demo</title>
+</head>
+<body>
+    <script src="../dist/index.aio.js"></script>
+    <script>
+    template.config({sTag: '<#', eTag: '#>'});
+    var tpl1 = '<div><#:=name#></div>';
+    console.log('<##>:', template(tpl1, {name: '更改tag<##>'}));
+
+    template.config({sTag: '{{', eTag: '}}'});
+    var tpl1 = '<div>{{:=name}}</div>';
+    console.log('{{}}:', template(tpl1, {name: '更改tag{{}}'}));
+
+    template.config({sTag: '<%', eTag: '#>'});
+    var tpl1 = '<div><%:=name#></div>';
+    console.log('<%#>:', template(tpl1, {name: '不一致也可以哦，更改tag<%#>'})); 
+
+    template.config({sTag: '<%', eTag: '%>', compress: true});
+    var tpl1 = '<div>空格会被压缩  空格  空格</div>';
+    console.log('compress:', template(tpl1, {}));   
+
+    template.config({sTag: '<%', eTag: '%>', escape: false});
+    var tpl1 = '<div>默认输出不进行转义<%=html%></div>';
+    console.log('escape:', template(tpl1, {html: '<div>html</div>'}));
+    </script>
+</body>
+</html>
