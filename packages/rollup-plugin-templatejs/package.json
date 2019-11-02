@@ -65,6 +65,7 @@
   "dependencies": {
     "@babel/runtime": "^7.1.2",
     "@jsmini/extend": "^0.3.3",
-    "@templatejs/precompiler": "^0.1.0"
+    "@templatejs/precompiler": "^0.1.0",
+    "rollup-pluginutils": "^2.8.2"
   }
 }

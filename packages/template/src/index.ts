@@ -33,7 +33,7 @@ function compiler(tpl: string, opt: Option = o): Function {
         var Render = new Function('__data__', '__modifierMap__', code);
         Render.toString = function () {
             return mainCode;
-        }
+        };
         return Render;
     } catch (e) {
         e.temp = 'function anonymous(__data__, __modifierMap__) {' + code + '}';
@@ -95,17 +95,17 @@ template.config = function (option: Option) {
 
 template.registerFunction = function (name: string, fn: (param: any) => any) {
     return runtime.registerFunction(name, fn);
-}
+};
 template.unregisterFunction = function (name: string) {
     return runtime.unregisterFunction(name);
-}
+};
 
 template.registerModifier = function (name: string, fn: (param: any) => any) {
     return runtime.registerModifier(name, fn);
-}
+};
 template.unregisterModifier = function (name: string) {
     return runtime.unregisterModifier(name);
-}
+};
 
 // 兼容runtime, 预编译插件可以引用runtime，也可以引用template
 template.encodeHTML = encodeHTML;
