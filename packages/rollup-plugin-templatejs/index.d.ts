@@ -1,4 +1,4 @@
-import { Option as PrecompileOption } from '@templatejs/precompiler';
+import { PrecompileOption } from '@templatejs/precompiler';
 export interface Options extends PrecompileOption {
     sandbox?: boolean;
     include?: string[] | string;

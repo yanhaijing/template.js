@@ -1,6 +1,6 @@
 import { createFilter } from 'rollup-pluginutils';
 import { extendDeep } from '@jsmini/extend';
-import { precompile, Option as PrecompileOption } from '@templatejs/precompiler';
+import { precompile, PrecompileOption } from '@templatejs/precompiler';
 
 export interface Options extends PrecompileOption{
     sandbox?: boolean,
