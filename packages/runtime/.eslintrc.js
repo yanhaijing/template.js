@@ -32,5 +32,7 @@ module.exports = {
         ],
         "no-console": "off",
         "max-classes-per-file": ["error", 2],
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
     }
 };

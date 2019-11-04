@@ -1,17 +1,17 @@
-import { Option as ParserOption } from '@templatejs/parser';
+import { ParserOption } from '@templatejs/parser';
 import { type } from '@jsmini/type';
 import { extend } from '@jsmini/extend';
 
 export interface Option extends ParserOption {
-    compress?: boolean,
-    error?: (e: any) => void,
+    compress?: boolean;
+    error?: (e: any) => void;
 }
 let o: Option = {
     sTag: '<%',//开始标签
     eTag: '%>',//结束标签
     compress: false,//是否压缩html
     escape: true, //默认输出是否进行HTML转义
-    error: function (e) {}//错误回调
+    error: function () {}//错误回调
 };
 
 function clone(...args: any[]): object {
@@ -34,9 +34,9 @@ function encodeHTML(source: string) {
 const functionMap = {}; //内部函数对象
 //修饰器前缀
 const modifierMap = {
-    '': function (param: any) { return nothing(param) },
-    'h': function (param: any) { return encodeHTML(param) },
-    'u': function (param: any) { return encodeURI(param) }
+    '': function (param: any) { return nothing(param); },
+    'h': function (param: any) { return encodeHTML(param); },
+    'u': function (param: any) { return encodeURI(param); }
 };
 
 function consoleAdapter(cmd: string, msg: string) {
@@ -53,7 +53,7 @@ runtime.config = function (option: Option): Option {
 };
 runtime.compress = function (html: string) {
     return String(html).replace(/\s+/g, ' ').replace(/<!--[\w\W]*?-->/g, '');
-}
+};
 runtime.handelError = function handelError(e: Error) {
     let message = 'template.js error\n\n';
 
@@ -69,9 +69,9 @@ runtime.handelError = function handelError(e: Error) {
     }
     error.toString = function () {
         return '__code__ = "template.js error"';
-    }
+    };
     return error;
-}
+};
 runtime.registerFunction = function (name: string, fn: (param: any) => any) {
     if (typeof name !== 'string') {
         return clone(functionMap);
@@ -88,7 +88,7 @@ runtime.unregisterFunction = function (name: string): boolean {
     }
     delete functionMap[name];
     return true;
-}
+};
 runtime.registerModifier = function (name: string, fn: (param: any) => any) {
     if (typeof name !== 'string') {
         return clone(modifierMap);
@@ -98,14 +98,14 @@ runtime.registerModifier = function (name: string, fn: (param: any) => any) {
     }
 
     return modifierMap[name] = fn;
-}
+};
 runtime.unregisterModifier = function (name: string): boolean {
     if (typeof name !== 'string') {
         return false;
     }
     delete modifierMap[name];
     return true;
-}
+};
 
 runtime.encodeHTML = encodeHTML;
 runtime.functionMap = functionMap;

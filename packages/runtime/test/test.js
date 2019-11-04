@@ -1,20 +1,20 @@
+/* eslint-disable */
 var expect = require('expect.js');
 
 // js 测试源文件
-var base = require('../src/index.ts');
-
+var runtime = require('../src/index.ts').default;
+console.log(runtime)
 describe('单元测试', function() {
     this.timeout(1000);
 
-    describe('功能1', function() {
+    describe('encodeHTML', function() {
         it('相等', function() {
-            expect(base.name).to.equal('base');
-        });
-    });
-
-    describe('功能2', function() {
-        it('不相等', function() {
-            expect(base.name).not.to.equal(1);
+            expect(runtime.encodeHTML('&')).to.equal('&amp;');
+            expect(runtime.encodeHTML('<')).to.equal('&lt;');
+            expect(runtime.encodeHTML('>')).to.equal('&gt;');
+            expect(runtime.encodeHTML('\\')).to.equal('&#92;');
+            expect(runtime.encodeHTML('"')).to.equal('&quot;');
+            expect(runtime.encodeHTML('\'')).to.equal('&#39;');
         });
     });
 });
