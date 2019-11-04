@@ -1,35 +1,35 @@
-import { parse, Option as ParseOption } from '@templatejs/parser';
+import { parse, ParserOption } from '@templatejs/parser';
 import { extendDeep } from '@jsmini/extend';
 import { parseScript, Syntax } from 'esprima';
 import { traverse } from 'estraverse';
 
-function getIdentifierName(node) {
+function getIdentifierName(node): string {
     return node && node.name;
 }
-function getAssignmentPatternName(node) {
-    if (node.left === Syntax.Identifier) {
+function getAssignmentPatternName(node): string[] {
+    if (node.left.type === Syntax.Identifier) {
         return [getIdentifierName(node.left)];
     }
-    if (node.left === Syntax.ArrayPattern) {
+    if (node.left.type === Syntax.ArrayPattern) {
         return getArrayPatternName(node.left);
     }
-    if (node.left === Syntax.ObjectPattern) {
+    if (node.left.type === Syntax.ObjectPattern) {
         return getObjectPatternName(node.left);
     }
 }
-function getRestElementName(node) {
+function getRestElementName(node): string[] {
     if (node.argument.type === Syntax.Identifier) {
         return [getIdentifierName(node.argument)];
     }
     if (node.argument.type === Syntax.ArrayPattern) {
-        return [getArrayPatternName(node.argument)];
+        return getArrayPatternName(node.argument);
     }
     if (node.argument.type === Syntax.ObjectPattern) {
-        return [getObjectPatternName(node.argument)];
+        return getObjectPatternName(node.argument);
     }
 }
-function getArrayPatternName(node) {
-    return node.elements.reduce((prev, element) => {
+function getArrayPatternName(node): string[] {
+    return node.elements.reduce((prev, element): string[] => {
         if (element.type === Syntax.Identifier) {
             return prev.concat(getIdentifierName(element));
         }
@@ -47,8 +47,8 @@ function getArrayPatternName(node) {
         }
     }, []);
 }
-function getObjectPatternName(node) {
-    return node.propreties.reduce((prev, property) => {
+function getObjectPatternName(node): string[] {
+    return node.properties.reduce((prev, property): string[] => {
         const value = property.value;
         if (value.type === Syntax.Identifier) {
             return prev.concat(getIdentifierName(value));
@@ -64,7 +64,7 @@ function getObjectPatternName(node) {
         }
     }, []);
 }
-function getVariableDeclaratorName(node) {
+function getVariableDeclaratorName(node): string[] {
     const id = node.id;
 
     if (id.type === Syntax.Identifier) {
@@ -76,10 +76,11 @@ function getVariableDeclaratorName(node) {
     if (id.type === Syntax.ObjectPattern) {
         return getObjectPatternName(id);
     }
+    /* istanbul ignore next */
     return [];
 }
-function getParamsName(params) {
-    return params.reduce((prev, param) => {
+function getParamsName(params): string[] {
+    return params.reduce((prev, param): string[] => {
         if (param.type === Syntax.Identifier) {
             return prev.concat(getIdentifierName(param));
         }
@@ -91,6 +92,9 @@ function getParamsName(params) {
         }
         if (param.type === Syntax.ObjectPattern) {
             return prev.concat(getObjectPatternName(param));
+        }
+        if (param.type === Syntax.RestElement) {
+            return prev.concat(getRestElementName(param));
         }
     }, []);
 }
@@ -116,10 +120,10 @@ function hasContext(type) {
     ].indexOf(type) !== -1;
 }
 
-export interface Option extends ParseOption {
-    expression?: string,
-    compress?: boolean,
-    tplName?: string,
+export interface PrecompileOption extends ParserOption {
+    expression?: string;
+    compress?: boolean;
+    tplName?: string;
 }
 
 const defaultOpt = {
@@ -128,13 +132,9 @@ const defaultOpt = {
     tplName: 'unknown.tpl',
 };
 
-export function precompile(tpl: string, opt: Option = defaultOpt): string {
-    const code = parse(tpl, opt);
-
-    const { expression, compress, tplName } = extendDeep({}, defaultOpt, opt) as Option;
-
+export function detectVar(code: string) {
     const ast = parseScript(code);
-            
+
     // hasContext()
     // { type: '', varList: [] }
     const contextStack = [{
@@ -145,7 +145,7 @@ export function precompile(tpl: string, opt: Option = defaultOpt): string {
         varList: [],
     }];
 
-    let unVarList = [];
+    let unVarList: string[] = [];
 
     traverse(ast, {
         enter(node, parent){
@@ -174,7 +174,7 @@ export function precompile(tpl: string, opt: Option = defaultOpt): string {
                 }
             }
             else if (type === Syntax.VariableDeclarator) {
-                currentContext.varList = currentContext.varList.concat(getVariableDeclaratorName(node))
+                currentContext.varList = currentContext.varList.concat(getVariableDeclaratorName(node));
             } else if (type === Syntax.Identifier) {
                 // todo check 是否在 context stack
                 // @ts-ignore
@@ -198,7 +198,19 @@ export function precompile(tpl: string, opt: Option = defaultOpt): string {
             }
         }
     });
-  
+
+    return unVarList;
+}
+
+/* istanbul ignore next */
+export function precompile(tpl: string, opt: PrecompileOption = defaultOpt): string {
+    const code = parse(tpl, opt);
+
+    const { expression, compress, tplName } = extendDeep({}, defaultOpt, opt) as PrecompileOption;
+
+    const unVarList = detectVar(code);
+
+/* eslint-disable indent, @typescript-eslint/indent */
 const source = `
 function render(__data__) {
     var __runtime__ = ${expression};
@@ -214,7 +226,7 @@ function render(__data__) {
 
         ${code}
 
-        return ${compress ? `__runtime__.compress(__code__)`: `__code__`};
+        return ${compress ? '__runtime__.compress(__code__)': '__code__'};
     } catch(e) {
         e.name = 'RenderError';
         e.tpl = '${tplName}';
