@@ -1,9 +1,11 @@
 /* eslint-disable */
 var expect = require('expect.js');
 
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
 // js 测试源文件
-var runtime = require('../src/index.ts').default;
-console.log(runtime)
+var runtime = _interopDefault(require('../src/index.ts'));
+
 describe('单元测试', function() {
     this.timeout(1000);
 

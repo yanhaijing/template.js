@@ -1,7 +1,10 @@
+/* eslint-disable */
 var expect = require('expect.js');
 
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
 // js 测试源文件
-var template = require('../src/index.ts');
+var template = _interopDefault(require('../src/index.ts'));
 
 var t = template;
 

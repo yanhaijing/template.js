@@ -4,7 +4,7 @@ import { parse } from '@templatejs/parser';
 import runtime, { Option } from '@templatejs/runtime';
 
 const {
-    encodeHTML, compress, handelError, o, functionMap, modifierMap,
+    encodeHTML, compress, handelError, o, functionMap, modifierMap
 } = runtime;
 
 function clone(...args: any[]): object {

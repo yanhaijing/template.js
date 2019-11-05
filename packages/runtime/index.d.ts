@@ -1,4 +1,4 @@
-import { Option as ParserOption } from '@templatejs/parser';
+import { ParserOption } from '@templatejs/parser';
 export interface Option extends ParserOption {
     compress?: boolean;
     error?: (e: any) => void;
