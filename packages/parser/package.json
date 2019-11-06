@@ -1,7 +1,7 @@
 {
   "name": "@templatejs/parser",
   "version": "0.1.0",
-  "description": "jslib最好用的js库脚手架",
+  "description": "template.js的模板编译器",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
@@ -17,14 +17,14 @@
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
     "build:esm": "rollup -c config/rollup.config.esm.js"
   },
-  "author": "templatejs",
+  "author": "yanhaijing",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/templatejs/parser.git"
+    "url": "git://github.com/yanhaijing/template.js.git"
   },
   "bugs": {
-    "url": "https://github.com/templatejs/parser/issues"
+    "url": "https://github.com/yanhaijing/template.js/issues"
   },
   "files": [
     "/dist",
