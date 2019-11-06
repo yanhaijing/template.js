@@ -60,5 +60,8 @@
   "dependencies": {
     "@jsmini/extend": "^0.3.3",
     "@templatejs/precompiler": "^0.1.0"
+  },
+  "peerDependencies": {
+    "@templatejs/runtime": "^2.0.0"
   }
 }
