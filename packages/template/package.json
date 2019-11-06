@@ -1,7 +1,7 @@
 {
   "name": "template_js",
   "version": "0.1.0",
-  "description": "jslib最好用的js库脚手架",
+  "description": "一款javascript模板引擎，简单，好用，支持webpack, rollup和fis",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
@@ -23,10 +23,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/yanhaijing/template.git"
+    "url": "git://github.com/yanhaijing/template.js.git"
   },
   "bugs": {
-    "url": "https://github.com/yanhaijing/template/issues"
+    "url": "https://github.com/yanhaijing/template.js/issues"
   },
   "files": [
     "/dist",

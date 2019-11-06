@@ -1,7 +1,7 @@
 {
   "name": "@templatejs/runtime",
   "version": "0.1.0",
-  "description": "jslib最好用的js库脚手架",
+  "description": "template.js的runtime运行时",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
@@ -23,10 +23,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/templatejs/runtime.git"
+    "url": "git://github.com/yanhaijing/template.js.git"
   },
   "bugs": {
-    "url": "https://github.com/templatejs/runtime/issues"
+    "url": "https://github.com/yanhaijing/template.js/issues"
   },
   "files": [
     "/dist",
