@@ -23,6 +23,8 @@ export default function (options: Options = {}) {
         transform(tpl: string, id: string) {
             if (!filter(id)) return;
 
+            options.tplName = id.split('/').pop()
+
             const source = precompile(tpl, options);
             
             const compiled = `export default ${source}`;

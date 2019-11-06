@@ -1,6 +1,6 @@
 var expect = require('expect.js');
 
-// js 测试源文件
+// ts 测试编译后文件
 var base = require('../src/index.ts');
 
 describe('单元测试', function() {
