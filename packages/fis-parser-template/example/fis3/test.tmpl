@@ -1,0 +1,37 @@
+<!-- html 注释 ' " -->
+<%var i = 0%>
+<%var len = 3;%>
+<%var a = 1; b = 3%>
+
+a=<%=a%>
+b=<%=b%>
+
+d=<%=d%>(undefined)
+
+<%=a + '1 "2"' + "2"%>
+
+<%/*注释注释*/%>
+
+<%for(i = 0; i < len; i++) {%>
+<div>数字：<%=i%> <%=i+1%></div>
+<%}%>
+
+    <div class="t\\es't" id='tes"t'>123</div> 
+123 
+
+<%if ('1') {
+    console.log("123")
+}%>
+
+<div class="test">
+    <ul class='test'>
+        <%for (var i = 0; i < list.length; i++) {%>
+        <li>
+            <%var li = list[i];%>
+            <%:=li.name%>
+            <%=li.html%>
+            <%:u=li.url%>
+        </li>
+        <%}%>
+    </ul>
+</div>
