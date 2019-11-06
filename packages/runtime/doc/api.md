@@ -1,24 +1,40 @@
 # 文档
-这是一个xxx库，有xxx功能
 
-## api模版
-函数简单介绍
+## runtime.config
+配置template.js的自定义选项。
 
-函数详细介绍
+- option {Object} 配置的对象参数
+- return {Object} 配置对象的镜像
 
-函数参数和返回值（要遵守下面的例子的规则）
+可配置参数
 
-- param {string} name1 name1描述
-- param {number} [name2] name2描述 ([]代表可选参数)
-- param {string|number} name3 name3描述 (| 代表多种类型)
-- param { * } name3 name3描述 (*代表任意类型)
-- param {boolean} obj.sex 复合参数定义
-- return {string} 返回值描述
+- sTag {String} 开始标签 默认为 '<%'
+- eTag {String} 结束标签 默认为 '%>'
+- compress {Boolean} 是否压缩输出的html 默认为false
+- escape {Boolean} 默认是否对输出内容进行html转义 默认为true
 
-举个例子（要包含代码用例）
+## runtime.registerFunction 
+注册自定义函数功能。
 
-```js
-// 代码
-```
+- name {String} 自定义函数的名字，如果缺省会返回全部已注册的函数
+- fn {Function} 自定义函数，如果缺省会返回名称为name的函数
+- return {Object|Function} 对象或函数
 
-特殊说明，比如特殊情况下会报错等
+## runtime.unregisterFunction
+取消自定义函数功能。
+
+- name {String} 取消自定义函数的名字
+- return {Boolean} 是否成功
+
+## runtime.registerModifier 
+注册自定义修复器功能。
+
+- name {String} 自定义修复器的名字，如果缺省会返回全部已注册的修复器
+- fn {Function} 自定义修复器，如果缺省会返回名称为name的修复器
+- return {Object|Function} 对象或函数
+
+## runtime.unregisterModifier
+取消自定义修复器功能。
+
+- name {String} 取消自定义修饰器的名字
+- return {Boolean} 是否成功
