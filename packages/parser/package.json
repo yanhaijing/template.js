@@ -38,6 +38,10 @@
     "template.js",
     "js"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
   "devDependencies": {
     "@babel/cli": "7.1.5",
     "@babel/core": "^7.1.2",
@@ -70,5 +74,6 @@
   "dependencies": {
     "@babel/runtime": "^7.1.2",
     "@jsmini/extend": "^0.3.3"
-  }
+  },
+  "gitHead": "b252cbe662e2433d1118ba5ef1c6abbad94b7d1b"
 }

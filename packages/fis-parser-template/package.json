@@ -68,5 +68,6 @@
   },
   "peerDependencies": {
     "@templatejs/runtime": "^2.0.0"
-  }
+  },
+  "gitHead": "b252cbe662e2433d1118ba5ef1c6abbad94b7d1b"
 }
