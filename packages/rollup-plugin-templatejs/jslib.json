@@ -1,0 +1,11 @@
+{
+    "name": "rollup-plugin-templatejs",
+    "npmname": "rollup-plugin-templatejs",
+    "umdname": "rollup-plugin-templatejs",
+    "username": "yanhaijing",
+    "type": "ts",
+    "module": "esm,commonjs",
+    "test": "mocha",
+    "lang": "zh",
+    "version": "1.5.1"
+}

@@ -1,2 +1,5 @@
+.DS_Store
 node_modules
-temp2.html
+package-lock.json
+packages/*/package-lock.json
+lerna-debug.log

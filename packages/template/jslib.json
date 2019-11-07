@@ -1,0 +1,11 @@
+{
+    "name": "template",
+    "npmname": "template_js",
+    "umdname": "template",
+    "username": "yanhaijing",
+    "type": "ts",
+    "module": "umd,esm,commonjs",
+    "test": "mocha",
+    "lang": "zh",
+    "version": "1.5.1"
+}

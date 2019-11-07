@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrap"></div>
+<script src="template.js"></script>
+<script>
+    'use strict';
+    var tpl = __inline('test.tmpl');
+    var html = tpl({
+        a: 5,
+        b: 5,
+        list: [
+            {
+                name: '颜海镜',
+                html: '<div>div</div>',
+                url: 'http://yanhaijing.com?颜海镜'
+            },
+            {
+                name: '颜海镜2',
+                html: '<p>这里是段落哦</p>',
+                url: 'http://yanhaijing.com?颜海镜'
+            }
+        ]
+    });
+    console.log(tpl.toString());
+    console.log('==================================');
+    console.log(html);
+    document.getElementById('wrap').innerHTML = html;
+</script>
+</body>
+</html>

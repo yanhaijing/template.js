@@ -1,170 +1,63 @@
-# [template.js](https://github.com/yanhaijing/template.js) [![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js) [![release](https://img.shields.io/badge/release-v0.8.0-orange.svg)](https://github.com/yanhaijing/template.js/releases/tag/v0.8.0) [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt)
+# [parser](https://github.com/yanhaijing/template.js)
+[![](https://img.shields.io/badge/Powered%20by-jslib%20base-brightgreen.svg)](https://github.com/yanhaijing/jslib-base)
+[![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/LICENSE)
 
-English | [简体中文](./README.zh-CN.md)
+一款javascript模板引擎，简单，好用，支持webpack, rollup和fis
 
-A javascript template engine, simple, easy & extras, support webpack and fis
+## 使用者指南
+template.js包含编译器，预编译期，运行时，web渲染器和各个平台的插件
 
-## Introduction
+- 如果你直接使用script来使用template.js，可以查看template_js
+- 如果你使用webpack, rollup或者fis，可以直接查看相关的插件
+- 如果你对template.js感兴趣，或者想写自己的预编译器，可以查看parser和precompiler
 
-提供一套模板语法，用户可以写一个模板区块，每次根据传入的数据，生成对应数据产生的HTML片段，渲染不同的效果。
+相关packages
 
-## Features
+- [@templatejs/parser](https://github.com/yanhaijing/template.js/blob/master/packages/parser)
+- [@templatejs/runtime](https://github.com/yanhaijing/template.js/blob/master/packages/runtime)
+- [@templatejs/precompiler](https://github.com/yanhaijing/template.js/blob/master/packages/precompiler)
+- [template_js](https://github.com/yanhaijing/template.js/blob/master/packages/template)
+- [fis-parser-template](https://github.com/yanhaijing/template.js/blob/master/packages/fis-parser-template)
+- [template-loader](https://github.com/yanhaijing/template.js/blob/master/packages/template-loader)
+- [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs)
 
-- 模版编译，渲染
-- 支持所有主流浏览器及Node（UMD）
-- JavaScript原生语法
-- 丰富的自定义配置
-- 支持数据过滤
-- 异常捕获功能
-- 伪子模版
-- 功能专一，简单好用
+## 开发者指南
+本项目使用lerna来管理多个插件
 
-## Compatibility
-
-- Node 0.10+
-- Safari 6+ (Mac)
-- iOS 5+ Safari
-- Chrome 23+ (Windows, Mac, Android, iOS, Linux, Chrome OS)
-- Firefox 4+ (Windows, Mac, Android, Linux)
-- Internet Explorer 6+ (Windows, Windows Phone)
-- Opera 10+ (Windows, linux, Android)
-
-## 下载
-第一种方法，推荐使用npm安装和更新
+安装lerna
 
 ```bash
-$ npm install template_js
+$ npm install -g lerna@3.16.4
 ```
 
-第二种方法，或者你也可以在GitHub，下载源文件或压缩包
-
-## 如何使用？
-支持全局变量、AMD、commonjs、es6等模块系统
-
-### 传统用法
-
-```html
-<script src="template.js"></script>
-<script>
-    window.template()
-</script>
-```
-
-### AMD
-
-```js
-require(['template'], function (template) {
-    template()
-});
-```
-
-### commonjs
-
-```js
-var template = require('template_js')
-```
-
-## 快速上手
-
-### 编写模版
-
-使用一个type="text/html"的script标签存放模板，或者放到字符串中：
-
-```html
-<script id="tpl" type="text/html">
-<ul>
-    <%for(var i = 0; i < list.length; i++) {%>
-    <li><%:=list[i].name%></li>
-    <%}%>
-</ul>
-</script>
-```
-
-### 渲染模板
-
-```js
-var tpl = document.getElementById('tpl').innerHTML;
-template(tpl, {list: [{name: "yan"},{name: "haijing"}]});
-```
-
-输出结果：
-
-```html
-<ul>
-    <li>yan</li>
-    <li>haijing</li>
-</ul>
-```
-
-更多例子，请见[demo](demo)目录。
-
-## 文档
-
-[API](doc/api.md)
-
-## 测试
-template.js 包含完整的单元测试和性能测试。详情请见[test](test)目录。
-
-## 自动化
-### Fis
-template.js从0.2.0开始支持[fis](http://fis.baidu.com/)，详情请看[这里](https://github.com/yanhaijing/fis-parser-template)。
-
-### webpack
-template.js从0.6.1开始支持[webpack](https://webpack.js.org/)，详情请看[这里](https://github.com/yanhaijing/template-loader)
-
-### rollup
-template.js从0.6.1开始支持[rollup](https://rollupjs.org/guide/en/)，详情请看[这里](https://github.com/yanhaijing/rollup-plugin-templatejs)
-
-## 贡献指南
-
-如果你想为template.js贡献代码，请采用fork + pull request 方式，并在发起pr前先将master上超前的代码rebase到自己的分支上。
-
-在目录运行如下命令，完成验证测试编译过程，确保无误：
+lerna常用命令
 
 ```bash
-$ npm install # 安装依赖
-$ mocha test # 运行测试代码
+$ lerna init # 初始化
+$ lerna create @templatejs/parser # 创建一个package
+$ lerna add yargs --scope=@templatejs/parser # 给package安装依赖
+$ lerna list # 列出所有的包
+$ lerna bootstrap # 安装全部依赖
+$ lerna link # 建立全部软连接
+$ lerna changed # 列出下次发版lerna publish 要更新的包
+$ lerna publish # 会打tag，上传git,上传npm
 ```
 
-### 发布npm
+发布步骤，修改changelog
 
 ```bash
-$ git tag v0.8.0
-$ git push --tags
-$ npm publish
+$ yarn test
+$ yarn build
+$ lerna publish
 ```
 
-## 报告问题
+## 贡献者列表
 
-- [Issues](https://github.com/yanhaijing/template.js/issues "report question")
-
-## 贡献者
-
-- [yanhaijing](http://yanhaijing.com "yanhaijing")
+[contributors](https://github.com/yanhaijing/template.js/graphs/contributors)
 
 ## 更新日志
-
-[CHANGELOG.md](CHANGELOG.md)
+[CHANGELOG.md](https://github.com/yanhaijing/template.js/blob/master/TODO.md/CHANGELOG.md)
 
 ## 计划列表
-[TODO.md](TODO.md)
-
-## 谁在使用
-- [百度知道](http://zhidao.baidu.com/)
-- [百度经验](http://jingyan.baidu.com/)
-- [百度师傅](http://shifu.baidu.com/)
-- 美团外卖
-- [58金融](https://npm.taobao.org/package/jr58)
-- 神州泰岳
-- 优信
-
-想了解都有谁在使用，[点击这里](https://github.com/yanhaijing/template.js/issues/6)。
-
-## 相关链接
-
-- [BaiduTemplate](http://tangram.baidu.com/BaiduTemplate/)
-- [artTemplate](https://github.com/aui/artTemplate/)
-- [Juicer](https://github.com/PaulGuo/Juicer)
-- [handlebarsjs](http://handlebarsjs.com/)
-- [Jade](http://jade-lang.com/)
-- [只有20行Javascript代码！手把手教你写一个页面模板引擎](https://juejin.im/entry/56258da860b294bcf7955883)
+[TODO.md](https://github.com/yanhaijing/template.js/blob/master/TODO.md)

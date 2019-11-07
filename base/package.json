@@ -1,0 +1,39 @@
+{
+  "name": "template_js",
+  "description": "A javascript template engine, simple, easy & extras, support webpack and fis",
+  "version": "0.8.0",
+  "author": {
+    "name": "yanhaijing",
+    "email": "yanhaijing@yeah.net",
+    "url": "http://yanhaijing.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yanhaijing/template.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yanhaijing/template.js/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/yanhaijing/template.js/blob/master/MIT-LICENSE.txt"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "devDependencies": {
+    "expect.js": "~0.3.1",
+    "mocha": "^3.5.3"
+  },
+  "keywords": [
+    "template",
+    "template.js",
+    "js"
+  ],
+  "main": "template.js"
+}
