@@ -75,5 +75,5 @@
     "@babel/runtime": "^7.1.2",
     "@jsmini/extend": "^0.3.3"
   },
-  "gitHead": "b252cbe662e2433d1118ba5ef1c6abbad94b7d1b"
+  "gitHead": "0b4e07375fdbe6816fae9bb8edcee8208def3078"
 }

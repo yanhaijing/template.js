@@ -1,5 +1,5 @@
 {
-  "name": "template-loader",
+  "name": "templatejs-loader",
   "version": "2.0.1-alpha.0",
   "description": "template.js的webpakc编译loader",
   "main": "dist/index.js",
@@ -71,5 +71,5 @@
   "peerDependencies": {
     "@templatejs/runtime": "^2.0.0"
   },
-  "gitHead": "b252cbe662e2433d1118ba5ef1c6abbad94b7d1b"
+  "gitHead": "0b4e07375fdbe6816fae9bb8edcee8208def3078"
 }
