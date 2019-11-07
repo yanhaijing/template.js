@@ -33,6 +33,11 @@
   "engines": {
     "node": ">= 0.12.0"
   },
+  "keywords": [
+    "template",
+    "template.js",
+    "js"
+  ],
   "devDependencies": {
     "@babel/cli": "7.1.5",
     "@babel/core": "^7.1.2",

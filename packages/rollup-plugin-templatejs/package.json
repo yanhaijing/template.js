@@ -1,7 +1,7 @@
 {
   "name": "rollup-plugin-templatejs",
   "version": "0.1.0",
-  "description": "jslib最好用的js库脚手架",
+  "description": "template.js的rollup编译插件",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
@@ -21,10 +21,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/yanhaijing/rollup-plugin-templatejs.git"
+    "url": "git://github.com/yanhaijing/template.js.git"
   },
   "bugs": {
-    "url": "https://github.com/yanhaijing/rollup-plugin-templatejs/issues"
+    "url": "https://github.com/yanhaijing/template.js/issues"
   },
   "files": [
     "/dist",
@@ -33,6 +33,11 @@
   "engines": {
     "node": ">= 0.12.0"
   },
+  "keywords": [
+    "template",
+    "template.js",
+    "js"
+  ],
   "devDependencies": {
     "@babel/cli": "7.1.5",
     "@babel/core": "^7.1.2",

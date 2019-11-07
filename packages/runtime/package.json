@@ -35,6 +35,11 @@
   "engines": {
     "node": ">= 0.12.0"
   },
+  "keywords": [
+    "template",
+    "template.js",
+    "js"
+  ],
   "devDependencies": {
     "@js-lib/cli": "^1.5.1",
     "cross-env": "5.2.0",

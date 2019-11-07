@@ -1,7 +1,7 @@
 {
   "name": "template-loader",
   "version": "0.1.0",
-  "description": "jslib最好用的js库脚手架",
+  "description": "template.js的webpakc编译loader",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
@@ -21,10 +21,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/yanhaijing/template-loader.git"
+    "url": "git://github.com/yanhaijing/template.js.git"
   },
   "bugs": {
-    "url": "https://github.com/yanhaijing/template-loader/issues"
+    "url": "https://github.com/yanhaijing/template.js/issues"
   },
   "files": [
     "/dist",
@@ -33,6 +33,11 @@
   "engines": {
     "node": ">= 0.12.0"
   },
+  "keywords": [
+    "template",
+    "template.js",
+    "js"
+  ],
   "devDependencies": {
     "@js-lib/cli": "^1.5.1",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
