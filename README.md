@@ -47,6 +47,7 @@ $ lerna publish # 会打tag，上传git,上传npm
 发布步骤，修改changelog
 
 ```bash
+$ yarn test
 $ yarn build
 $ lerna publish
 ```
