@@ -3,12 +3,12 @@ import { extendDeep } from '@jsmini/extend';
 import { precompile, PrecompileOption } from '@templatejs/precompiler';
 
 export interface Options extends PrecompileOption{
-    sandbox?: boolean,
-    include?: string[] | string,
-    exclude?: string[] | string,
-};
+    sandbox?: boolean;
+    include?: string[] | string;
+    exclude?: string[] | string;
+}
 
-export default function (options: Options = {}) {
+export default function (options: Options = {}): object {
     const { include, exclude } = options = extendDeep({
         include: ['**/*.tmpl'],
         exclude: 'node_modules/**',
@@ -20,10 +20,10 @@ export default function (options: Options = {}) {
     // var sourceMap = options.sourceMap !== false;
 
     return {
-        transform(tpl: string, id: string) {
+        transform(tpl: string, id: string): object {
             if (!filter(id)) return;
 
-            options.tplName = id.split('/').pop()
+            options.tplName = id.split('/').pop();
 
             const source = precompile(tpl, options);
             
@@ -35,4 +35,4 @@ export default function (options: Options = {}) {
             };
         }
     };
-};
+}

@@ -13,6 +13,11 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
+  "scripts": {
+    "lint": "yarn workspaces run lint",
+    "test": "yarn workspaces run test",
+    "build": "yarn workspaces run build"
+  },
   "devDependencies": {
     "lerna": "^3.16.4"
   },

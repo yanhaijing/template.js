@@ -4,11 +4,4 @@ export interface Options extends PrecompileOption {
     include?: string[] | string;
     exclude?: string[] | string;
 }
-export default function (options?: Options): {
-    transform(tpl: string, id: string): {
-        code: string;
-        map: {
-            mappings: string;
-        };
-    };
-};
+export default function (options?: Options): object;

@@ -1,13 +1,11 @@
-
-
 import { assign } from '@jsmini/extend';
 import { precompile, PrecompileOption } from '@templatejs/precompiler';
 
 export interface Options extends PrecompileOption{
-    sandbox?: boolean,
-};
+    sandbox?: boolean;
+}
 
-module.exports = function(content, file, conf){
+module.exports = function(content: string, file: any, conf: any): string{
     const config: Options = assign({
         expression: conf.global || 'template',
         tplName: file.id,
