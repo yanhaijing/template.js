@@ -1,8 +1,8 @@
 language: node_js
 node_js:
+  - "12"
+  - "10"
   - "8"
-  - "6"
-  - "4"
 before_install: # if "install" is overridden
   # Repo for Yarn
   - sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
@@ -11,3 +11,5 @@ before_install: # if "install" is overridden
   - sudo apt-get install -y -qq yarn
 cache:
   yarn: true
+before_script:
+ - yarn lerna bootstrap
