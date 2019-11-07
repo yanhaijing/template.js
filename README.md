@@ -20,6 +20,28 @@ template.js包含编译器，预编译期，运行时，web渲染器和各个平
 - [template-loader](https://github.com/yanhaijing/template.js/blob/master/packages/template-loader)
 - [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs)
 
+## 开发者指南
+本项目使用lerna来管理多个插件
+
+安装lerna
+
+```bash
+$ npm install -g lerna@3.16.4
+```
+
+lerna常用命令
+
+```bash
+$ lerna init # 初始化
+$ lerna create @templatejs/parser # 创建一个package
+$ lerna add yargs --scope=@templatejs/parser # 给package安装依赖
+$ lerna list # 列出所有的包
+$ lerna bootstrap # 安装全部依赖
+$ lerna link # 建立全部软连接
+$ lerna changed # 列出下次发版lerna publish 要更新的包
+$ lerna publish # 会打tag，上传git,上传npm
+```
+
 ## 贡献者列表
 
 [contributors](https://github.com/yanhaijing/template.js/graphs/contributors)
