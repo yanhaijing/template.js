@@ -1,6 +1,6 @@
 {
   "name": "@templatejs/precompiler",
-  "version": "2.0.0-alpha.0",
+  "version": "2.0.1-alpha.0",
   "description": "template.js的模板预编译器",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -73,7 +73,7 @@
   "dependencies": {
     "@babel/runtime": "^7.1.2",
     "@jsmini/extend": "^0.3.3",
-    "@templatejs/parser": "^2.0.0-alpha.0",
+    "@templatejs/parser": "^2.0.1-alpha.0",
     "@types/esprima": "^4.0.2",
     "@types/estraverse": "^0.0.6",
     "esprima": "^4.0.1",

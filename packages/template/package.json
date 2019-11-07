@@ -1,6 +1,6 @@
 {
   "name": "template_js",
-  "version": "2.0.0-alpha.0",
+  "version": "2.0.1-alpha.0",
   "description": "一款javascript模板引擎，简单，好用，支持webpack, rollup和fis",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -73,8 +73,8 @@
     "@babel/runtime": "^7.1.2",
     "@jsmini/extend": "^0.3.3",
     "@jsmini/type": "^0.9.2",
-    "@templatejs/parser": "^2.0.0-alpha.0",
-    "@templatejs/runtime": "^2.0.0-alpha.0"
+    "@templatejs/parser": "^2.0.1-alpha.0",
+    "@templatejs/runtime": "^2.0.1-alpha.0"
   },
   "gitHead": "b252cbe662e2433d1118ba5ef1c6abbad94b7d1b"
 }
