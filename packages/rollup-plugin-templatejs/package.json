@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-templatejs",
-  "version": "2.0.1-alpha.0",
+  "version": "2.0.2-alpha.0",
   "description": "template.js的rollup编译插件",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -70,7 +70,7 @@
   "dependencies": {
     "@babel/runtime": "^7.1.2",
     "@jsmini/extend": "^0.3.3",
-    "@templatejs/precompiler": "^2.0.1-alpha.0",
+    "@templatejs/precompiler": "^2.0.2-alpha.0",
     "rollup-pluginutils": "^2.8.2"
   },
   "peerDependencies": {
