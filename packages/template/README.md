@@ -117,23 +117,3 @@ template.js从0.6.1开始支持[rollup](https://rollupjs.org/guide/en/)，详情
 
 ## :airplane: 计划列表
 [TODO.md](https://github.com/yanhaijing/template.js/TODO.md)
-
-## 谁在使用
-- [百度知道](http://zhidao.baidu.com/)
-- [百度经验](http://jingyan.baidu.com/)
-- [百度师傅](http://shifu.baidu.com/)
-- 美团外卖
-- [58金融](https://npm.taobao.org/package/jr58)
-- 神州泰岳
-- 优信
-
-想了解都有谁在使用，[点击这里](https://github.com/yanhaijing/template.js/issues/6)。
-
-## 相关链接
-
-- [BaiduTemplate](http://tangram.baidu.com/BaiduTemplate/)
-- [artTemplate](https://github.com/aui/artTemplate/)
-- [Juicer](https://github.com/PaulGuo/Juicer)
-- [handlebarsjs](http://handlebarsjs.com/)
-- [Jade](http://jade-lang.com/)
-- [只有20行Javascript代码！手把手教你写一个页面模板引擎](https://juejin.im/entry/56258da860b294bcf7955883)
