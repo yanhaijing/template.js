@@ -7,17 +7,6 @@
 
 提供一套模板语法，用户可以写一个模板区块，每次根据传入的数据，生成对应数据产生的HTML片段，渲染不同的效果。
 
-## 特性
-
-- 模版编译，渲染
-- 支持所有主流浏览器及Node（UMD）
-- JavaScript原生语法
-- 丰富的自定义配置
-- 支持数据过滤
-- 异常捕获功能
-- 伪子模版
-- 功能专一，简单好用
-
 ## :pill: 兼容性
 单元测试保证支持如下环境：
 
@@ -71,7 +60,7 @@ requirejs(['node_modules/template_js/dist/index.aio.js'], function (template) {
 <script id="tpl" type="text/html">
 <ul>
     <%for(var i = 0; i < list.length; i++) {%>
-    <li><%:=list[i].name%></li>
+        <li><%:=list[i].name%></li>
     <%}%>
 </ul>
 </script>

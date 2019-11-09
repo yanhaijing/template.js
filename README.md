@@ -5,22 +5,62 @@
 
 一款javascript模板引擎，简单，好用，支持webpack, rollup和fis
 
+## 特性
+
+- JS原生语法，模版解析，编译，渲染
+- 支持所有浏览器及Node
+- 预编译支持主流打包工具
+- 自定义配置、修饰符、函数
+- 支持数据过滤
+- 异常捕获功能
+- 子模版
+- 沙箱模式
+
 ## 使用者指南
-template.js包含编译器，预编译期，运行时，web渲染器和各个平台的插件
+template.js是比拼接字符串更好的方式
 
-- 如果你直接使用script来使用template.js，可以查看template_js
-- 如果你使用webpack, rollup或者fis，可以直接查看相关的插件
-- 如果你对template.js感兴趣，或者想写自己的预编译器，可以查看parser和precompiler
+模板例子
 
-相关packages
+```
+<ul>
+    <%for(var i = 0; i < list.length; i++) {%>
+        <li><%:=list[i].name%></li>
+    <%}%>
+</ul>
+```
 
-- [@templatejs/parser](https://github.com/yanhaijing/template.js/blob/master/packages/parser)
-- [@templatejs/runtime](https://github.com/yanhaijing/template.js/blob/master/packages/runtime)
-- [@templatejs/precompiler](https://github.com/yanhaijing/template.js/blob/master/packages/precompiler)
-- [template_js](https://github.com/yanhaijing/template.js/blob/master/packages/template)
-- [fis-parser-template](https://github.com/yanhaijing/template.js/blob/master/packages/fis-parser-template)
-- [template-loader](https://github.com/yanhaijing/template.js/blob/master/packages/template-loader)
-- [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs)
+数据例子
+
+```js
+const data = {
+    list: [
+        {name: "yan"},
+        {name: "haijing"}
+    ]
+};
+```
+
+渲染输出
+
+```html
+<ul>
+    <li>yan</li>
+    <li>haijing</li>
+</ul>
+```
+
+template.js支持多种使用方式，选择自己的方式
+
+- 原生web与Node，可以查看 [template_js](https://github.com/yanhaijing/template.js/blob/master/packages/template)
+- webpack，可以查看 [template-loader](https://github.com/yanhaijing/template.js/blob/master/packages/template-loader)
+- rollup，可以查看 [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs)
+- fis，可以查看 [fis-parser-template](https://github.com/yanhaijing/template.js/blob/master/packages/fis-parser-template)
+- 不支持的平台，可以自己写一个插件，请查看 [@templatejs/precompiler](https://github.com/yanhaijing/template.js/blob/master/packages/precompiler)
+
+其他packages简介
+
+- [@templatejs/runtime](https://github.com/yanhaijing/template.js/blob/master/packages/runtime) template.js 的运行时，给precompiler生成的渲染函数提供运行时支持
+- [@templatejs/parser](https://github.com/yanhaijing/template.js/blob/master/packages/parser) template.js 的模板解析器
 
 ## 开发者指南
 本项目使用lerna来管理多个插件
