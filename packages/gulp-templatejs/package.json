@@ -1,0 +1,66 @@
+{
+  "name": "gulp-templatejs",
+  "version": "0.1.0",
+  "description": "jslib最好用的js库脚手架",
+  "main": "dist/index.js",
+  "jsnext:main": "dist/index.esm.js",
+  "module": "dist/index.esm.js",
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "test": "npm run lint && nyc mocha",
+    "release": "npm test && npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags",
+    "lint": "eslint -c .eslintrc.js 'src/**/*.ts'",
+    "lint:fix": "eslint -c .eslintrc.js 'src/**/*.ts' --fix",
+    "build:self": "rollup -c config/rollup.config.js",
+    "build": "npm run clean && npm run build:self",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+  },
+  "author": "yanhaijing",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yanhaijing/gulp-templatejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yanhaijing/gulp-templatejs/issues"
+  },
+  "files": [
+    "/dist",
+    "*.d.ts"
+  ],
+  "engines": {
+    "node": ">= 0.12.0"
+  },
+  "devDependencies": {
+    "@js-lib/cli": "^1.5.1",
+    "@typescript-eslint/eslint-plugin": "^1.4.2",
+    "@typescript-eslint/parser": "^1.4.2",
+    "babel-plugin-istanbul": "5.1.0",
+    "coveralls": "3.0.2",
+    "cross-env": "5.2.0",
+    "es5-shim": "4.5.10",
+    "eslint": "^5.15.1",
+    "expect.js": "0.3.1",
+    "mocha": "3.5.3",
+    "nyc": "13.1.0",
+    "rimraf": "2.6.2",
+    "rollup": "0.57.1",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "8.3.0",
+    "rollup-plugin-node-resolve": "3.0.3",
+    "rollup-plugin-typescript2": "0.18.0",
+    "rollup-plugin-uglify": "1.0.0",
+    "source-map-support": "0.5.9",
+    "ts-node": "7.0.1",
+    "tslib": "1.9.3",
+    "typescript": "3.3.3333"
+  },
+  "dependencies": {
+    "@templatejs/precompiler": "^2.0.2",
+    "@types/replace-ext": "^0.0.27",
+    "plugin-error": "^1.0.1",
+    "replace-ext": "^1.0.0",
+    "through-gulp": "^0.5.0"
+  }
+}

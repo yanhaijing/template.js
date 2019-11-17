@@ -55,6 +55,7 @@ template.js支持多种使用方式，选择自己的方式
 - webpack，可以查看 [template-loader](https://github.com/yanhaijing/template.js/blob/master/packages/template-loader)
 - rollup，可以查看 [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs)
 - fis，可以查看 [fis-parser-template](https://github.com/yanhaijing/template.js/blob/master/packages/fis-parser-template)
+- gulp [gulp-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/gulp-templatejs)
 - 不支持的平台，可以自己写一个插件，请查看 [@templatejs/precompiler](https://github.com/yanhaijing/template.js/blob/master/packages/precompiler)
 
 其他packages简介

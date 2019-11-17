@@ -1,7 +1,7 @@
-# [template-loader](https://github.com/yanhaijing/template.js/blob/master/template-loader)
+# [template-loader](https://github.com/yanhaijing/template.js/blob/master/packages/template-loader)
 [![](https://img.shields.io/badge/Powered%20by-jslib%20base-brightgreen.svg)](https://github.com/yanhaijing/jslib-base)
 
-[template.js](https://github.com/yanhaijing/template.js)的webpakc编译loader。
+[template.js](https://github.com/yanhaijing/template.js)的webpack编译loader。
 
 ## 安装
 

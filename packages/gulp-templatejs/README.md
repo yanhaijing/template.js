@@ -1,47 +1,44 @@
-# [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs)
+# [gulp-templatejs](https://github.com/yanhaijing/blob/master/packages/gulp-templatejs)
 [![](https://img.shields.io/badge/Powered%20by-jslib%20base-brightgreen.svg)](https://github.com/yanhaijing/jslib-base)
 
-[template.js](https://github.com/yanhaijing/template.js)的rollup编译插件。
+[template.js](https://github.com/yanhaijing/template.js)的gulp插件。
 
 ## 安装
 
-``` bash
+```bash
 $ npm install --save @templatejs/runtime # 安装template运行时
-$ npm install --save-dev rollup-plugin-templatejs # 安装template编译插件
+$ npm install --save-dev gulp-templatejs # 安装template编译插件
 ```
 
 ## 配置
 配置参数同[template.js](https://github.com/yanhaijing/template.js/blob/master/doc/api.md#templateconfig)参数一样，其中expression参数会作为获取template的表达式。
 
 ```js
-import template from 'rollup-plugin-templatejs';
+var gulp = require('gulp');
+var templatejs = require('gulp-templatejs');
 
-module.exports = {
-    // 省略其他配置
-    plugins: [
-        template({
+gulp.task('build', function () {
+    gulp.src(['src/**.tmpl'])
+        .pipe(templatejs({
             sTag: '<#',
             eTag: '#>',
-            expression: 'require("@templatejs/runtime")', // 获取template的表达式，如 `window.template`
-            include: ['**/*.tmpl'], // 默认值
-            exclude: 'node_modules/**', // 默认值
-        })
-    ]
-};
-```
+            expression: 'require("@templatejs/runtime")'
+        }))
+        .pipe(gulp.dest('dist'))
+});
 
+```
 新建模版文件demo.tmpl
 
-```html
+```
 <div>
     <#=abc#>
 </div>
 ```
-
 在js中`require`模版文件，并渲染
 
 ```js
-import tpl from './demo.tmpl';
+var tpl = require('./demo.js'); // demo.tmpl -> demo.js
 
 document.getElementById('test').innerHTML = tpl({abc: 'yanhaijing'});
 ```
@@ -55,3 +52,7 @@ document.getElementById('test').innerHTML = tpl({abc: 'yanhaijing'});
 
 ## :airplane: 计划列表
 [TODO.md](https://github.com/yanhaijing/template.js/blob/master/TODO.md)
+
+## 相关链接
+
+- [gulp](https://gulpjs.com/)
