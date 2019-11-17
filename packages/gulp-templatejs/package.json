@@ -1,6 +1,6 @@
 {
   "name": "gulp-templatejs",
-  "version": "0.1.0",
+  "version": "2.1.0",
   "description": "jslib最好用的js库脚手架",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -57,7 +57,7 @@
     "typescript": "3.3.3333"
   },
   "dependencies": {
-    "@templatejs/precompiler": "^2.0.2",
+    "@templatejs/precompiler": "^2.1.0",
     "@types/replace-ext": "^0.0.27",
     "plugin-error": "^1.0.1",
     "replace-ext": "^1.0.0",
