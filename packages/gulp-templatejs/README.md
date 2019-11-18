@@ -22,7 +22,8 @@ gulp.task('build', function () {
         .pipe(templatejs({
             sTag: '<#',
             eTag: '#>',
-            expression: 'require("@templatejs/runtime")'
+            expression: 'require("@templatejs/runtime")',
+            sandbox: false, // 沙箱模式
         }))
         .pipe(gulp.dest('dist'))
 });

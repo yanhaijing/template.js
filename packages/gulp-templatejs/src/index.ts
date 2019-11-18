@@ -11,7 +11,6 @@ const enum Module {
 }
 
 export interface Options extends PrecompileOption {
-    sandbox?: boolean;
     module?: Module;
 }
 
@@ -25,7 +24,6 @@ function templatejs(options: Options = {}) {
     const { module } = (options = extendDeep(
         {
             module: Module.Commonjs, // commonjs | umd
-            sandbox: true
         },
         options
     ) as Options);

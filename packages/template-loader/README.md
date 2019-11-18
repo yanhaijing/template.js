@@ -21,6 +21,7 @@ loaders: [
         query: {
             sTag: '<#',
             eTag: '#>',
+            sandbox: false, // 沙箱模式
             expression: 'require("@templatejs/runtime").default' // webpack 2-4
             // expression: 'require("@templatejs/runtime")' // webpack 1
         }

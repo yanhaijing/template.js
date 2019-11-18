@@ -33,7 +33,8 @@ fis2
                 template: {
                     sTag: '<%',
                     eTag: '%>',
-                    global: 'template'
+                    global: 'template',
+                    sandbox: false, // 沙箱模式
                 }
             }
         }
@@ -46,7 +47,8 @@ fis.match('**.tmpl', {
     parser: fis.plugin('template', {
         sTag: '<%',
         eTag: '%>',
-        global: 'template'
+        global: 'template',
+        sandbox: false, // 沙箱模式
     }),
     isJsLike: true,
     release : false

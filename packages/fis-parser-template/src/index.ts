@@ -2,7 +2,7 @@ import { assign } from '@jsmini/extend';
 import { precompile, PrecompileOption } from '@templatejs/precompiler';
 
 export interface Options extends PrecompileOption{
-    sandbox?: boolean;
+    global?: string;
 }
 
 module.exports = function(content: string, file: any, conf: any): string{

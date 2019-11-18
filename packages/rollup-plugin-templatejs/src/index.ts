@@ -3,7 +3,6 @@ import { extendDeep } from '@jsmini/extend';
 import { precompile, PrecompileOption } from '@templatejs/precompiler';
 
 export interface Options extends PrecompileOption{
-    sandbox?: boolean;
     include?: string[] | string;
     exclude?: string[] | string;
 }
@@ -12,7 +11,6 @@ export default function (options: Options = {}): object {
     const { include, exclude } = options = extendDeep({
         include: ['**/*.tmpl'],
         exclude: 'node_modules/**',
-        sandbox: true,
     }, options) as Options;
 
     const filter = createFilter(include, exclude);

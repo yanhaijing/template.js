@@ -100,7 +100,7 @@ function getParamsName(params): string[] {
 }
 function inContextStack(cs, name) {
     let i = cs.length;
-    while(i--) {
+    while (i--) {
         if (cs[i].varList.indexOf(name) !== -1) {
             return true;
         }
@@ -124,12 +124,14 @@ export interface PrecompileOption extends ParserOption {
     expression?: string;
     compress?: boolean;
     tplName?: string;
+    sandbox?: boolean;
 }
 
 const defaultOpt = {
     compress: false,
     expression: 'template',
     tplName: 'unknown.tpl',
+    sandbox: false,
 };
 
 export function detectVar(code: string) {
@@ -148,7 +150,7 @@ export function detectVar(code: string) {
     let unVarList: string[] = [];
 
     traverse(ast, {
-        enter(node, parent){
+        enter(node, parent) {
             const type = node.type;
             let currentContext = contextStack[contextStack.length - 1];
             if (hasContext(type)) {
@@ -192,7 +194,7 @@ export function detectVar(code: string) {
                 }
             }
         },
-        leave(node){
+        leave(node) {
             if (hasContext(node.type)) {
                 contextStack.pop();
             }
@@ -202,23 +204,34 @@ export function detectVar(code: string) {
     return unVarList;
 }
 
+export function generateVarCode(nameList: string[], sandbox: boolean): string {
+    if (sandbox) {
+        return nameList.map(
+            name => `    var ${name} = __data__['${name}'] || __runtime__.functionMap['${name}'];`
+        ).join('\n');
+    }
+
+    return nameList.map(
+        name => `    var ${name} = __data__['${name}'] || __runtime__.functionMap['${name}'] || __root__['${name}'];`
+    ).join('\n');
+}
 /* istanbul ignore next */
 export function precompile(tpl: string, opt: PrecompileOption = defaultOpt): string {
     const code = parse(tpl, opt);
 
-    const { expression, compress, tplName } = extendDeep({}, defaultOpt, opt) as PrecompileOption;
+    const { expression, compress, tplName, sandbox } = extendDeep({}, defaultOpt, opt) as PrecompileOption;
 
     const unVarList = detectVar(code);
 
-/* eslint-disable indent, @typescript-eslint/indent */
-const source = `
+    /* eslint-disable indent, @typescript-eslint/indent */
+    const source = `
 function render(__data__) {
     var __runtime__ = ${expression};
     var __root__ = (typeof self === 'object' && self.self === self && self) ||
         (typeof global === 'object' && global.global === global && global) ||
         this;
 
-    ${unVarList.map(name => `    var ${name} = __data__['${name}'] || __runtime__.functionMap['${name}'] || __root__['${name}'];`).join('\n')}
+    ${generateVarCode(unVarList, sandbox)}
     
     try {
         var __code__ = '';
@@ -226,7 +239,7 @@ function render(__data__) {
 
         ${code}
 
-        return ${compress ? '__runtime__.compress(__code__)': '__code__'};
+        return ${compress ? '__runtime__.compress(__code__)' : '__code__'};
     } catch(e) {
         e.name = 'RenderError';
         e.tpl = '${tplName}';

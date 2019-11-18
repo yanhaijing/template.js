@@ -3,7 +3,6 @@ import { assign } from '@jsmini/extend';
 import { precompile, PrecompileOption } from '@templatejs/precompiler';
 
 export interface Options extends PrecompileOption {
-    sandbox?: boolean;
 }
 
 function getLoaderConfig(loaderContext): Options {

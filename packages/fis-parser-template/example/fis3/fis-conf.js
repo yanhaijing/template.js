@@ -2,7 +2,8 @@ fis.match('**.tmpl', {
     parser: fis.plugin('template', {
         sTag: '<%',
         eTag: '%>',
-        global: 'template'
+        global: 'template',
+        sandbox: false,
     }),
     isJsLike: true,
     release : false

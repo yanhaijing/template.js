@@ -3,6 +3,7 @@ var expect = require('expect.js');
 
 // js 测试源文件
 var detectVar = require('../src/index.ts').detectVar;
+var generateVarCode = require('../src/index.ts').generateVarCode;
 
 describe('单元测试', function() {
     this.timeout(1000);
@@ -65,6 +66,13 @@ describe('单元测试', function() {
 
             // arrow function
             expect(detectVar('const f1 = (a1) => { console.log(a1, f1)}')).to.eql(['console']);
+        });
+    });
+
+    describe('generateVarCode', function () {
+        it('normal', function() {
+            expect(generateVarCode(['test'], false)).to.eql('    var test = __data__[\'test\'] || __runtime__.functionMap[\'test\'] || __root__[\'test\'];');
+            expect(generateVarCode(['test'], true)).to.eql('    var test = __data__[\'test\'] || __runtime__.functionMap[\'test\'];');
         });
     });
 });
