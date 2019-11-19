@@ -31,6 +31,7 @@ module.exports = {
             "always"
         ],
         "no-console": "off",
+        "@typescript-eslint/no-empty-interface": "off",
         "max-classes-per-file": ["error", 2],
     }
 };
