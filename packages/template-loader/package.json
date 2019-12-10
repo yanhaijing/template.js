@@ -36,7 +36,8 @@
   "keywords": [
     "template",
     "template.js",
-    "js"
+    "js",
+    "webpack"
   ],
   "devDependencies": {
     "@js-lib/cli": "^1.5.1",
