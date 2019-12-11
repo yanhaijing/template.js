@@ -11,7 +11,7 @@ const defaultOpt = { sTag: '<%', eTag: '%>', escape: true};
 export function parsehtml(line: string) {
     // 单双引号转义
     line = String(line).replace(/('|")/g, '\\$1');
-    const lineList = line.split('\n');
+    const lineList = line.split(/\r\n|\n/);
     let code = '';
     for (var i = 0; i < lineList.length; i++) {
         code += ';__code__ += ("' + lineList[i] + (i === lineList.length - 1 ? '")\n' : '\\n")\n');
@@ -19,8 +19,8 @@ export function parsehtml(line: string) {
     return code;
 }
 
-export function parsejs(line: string, escape = true) {      
-    line = String(line);        
+export function parsejs(line: string, escape = true) {
+    line = String(line);      
     escape = !!escape;        
 
     //var reg = /^(:?)(.*?)=(.*)$/;

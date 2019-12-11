@@ -27,6 +27,11 @@ describe('单元测试', function() {
             expect(parsehtml('\'"')).to.equal(html2text('\\\'\\"'));
             expect(parsehtml('a\nb')).to.equal(';__code__ += ("a\\n")\n;__code__ += ("b")\n');
         });
+
+        it('line feed', function() {
+            expect(parsehtml('123\n123')).to.equal(';__code__ += ("123\\n")\n;__code__ += ("123")\n');
+            expect(parsehtml('123\r\n123')).to.equal(';__code__ += ("123\\n")\n;__code__ += ("123")\n');
+        });
     });
 
     describe('parsejs', function() {
