@@ -1,6 +1,6 @@
 {
   "name": "@templatejs/parser",
-  "version": "2.1.0",
+  "version": "2.2.1",
   "description": "template.js的模板编译器",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",

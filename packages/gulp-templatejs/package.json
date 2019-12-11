@@ -1,6 +1,6 @@
 {
   "name": "gulp-templatejs",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "template.js的gulp编译task",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -63,7 +63,7 @@
     "typescript": "3.3.3333"
   },
   "dependencies": {
-    "@templatejs/precompiler": "^2.2.0",
+    "@templatejs/precompiler": "^2.2.1",
     "@types/replace-ext": "^0.0.27",
     "plugin-error": "^1.0.1",
     "replace-ext": "^1.0.0",
