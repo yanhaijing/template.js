@@ -1,0 +1,11 @@
+{
+    "name": "parcel-plugin-template",
+    "npmname": "parcel-plugin-template",
+    "umdname": "parcel-plugin-template",
+    "username": "yanhaijing",
+    "type": "ts",
+    "module": "commonjs",
+    "test": "mocha",
+    "lang": "zh",
+    "version": "1.5.1"
+}
