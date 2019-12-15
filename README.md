@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/LICENSE)
 
-一款javascript模板引擎，简单，好用，支持webpack, rollup, parcel, fis和gulp
+一款javascript模板引擎，简单，好用，支持webpack, rollup, parcel, browserify, fis和gulp
 
 ## 特性
 
