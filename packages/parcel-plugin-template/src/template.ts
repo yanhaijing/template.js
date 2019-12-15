@@ -1,6 +1,6 @@
+import { precompile, PrecompileOption } from '@templatejs/precompiler';
 const path = require('path');
 const fs = require('fs');
-import { precompile, PrecompileOption } from '@templatejs/precompiler';
 const HTMLAsset = require('parcel-bundler/src/Asset');
 
 class TmplAsset extends HTMLAsset {
@@ -19,11 +19,11 @@ class TmplAsset extends HTMLAsset {
         
     }
 
-    parse(code: string) {
+    parse(code: string): string {
         return precompile(code, this.templateOption);
     }
 
-    async generate() {
+    async generate(): Promise<string> {
         return `module.exports = ${this.ast}`;
     }
 }

@@ -31,6 +31,8 @@ module.exports = {
             "always"
         ],
         "no-console": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/explicit-member-accessibility": "off",
         "max-classes-per-file": ["error", 2],
     }
 };
