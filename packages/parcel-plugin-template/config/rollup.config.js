@@ -2,7 +2,7 @@
 // commonjs
 var common = require('./rollup.js');
 
-module.exports = {
+module.exports = [{
     input: 'src/index.ts',
     output: {
         file: 'dist/index.js',
@@ -13,8 +13,23 @@ module.exports = {
     },
     plugins: [
         common.getCompiler({
-            tsconfigOverride: { compilerOptions : { declaration: true, module: 'ES2015' } },
+            tsconfigOverride: { compilerOptions : { declaration: true, module: 'ES2015', target: 'ES2015' } },
             useTsconfigDeclarationDir: true
         })
     ]
-};
+}, {
+    input: 'src/template.ts',
+    output: {
+        file: 'dist/template.js',
+        format: 'cjs',
+        // When export and export default are not used at the same time, set legacy to true.
+        // legacy: true,
+        banner: common.banner,
+    },
+    plugins: [
+        common.getCompiler({
+            tsconfigOverride: { compilerOptions : { declaration: true, module: 'ES2015', target: 'ES2015' } },
+            useTsconfigDeclarationDir: true
+        })
+    ]
+}];

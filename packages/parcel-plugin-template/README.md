@@ -1,37 +1,30 @@
 # [parcel-plugin-template](https://github.com/yanhaijing/template.js/blob/master/packages/parcel-plugin-template)
 [![](https://img.shields.io/badge/Powered%20by-jslib%20base-brightgreen.svg)](https://github.com/yanhaijing/jslib-base)
 
-[template.js](https://github.com/yanhaijing/template.js)的rollup编译插件。
+[template.js](https://github.com/yanhaijing/template.js)的parcel编译插件。
 
 ## 安装
 
 ``` bash
 $ npm install --save @templatejs/runtime # 安装template运行时
-$ npm install --save-dev rollup-plugin-templatejs # 安装template编译插件
+$ npm install --save-dev parcel-plugin-template # 安装template编译插件
 ```
 
 ## 配置
 配置参数同[template.js](https://github.com/yanhaijing/template.js/blob/master/doc/api.md#templateconfig)参数一样，其中expression参数会作为获取template的表达式。
 
-```js
-import template from 'rollup-plugin-templatejs';
+parcel会自动加载`parcel-plugin-template`插件，可以通过`template.config.json`文件自定义配置
 
-module.exports = {
-    // 省略其他配置
-    plugins: [
-        template({
-            sTag: '<#',
-            eTag: '#>',
-            expression: 'require("@templatejs/runtime")', // 获取template的表达式，如 `window.template`
-            sandbox: false, // 沙箱模式
-            include: ['**/*.tmpl'], // 默认值
-            exclude: 'node_modules/**', // 默认值
-        })
-    ]
-};
+```json
+{
+    "sTag": "<#",
+    "eTag": "#>",
+    "expression": "require(\"@templatejs/runtime\").default", // 获取template的表达式，如 `window.template`
+    "sandbox": false, // 沙箱模式
+}
 ```
 
-新建模版文件demo.tmpl
+新建模版文件demo.tmpl(后缀名必须为tmpl)
 
 ```html
 <div>
@@ -39,7 +32,7 @@ module.exports = {
 </div>
 ```
 
-在js中`require`模版文件，并渲染
+在js中`import`模版文件，并渲染
 
 ```js
 import tpl from './demo.tmpl';

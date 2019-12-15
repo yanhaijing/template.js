@@ -2,6 +2,7 @@
     "compilerOptions": {
         "target": "ES5",
         "module": "commonjs",
+        "esModuleInterop": true,
         "declarationDir": "."
     },
     "include": [

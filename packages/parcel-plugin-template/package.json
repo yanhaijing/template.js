@@ -3,8 +3,6 @@
   "version": "0.1.0",
   "description": "template.js的parcel编译插件",
   "main": "dist/index.js",
-  "jsnext:main": "dist/index.esm.js",
-  "module": "dist/index.esm.js",
   "sideEffects": false,
   "scripts": {
     "clean": "rimraf ./dist",
@@ -30,7 +28,7 @@
     "*.d.ts"
   ],
   "engines": {
-    "node": ">= 0.12.0"
+    "node": ">= 6.0.0"
   },
   "keywords": [
     "template",
@@ -39,27 +37,33 @@
   ],
   "devDependencies": {
     "@js-lib/cli": "^1.5.1",
-    "cross-env": "5.2.0",
-    "rimraf": "2.6.2",
-    "es5-shim": "4.5.10",
-    "eslint": "^5.15.1",
     "@typescript-eslint/eslint-plugin": "^1.4.2",
     "@typescript-eslint/parser": "^1.4.2",
+    "babel-plugin-istanbul": "5.1.0",
+    "coveralls": "3.0.2",
+    "cross-env": "5.2.0",
+    "es5-shim": "4.5.10",
+    "eslint": "^5.15.1",
+    "expect.js": "0.3.1",
+    "mocha": "3.5.3",
+    "nyc": "13.1.0",
+    "rimraf": "2.6.2",
     "rollup": "0.57.1",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-commonjs": "8.3.0",
     "rollup-plugin-node-resolve": "3.0.3",
     "rollup-plugin-typescript2": "0.18.0",
     "rollup-plugin-uglify": "1.0.0",
+    "source-map-support": "0.5.9",
     "ts-node": "7.0.1",
     "tslib": "1.9.3",
-    "typescript": "3.3.3333",
-    "babel-plugin-istanbul": "5.1.0",
-    "coveralls": "3.0.2",
-    "expect.js": "0.3.1",
-    "mocha": "3.5.3",
-    "nyc": "13.1.0",
-    "source-map-support": "0.5.9"
+    "typescript": "3.3.3333"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@templatejs/precompiler": "^2.2.1",
+    "parcel-bundler": "^1.12.4"
+  },
+  "peerDependencies": {
+    "@templatejs/runtime": "^2.0.0"
+  }
 }
