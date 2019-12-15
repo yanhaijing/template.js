@@ -56,6 +56,7 @@ template.js支持多种使用方式，选择自己的方式
 - rollup，可以查看 [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs)
 - parcel，可以查看 [parcel-plugin-template](https://github.com/yanhaijing/template.js/blob/master/packages/parcel-plugin-template)
 - fis，可以查看 [fis-parser-template](https://github.com/yanhaijing/template.js/blob/master/packages/fis-parser-template)
+- browserify，可以查看 [browserify-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/browserify-templatejs)
 - gulp [gulp-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/gulp-templatejs)
 - 不支持的平台，可以自己写一个插件，请查看 [@templatejs/precompiler](https://github.com/yanhaijing/template.js/blob/master/packages/precompiler)
 
