@@ -1,0 +1,9 @@
+{
+  "name": "base",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "browserify -t browserify-templatejs index.js > bundle.js"
+  }
+}
