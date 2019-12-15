@@ -6,34 +6,33 @@ import through from 'through';
 const filenamePattern = /\.(tmpl)$/;
 
 const wrap = function (template: string) {
-  return 'module.exports = ' + template + ';';
-  
-}
+    return 'module.exports = ' + template + ';';
+
+};
 module.exports = function (file: string) {
-  if (!filenamePattern.test(file)) return through();
-  
-  let templateOption: PrecompileOption = {
-    tplName: path.basename(file),
-    expression: 'require("@templatejs/runtime")'
-  };
+    if (!filenamePattern.test(file)) return through();
 
-  const filepath = path.resolve(process.cwd(), 'template.config.json');
+    let templateOption: PrecompileOption = {
+        tplName: path.basename(file),
+        expression: 'require("@templatejs/runtime")'
+    };
 
-  if (fs.existsSync(filepath)) {
-      const obj = require(filepath);
-      templateOption = Object.assign(templateOption, obj);
-  }
+    const filepath = path.resolve(process.cwd(), 'template.config.json');
 
-  let input = '';
-  const write = function (buffer) {
-    input += buffer;
-  }
-  
-  const end = function () {
-    this.queue(wrap(precompile(input, templateOption)));
-    this.queue(null);
-  }
-  
-  return through(write, end);
+    if (fs.existsSync(filepath)) {
+        templateOption = Object.assign(templateOption, require(filepath));
+    }
 
-}
+    let input = '';
+    const write = function (buffer) {
+        input += buffer;
+    };
+
+    const end = function () {
+        this.queue(wrap(precompile(input, templateOption)));
+        this.queue(null);
+    };
+
+    return through(write, end);
+
+};
