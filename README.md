@@ -51,14 +51,16 @@ const data = {
 
 template.js支持多种使用方式，选择自己的方式
 
-- 原生web与Node，可以查看 [template_js](https://github.com/yanhaijing/template.js/blob/master/packages/template)
-- webpack，可以查看 [template-loader](https://github.com/yanhaijing/template.js/blob/master/packages/template-loader)
-- rollup，可以查看 [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs)
-- parcel，可以查看 [parcel-plugin-template](https://github.com/yanhaijing/template.js/blob/master/packages/parcel-plugin-template)
-- fis，可以查看 [fis-parser-template](https://github.com/yanhaijing/template.js/blob/master/packages/fis-parser-template)
-- browserify，可以查看 [browserify-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/browserify-templatejs)
-- gulp [gulp-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/gulp-templatejs)
-- 不支持的平台，可以自己写一个插件，请查看 [@templatejs/precompiler](https://github.com/yanhaijing/template.js/blob/master/packages/precompiler)
+| 平台          | 插件                                                         |
+| ------------- | ------------------------------------------------------------ |
+| webpack       | [template-loader](https://github.com/yanhaijing/template.js/blob/master/packages/template-loader) |
+| rollup        | [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs) |
+| parcel        | [parcel-plugin-template](https://github.com/yanhaijing/template.js/blob/master/packages/parcel-plugin-template) |
+| fis           | [fis-parser-template](https://github.com/yanhaijing/template.js/blob/master/packages/fis-parser-template) |
+| browserify    | [browserify-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/browserify-templatejs) |
+| gulp          | [gulp-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/gulp-templatejs) |
+| 原生web与Node | [template_js](https://github.com/yanhaijing/template.js/blob/master/packages/template) |
+| 不支持的平台  | 可以自己写一个插件，请查看 [@templatejs/precompiler](https://github.com/yanhaijing/template.js/blob/master/packages/precompiler) |
 
 其他packages简介
 
