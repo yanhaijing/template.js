@@ -1,6 +1,6 @@
 {
   "name": "parcel-plugin-template",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "template.js的parcel编译插件",
   "main": "dist/index.js",
   "sideEffects": false,
@@ -60,7 +60,7 @@
     "typescript": "3.3.3333"
   },
   "dependencies": {
-    "@templatejs/precompiler": "^2.3.0",
+    "@templatejs/precompiler": "^2.4.0",
     "parcel-bundler": "^1.12.4"
   },
   "peerDependencies": {

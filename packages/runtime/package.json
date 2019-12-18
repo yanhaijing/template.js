@@ -1,6 +1,6 @@
 {
   "name": "@templatejs/runtime",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "description": "template.js的runtime运行时",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -77,7 +77,7 @@
     "@babel/runtime": "^7.1.2",
     "@jsmini/extend": "^0.3.3",
     "@jsmini/type": "^0.9.2",
-    "@templatejs/parser": "^2.3.0"
+    "@templatejs/parser": "^2.4.0"
   },
   "gitHead": "0b4e07375fdbe6816fae9bb8edcee8208def3078"
 }
