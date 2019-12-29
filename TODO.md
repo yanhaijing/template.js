@@ -9,7 +9,6 @@
 - [X] gulp插件
 - [X] 支持parceljs
 - [X] 支持browserify
-- [ ] 支持requirejs
 - [ ] 适配node模板，类似smarty
 - [ ] 其他模版语法支持
 - [ ] post-tpl 计划
