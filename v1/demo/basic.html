@@ -1,42 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <title>基本用例</title>
     <style>
-        table{border-collapse: collapse;}
-        td{border: 1px solid #000;}
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid #000;
+            line-height: 20px;
+            padding:5px;
+        }
     </style>
 </head>
+
 <body>
     <div id="wp"></div>
     <script id="tpl" type="text/html">
     <table>
         <caption>for循环输出两次</caption>
         <%var test = '输出自定义变量';%>
+        <tr><th>功能</th><th>语法</th><th>结果示例</th></tr>
         <%for (var i = 0; i < 2; i++) {%>
-            <tr><td>&lt;%=html%&gt;默认</td><td><%=html%></td></tr>
-            <tr><td>&lt;%:h=html&gt;html转义</td><td><%:h=html%></td></tr>
-            <tr><td>&lt;%:=html&gt;不转义</td><td><%:=html%></td></tr>
-            <tr><td>&lt;%:u=url&gt;URI转义</td><td><%:u=url%></td></tr>
-            <tr><td>var</td><td><%:=test%></td></tr>
-            <tr><td>&lt;%=test + 1&gt;表达式</td><td><%=test + 1%></td></tr>
+            <tr><td>默认(转义)</td>
+                <td>&lt;%=html%&gt;</td>
+                <td><%=html%></td></tr>
+            <tr><td>html转义</td>
+                <td>&lt;%:h=html%&gt;</td>
+                <td><%:h=html%></td></tr>
+            <tr><td>不转义</td>
+                <td>&lt;%:=html%&gt;</td>
+                <td><%:=html%></td></tr>
+            <tr><td>URI转义</td>
+                <td>&lt;%:u=url%&gt;</td>
+                <td><%:u=url%></td></tr>
+            <tr><td>输出变量</td>
+                <td>&lt;%var test = '输出自定义变量';%&gt;&lt;%:=var%&gt;</td>
+                <td><%:=test%></td></tr>
+            <tr><td>表达式</td>
+                <td>&lt;%=test + 1%&gt;表达式</td>
+                <td><%=test + 1%></td></tr>
+            <tr><td>for循环</td>
+                <td>&lt;%for (var i = 0; i < 2; i++) {%&gt;</td>
+                <td>...</td>
+            </tr>
             <%if (true) {%>
-                <tr><td>if</td><td>if 语句</td></tr>
+                <tr><td>if判断</td>
+                    <td>&lt;%if(表达式){%&gt;...&lt;%}%&gt;</td>
+                    <td>if 语句</td></tr>
             <%}%>
             <tr><td>分割线</td><td>------------------------------</td></tr>
+            <tr style="background:gray;"><td colspan="3">&nbsp;</td></tr>
         <%}%>
     </table>
     </script>
     <script src="../template.js"></script>
     <script>
-    var html = template(document.getElementById('tpl').innerHTML, {
-        url: 'http://yanhaijing.com?name=颜海镜', 
-        html: '<div id="test">template.js "</div>'
-    });
+        var html = template(document.getElementById('tpl').innerHTML, {
+            url: 'http://yanhaijing.com?name=颜海镜',
+            html: '<div id="test">template.js</div>'
+        });
 
-    console.log(html);
-    document.getElementById('wp').innerHTML = html;
+        console.log(html);
+        document.getElementById('wp').innerHTML = html;
     </script>
 </body>
+
 </html>
