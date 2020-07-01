@@ -1,5 +1,9 @@
 # 变更日志
 
+## 2.4.1 / 2020-7-1
+
+- 修复属性为徦值时，比如0 false ''，获取不到的问题，[#39](https://github.com/yanhaijing/template.js/issues/39)
+
 ## 2.4.0 / 2019-12-15
 
 - 添加对`browserify`的支持

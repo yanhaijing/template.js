@@ -207,12 +207,12 @@ export function detectVar(code: string) {
 export function generateVarCode(nameList: string[], sandbox: boolean): string {
     if (sandbox) {
         return nameList.map(
-            name => `    var ${name} = __data__['${name}'] || __runtime__.functionMap['${name}'];`
+            name => `    var ${name} = '${name}' in __data__ ? __data__['${name}'] : __runtime__.functionMap['${name}'];`
         ).join('\n');
     }
 
     return nameList.map(
-        name => `    var ${name} = __data__['${name}'] || __runtime__.functionMap['${name}'] || __root__['${name}'];`
+        name => `    var ${name} = '${name}' in __data__ ? __data__['${name}'] : '${name}' in __runtime__.functionMap ? __runtime__.functionMap['${name}'] : __root__['${name}'];`
     ).join('\n');
 }
 /* istanbul ignore next */
