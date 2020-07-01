@@ -1,6 +1,6 @@
 {
   "name": "fis-parser-template",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "template.js的fis编译插件",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
@@ -64,7 +64,7 @@
   },
   "dependencies": {
     "@jsmini/extend": "^0.3.3",
-    "@templatejs/precompiler": "^2.4.0"
+    "@templatejs/precompiler": "^2.4.1"
   },
   "peerDependencies": {
     "@templatejs/runtime": "^2.0.0"
