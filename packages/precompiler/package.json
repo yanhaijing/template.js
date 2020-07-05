@@ -1,6 +1,6 @@
 {
   "name": "@templatejs/precompiler",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "template.js的模板预编译器",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
