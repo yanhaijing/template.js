@@ -1,5 +1,11 @@
 # 变更日志
 
+## 2.4.2 / 2020-7-5
+
+- 修复未传入属性，会访问到原型链属性的bug
+    - in判断改为hasOwnProperty判断
+    - 详细讨论见[#39](https://github.com/yanhaijing/template.js/issues/39)
+
 ## 2.4.1 / 2020-7-1
 
 - 修复属性为徦值时，比如0 false ''，获取不到的问题，[#39](https://github.com/yanhaijing/template.js/issues/39)

@@ -70,9 +70,16 @@ describe('单元测试', function() {
     });
 
     describe('generateVarCode', function () {
+        function destCode(sandbox, key) {
+            if (sandbox) {
+                return `    var test = __hasOwnProp__.call(__data__, '${key}') ? __data__['${key}'] : __hasOwnProp__.call(__runtime__.functionMap, '${key}') ? __runtime__.functionMap['${key}'] : undefined;`;
+            }
+
+            return `    var test = __hasOwnProp__.call(__data__, '${key}') ? __data__['${key}'] : __hasOwnProp__.call(__runtime__.functionMap, '${key}') ? __runtime__.functionMap['${key}'] : __hasOwnProp__.call(__root__, '${key}') ? __root__['${key}'] : undefined;`;
+        }
         it('normal', function() {
-            expect(generateVarCode(['test'], false)).to.eql('    var test = __data__[\'test\'] || __runtime__.functionMap[\'test\'] || __root__[\'test\'];');
-            expect(generateVarCode(['test'], true)).to.eql('    var test = __data__[\'test\'] || __runtime__.functionMap[\'test\'];');
+            expect(generateVarCode(['test'], false)).to.eql(destCode(false, 'test'));
+            expect(generateVarCode(['test'], true)).to.eql(destCode(true, 'test'));
         });
     });
 });

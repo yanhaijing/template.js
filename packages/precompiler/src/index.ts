@@ -205,14 +205,17 @@ export function detectVar(code: string) {
 }
 
 export function generateVarCode(nameList: string[], sandbox: boolean): string {
+    function genExpression(objStr, keyStr) {
+        return `__hasOwnProp__.call(${objStr}, '${keyStr}') ? ${objStr}['${keyStr}']`;
+    }
     if (sandbox) {
         return nameList.map(
-            name => `    var ${name} = '${name}' in __data__ ? __data__['${name}'] : __runtime__.functionMap['${name}'];`
+            name => `    var ${name} = ${genExpression('__data__', name)} : ${genExpression('__runtime__.functionMap', name)} : undefined;`
         ).join('\n');
     }
 
     return nameList.map(
-        name => `    var ${name} = '${name}' in __data__ ? __data__['${name}'] : '${name}' in __runtime__.functionMap ? __runtime__.functionMap['${name}'] : __root__['${name}'];`
+        name => `    var ${name} = ${genExpression('__data__', name)} : ${genExpression('__runtime__.functionMap', name)} : ${genExpression('__root__', name)} : undefined;`
     ).join('\n');
 }
 /* istanbul ignore next */
@@ -230,6 +233,7 @@ function render(__data__) {
     var __root__ = (typeof self === 'object' && self.self === self && self) ||
         (typeof global === 'object' && global.global === global && global) ||
         this;
+    var __hasOwnProp__ = ({}).hasOwnProperty;
 
     ${generateVarCode(unVarList, sandbox)}
     
