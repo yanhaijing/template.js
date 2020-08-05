@@ -1,0 +1,33 @@
+{
+  "name": "@templatejs/cli",
+  "version": "2.4.2",
+  "description": "template.js的cli工具",
+  "main": "lib/cli.js",
+  "bin": {
+    "template": "./lib/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "author": "yanhaijing",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yanhaijing/template.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yanhaijing/template.js/issues"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "inquirer": "^7.3.3",
+    "spinner": "^0.3.4",
+    "yargs": "^15.4.1"
+  }
+}

@@ -1,0 +1,17 @@
+{
+    "name": "base",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+      "build": "browserify -t browserify-templatejs index.js > bundle.js"
+    },
+    "dependencies": {
+      "@templatejs/runtime": "^2.4.0"
+    },
+    "devDependencies": {
+      "browserify": "^16.5.2",
+      "browserify-templatejs": "^2.4.0"
+    }
+  }
+  
