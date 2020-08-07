@@ -1,6 +1,6 @@
 {
   "name": "@templatejs/cli",
-  "version": "2.5.0",
+  "version": "2.5.0-4",
   "description": "template.js的cli工具",
   "main": "lib/cli.js",
   "bin": {
@@ -14,7 +14,8 @@
     "lib": "lib"
   },
   "files": [
-    "lib"
+    "lib",
+    "template"
   ],
   "author": "yanhaijing",
   "license": "MIT",
@@ -29,6 +30,14 @@
     "chalk": "^4.1.0",
     "inquirer": "^7.3.3",
     "spinner": "^0.3.4",
+    "copy-dir": "^1.2.0",
+    "template_js": "^2.4.0",
+    "ora": "^3.4.0",
     "yargs": "^15.4.1"
-  }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "gitHead": "2934ebe749bc4c67c9044ad8215076e2b255b8da"
 }
