@@ -7,7 +7,8 @@
     "template": "./lib/cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "echo cli build do nothing",
+    "test": "echo cli test do nothing"
   },
   "directories": {
     "lib": "lib"
