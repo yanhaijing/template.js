@@ -1,0 +1,16 @@
+{
+    "name": "base",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+      "build": "parcel --no-cache index.html"
+    },
+    "dependencies": {
+      "@templatejs/runtime": "^2.4.0"
+    },
+    "devDependencies": {
+      "parcel-plugin-template": "^2.4.0"
+    }
+  }
+  

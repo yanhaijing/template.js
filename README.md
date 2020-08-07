@@ -50,7 +50,21 @@ const data = {
 </ul>
 ```
 
-template.js支持多种使用方式，选择自己的方式
+通过cli工具快速初始化项目
+
+```bash
+$ npx @templatejs/cli new myapp
+# 选择对应的平台
+# ❯ webpack4 
+#   rollup 
+#   parcel 
+#   fis3 
+#   browserify 
+#   gulp 
+#   browser 
+```
+
+如果已有项目，可以选择对应的插件，template.js支持多种使用方式
 
 | 平台          | 插件                                                         |
 | ------------- | ------------------------------------------------------------ |

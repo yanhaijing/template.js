@@ -1,0 +1,11 @@
+<h2>我的待办</h2>
+<ul>
+    <%list.forEach(function(item, index) {%>
+        <li>
+            <div class="row">
+                <div class="col-5 <%=index % 2 ? 'text-secondary' : ''%>"><%=item.text%></div>
+            </div>
+        </li>
+    <%})%>
+</ul>
+<a href="#" class="btn btn-dark add-todo">新增</a>

@@ -1,0 +1,17 @@
+{
+    "name": "base",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT",
+    "scripts": {
+      "build": "gulp build"
+    },
+    "dependencies": {
+      "@templatejs/runtime": "^2.4.0"
+    },
+    "devDependencies": {
+      "gulp": "^4.0.2",
+      "gulp-templatejs": "^2.4.0"
+    }
+  }
+  
