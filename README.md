@@ -16,6 +16,8 @@
 - 子模版
 - 沙箱模式
 - 支持JIT和AOT两种编译模式
+- 提供cli集成化工具
+- 提供编辑器插件支持
 
 ## 使用者指南
 template.js是比拼接字符串更好的方式
@@ -50,6 +52,13 @@ const data = {
 </ul>
 ```
 
+template.js支持的编辑器插件
+
+| 编辑器 | 插件                                                         |
+| ------ | ------------------------------------------------------------ |
+| Vscode | [高亮插件](https://marketplace.visualstudio.com/items?itemName=yanhaijing1234.templatejs) |
+| Sublime | [高亮插件](https://github.com/yanhaijing/template-sublime) |
+
 通过cli工具快速初始化项目
 
 ```bash
@@ -81,6 +90,7 @@ $ npx @templatejs/cli new myapp
 
 - [@templatejs/runtime](https://github.com/yanhaijing/template.js/blob/master/packages/runtime) template.js 的运行时，给precompiler生成的渲染函数提供运行时支持
 - [@templatejs/parser](https://github.com/yanhaijing/template.js/blob/master/packages/parser) template.js 的模板解析器
+- [template-vscode](https://github.com/yanhaijing/template-vscode) template.js 的vscode插件
 
 ## 开发者指南
 本项目使用lerna来管理多个插件
@@ -117,7 +127,7 @@ $ lerna publish
 [contributors](https://github.com/yanhaijing/template.js/graphs/contributors)
 
 ## 更新日志
-[CHANGELOG.md](https://github.com/yanhaijing/template.js/blob/master/TODO.md/CHANGELOG.md)
+[CHANGELOG.md](https://github.com/yanhaijing/template.js/blob/master/CHANGELOG.md)
 
 ## 计划列表
 [TODO.md](https://github.com/yanhaijing/template.js/blob/master/TODO.md)
