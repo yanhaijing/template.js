@@ -151,5 +151,6 @@ $ lerna publish
 - [artTemplate](https://github.com/aui/artTemplate/)
 - [Juicer](https://github.com/PaulGuo/Juicer)
 - [handlebarsjs](http://handlebarsjs.com/)
-- [Jade](http://jade-lang.com/)
+- [PUG(原Jade)](https://pugjs.org/api/getting-started.html)
+- [EJS](https://ejs.co/)
 - [只有20行Javascript代码！手把手教你写一个页面模板引擎](https://juejin.im/entry/56258da860b294bcf7955883)
