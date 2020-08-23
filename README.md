@@ -57,7 +57,7 @@ template.js支持的编辑器插件
 | 编辑器 | 插件                                                         |
 | ------ | ------------------------------------------------------------ |
 | Vscode | [高亮插件](https://marketplace.visualstudio.com/items?itemName=yanhaijing1234.templatejs) |
-| Sublime | [高亮插件](https://github.com/yanhaijing/template-sublime) |
+| Sublime | [高亮插件](https://packagecontrol.io/packages/templatejs) |
 | Atom | [高亮插件](https://atom.io/packages/language-templatejs) |
 | WebStorm | TODO |
 
