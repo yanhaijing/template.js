@@ -1,0 +1,11 @@
+{
+    "name": "node",
+    "npmname": "@templatejs/node",
+    "umdname": "node",
+    "username": "yanhaijing",
+    "type": "ts",
+    "module": "commonjs",
+    "test": "mocha",
+    "lang": "zh",
+    "version": "1.6.0"
+}

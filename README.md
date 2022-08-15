@@ -108,7 +108,7 @@ lerna常用命令
 ```bash
 $ lerna init # 初始化
 $ lerna create @templatejs/parser # 创建一个package
-$ lerna add yargs --scope=@templatejs/parser # 给package安装依赖
+$ lerna add @types/node --scope=@templatejs/node # 给package安装依赖
 $ lerna list # 列出所有的包
 $ lerna bootstrap # 安装全部依赖
 $ lerna link # 建立全部软连接
