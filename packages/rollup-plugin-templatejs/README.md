@@ -23,14 +23,14 @@ export default defineConfig({
     plugins: [
         {
             ...template({
-                sTag: '<#',
-                eTag: '#>',
+                sTag: "<#",
+                eTag: "#>",
                 expression: 'require("@templatejs/runtime")', // 获取template的表达式，如 `window.template`
                 sandbox: false, // 沙箱模式
-                include: ['**/*.tmpl'], // 默认值
-                exclude: 'node_modules/**', // 默认值
+                include: ["**/*.tmpl"], // 默认值
+                exclude: "node_modules/**", // 默认值
             }),
-            enforce: 'pre'
+            enforce: "pre",
         },
     ],
 });
