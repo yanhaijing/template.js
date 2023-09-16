@@ -1,6 +1,6 @@
 {
   "name": "@templatejs/cli",
-  "version": "2.5.0-4",
+  "version": "2.6.0",
   "description": "template.js的cli工具",
   "main": "lib/cli.js",
   "bin": {
@@ -28,11 +28,11 @@
   },
   "dependencies": {
     "chalk": "^4.1.0",
-    "inquirer": "^7.3.3",
-    "spinner": "^0.3.4",
     "copy-dir": "^1.2.0",
-    "template_js": "^2.4.0",
+    "inquirer": "^7.3.3",
     "ora": "^3.4.0",
+    "spinner": "^0.3.4",
+    "template_js": "^2.4.0",
     "yargs": "^15.4.1"
   },
   "publishConfig": {
