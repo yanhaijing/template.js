@@ -67,6 +67,7 @@ template.js支持的编辑器插件
 $ npx @templatejs/cli new myapp
 # 选择对应的平台
 # ❯ webpack4 
+#   vite 
 #   rollup 
 #   parcel 
 #   fis3 
@@ -80,6 +81,7 @@ $ npx @templatejs/cli new myapp
 | 平台          | 插件                                                         |
 | ------------- | ------------------------------------------------------------ |
 | webpack       | [template-loader](https://github.com/yanhaijing/template.js/blob/master/packages/template-loader) |
+| vite        | [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs) |
 | rollup        | [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs) |
 | parcel        | [parcel-plugin-template](https://github.com/yanhaijing/template.js/blob/master/packages/parcel-plugin-template) |
 | fis           | [fis-parser-template](https://github.com/yanhaijing/template.js/blob/master/packages/fis-parser-template) |
