@@ -1,6 +1,6 @@
 {
   "name": "templatejs-loader",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "template.js的webpakc编译loader",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",

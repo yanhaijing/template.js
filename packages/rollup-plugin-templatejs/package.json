@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-templatejs",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "template.js的rollup编译插件",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
