@@ -5,24 +5,7 @@
 
 ## 使用
 
-方法①：安装命令
-
-```bash
-$ npm install -g @templatejs/cli
-$ template new myapp
-# 选择对应的平台
-# ❯ webpack4 
-#   rspack 
-#   vite 
-#   rollup 
-#   parcel 
-#   fis3 
-#   browserify 
-#   gulp 
-#   browser 
-```
-
-方法②：npx运行，无需安装
+执行如下命令，稍等片刻，即可快速创建一个新项目：
 
 ```bash
 $ npx @templatejs/cli new myapp
