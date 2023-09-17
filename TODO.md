@@ -12,9 +12,10 @@
 - [X] 提供cli工具，支持选择平台，自动初始化
 - [X] 提供编辑器语法插件
 - [X] 适配sublime
+- [X] 适配vite
+- [X] 适配rspack
 - [ ] 适配node模板，类似smarty
 - [ ] 其他模版语法支持
-- [ ] 适配vite
 - [ ] 适配deno
 - [ ] 适配requirejs
 - [ ] 适配webstorm
