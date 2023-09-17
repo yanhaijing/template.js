@@ -15,6 +15,10 @@ $ npm install --save-dev rollup-plugin-templatejs # 安装template编译插件
 
 配置参数同[template.js](https://github.com/yanhaijing/template.js/blob/master/doc/api.md#templateconfig)参数一样，其中 expression 参数会作为获取 template 的表达式。
 
+这里有一个通过 tempalte cli 创建的 vue 项目的示例：
+
+https://github.com/yanhaijing/template.js/tree/master/packages/cli/template/vite/base
+
 ```js
 import { defineConfig } from "vite";
 import template from "rollup-plugin-templatejs";
