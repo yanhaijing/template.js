@@ -37,6 +37,7 @@ function init(argv, answers) {
         rspack: initrspack,
         vite: initvite,
         rollup: initrollup,
+        esbuild: initesbuild,
         parcel: initparcel,
         fis3: initfis3,
         browserify: initbrowserify,
@@ -131,6 +132,20 @@ function initrollup(cmdPath, option) {
 
     copyDir(
         path.resolve(__dirname, `../template/rollup/base`),
+        path.resolve(cmdPath, pathname)
+    );
+
+    initManager(cmdPath, option).then(() => {
+        const spinner = ora();
+        spinner.succeed("Create project successfully");
+    });
+}
+
+function initesbuild(cmdPath, option) {
+    const { pathname } = option;
+
+    copyDir(
+        path.resolve(__dirname, `../template/esbuild/base`),
         path.resolve(cmdPath, pathname)
     );
 

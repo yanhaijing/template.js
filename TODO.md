@@ -14,6 +14,7 @@
 - [X] 适配sublime
 - [X] 适配vite
 - [X] 适配rspack
+- [X] 适配esbuild
 - [ ] 适配node模板，类似smarty
 - [ ] 其他模版语法支持
 - [ ] 适配deno

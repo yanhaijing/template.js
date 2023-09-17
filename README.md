@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/LICENSE)
 
-一款 javascript 模板引擎，简单，好用，支持 webpack, rspack, vite, rollup, parcel, browserify, fis 和 gulp
+一款 javascript 模板引擎，简单，好用，支持 webpack, rspack, vite, esbuild, rollup, parcel, browserify, fis 和 gulp
 
 ## 特性
 
@@ -69,6 +69,7 @@ $ npx @templatejs/cli new myapp
 #   rspack
 #   vite
 #   rollup
+#   esbuild
 #   parcel
 #   fis3
 #   browserify
@@ -82,6 +83,7 @@ $ npx @templatejs/cli new myapp
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | webpack / rspack | [template-loader](https://github.com/yanhaijing/template.js/blob/master/packages/template-loader)                                |
 | vite / rollup    | [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs)              |
+| esbuild           | [esbuild-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/esbuild-plugin-templatejs)                  |
 | parcel           | [parcel-plugin-template](https://github.com/yanhaijing/template.js/blob/master/packages/parcel-plugin-template)                  |
 | fis              | [fis-parser-template](https://github.com/yanhaijing/template.js/blob/master/packages/fis-parser-template)                        |
 | browserify       | [browserify-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/browserify-templatejs)                    |

@@ -14,6 +14,7 @@ $ npx @templatejs/cli new myapp
 #   rspack 
 #   vite 
 #   rollup 
+#   esbuild 
 #   parcel 
 #   fis3 
 #   browserify 

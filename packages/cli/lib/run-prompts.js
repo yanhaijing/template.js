@@ -37,6 +37,7 @@ function runInitPrompts(pathname, argv) {
                 "rspack",
                 "vite",
                 "rollup",
+                "esbuild",
                 "parcel",
                 "fis3",
                 "browserify",
