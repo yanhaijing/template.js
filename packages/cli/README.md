@@ -12,6 +12,8 @@ $ npm install -g @templatejs/cli
 $ template new myapp
 # 选择对应的平台
 # ❯ webpack4 
+#   rspack 
+#   vite 
 #   rollup 
 #   parcel 
 #   fis3 
@@ -26,6 +28,8 @@ $ template new myapp
 $ npx @templatejs/cli new myapp
 # 选择对应的平台
 # ❯ webpack4 
+#   rspack 
+#   vite 
 #   rollup 
 #   parcel 
 #   fis3 

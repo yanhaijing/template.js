@@ -1,0 +1,10 @@
+{
+    "scripts": {
+        "build": "rspack build"
+    },
+    "devDependencies": {
+        "@rspack/cli": "^0.3.4",
+        "@templatejs/runtime": "^2.4.0",
+        "templatejs-loader": "^2.4.2"
+    }
+}

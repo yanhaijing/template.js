@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/LICENSE)
 
-一款 javascript 模板引擎，简单，好用，支持 webpack, rollup, parcel, browserify, fis 和 gulp
+一款 javascript 模板引擎，简单，好用，支持 webpack, rspack, vite, rollup, parcel, browserify, fis 和 gulp
 
 ## 特性
 
@@ -66,6 +66,7 @@ template.js 支持的编辑器插件
 $ npx @templatejs/cli new myapp
 # 选择对应的平台
 # ❯ webpack4
+#   rspack
 #   vite
 #   rollup
 #   parcel
@@ -79,7 +80,7 @@ $ npx @templatejs/cli new myapp
 
 | 平台             | 插件                                                                                                                             |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| webpack          | [template-loader](https://github.com/yanhaijing/template.js/blob/master/packages/template-loader)                                |
+| webpack / rspack | [template-loader](https://github.com/yanhaijing/template.js/blob/master/packages/template-loader)                                |
 | vite / rollup    | [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs)              |
 | parcel           | [parcel-plugin-template](https://github.com/yanhaijing/template.js/blob/master/packages/parcel-plugin-template)                  |
 | fis              | [fis-parser-template](https://github.com/yanhaijing/template.js/blob/master/packages/fis-parser-template)                        |
@@ -135,6 +136,7 @@ $ npx lerna publish
 -   [百度经验](http://jingyan.baidu.com/)
 -   [百度师傅](http://shifu.baidu.com/)
 -   美团外卖
+-   猿辅导
 -   [58 金融](https://npm.taobao.org/package/jr58)
 -   神州泰岳
 -   优信

@@ -34,6 +34,7 @@ function init(argv, answers) {
 
     const map = {
         webpack4: initwebpack4,
+        rspack: initrspack,
         vite: initvite,
         rollup: initrollup,
         parcel: initparcel,
@@ -88,6 +89,20 @@ function initwebpack4(cmdPath, option) {
 
     copyDir(
         path.resolve(__dirname, `../template/webpack4/base`),
+        path.resolve(cmdPath, pathname)
+    );
+
+    initManager(cmdPath, option).then(() => {
+        const spinner = ora();
+        spinner.succeed("Create project successfully");
+    });
+}
+
+function initrspack(cmdPath, option) {
+    const { pathname } = option;
+
+    copyDir(
+        path.resolve(__dirname, `../template/rspack/base`),
         path.resolve(cmdPath, pathname)
     );
 

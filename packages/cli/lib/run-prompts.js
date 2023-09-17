@@ -34,6 +34,7 @@ function runInitPrompts(pathname, argv) {
             name: "type",
             choices: [
                 "webpack4",
+                "rspack",
                 "vite",
                 "rollup",
                 "parcel",
