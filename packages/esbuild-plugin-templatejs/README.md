@@ -11,7 +11,7 @@ $ npm install --save @templatejs/runtime # 安装template运行时
 $ npm install --save-dev esbuild-plugin-templatejs # 安装template编译插件
 ```
 
-## vite 配置
+## 配置
 
 配置参数同[template.js](https://github.com/yanhaijing/template.js/blob/master/doc/api.md#templateconfig)参数一样，其中 expression 参数会作为获取 template 的表达式。
 
