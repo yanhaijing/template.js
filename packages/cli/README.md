@@ -10,7 +10,7 @@
 ```bash
 $ npx @templatejs/cli new myapp
 # 选择对应的平台
-# ❯ webpack4 
+# ❯ webpack
 #   rspack 
 #   vite 
 #   rollup 

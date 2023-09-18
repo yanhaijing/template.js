@@ -65,7 +65,7 @@ template.js 支持的编辑器插件
 ```bash
 $ npx @templatejs/cli new myapp
 # 选择对应的平台
-# ❯ webpack4
+# ❯ webpack
 #   rspack
 #   vite
 #   rollup

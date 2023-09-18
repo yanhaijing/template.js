@@ -33,7 +33,7 @@ function runInitPrompts(pathname, argv) {
             message: "switch project type:",
             name: "type",
             choices: [
-                "webpack4",
+                "webpack",
                 "rspack",
                 "vite",
                 "rollup",

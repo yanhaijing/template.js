@@ -33,7 +33,7 @@ function init(argv, answers) {
     }
 
     const map = {
-        webpack4: initwebpack4,
+        webpack: initwebpack,
         rspack: initrspack,
         vite: initvite,
         rollup: initrollup,
@@ -85,7 +85,7 @@ function initManager(cmdPath, option) {
     });
 }
 
-function initwebpack4(cmdPath, option) {
+function initwebpack(cmdPath, option) {
     const { pathname, type, version } = option;
 
     copyDir(
