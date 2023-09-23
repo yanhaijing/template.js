@@ -1,30 +1,31 @@
 # [template.js](https://github.com/yanhaijing/template.js)
 
 [![](https://img.shields.io/badge/Powered%20by-jslib%20base-brightgreen.svg)](https://github.com/yanhaijing/jslib-base)
-[![Build Status](https://travis-ci.org/yanhaijing/template.js.svg?branch=master)](https://travis-ci.org/yanhaijing/template.js)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/LICENSE)
 
-一款 javascript 模板引擎，简单，好用，支持 webpack, rspack, vite, esbuild, rollup, parcel, browserify, fis 和 gulp
+English | [简体中文](./README.zh-CN.md)
 
-## 特性
+A javascript template engine that is simple, easy to use, and supports webpack, rspack, vite, esbuild, rollup, parcel, browserify, fis, and gulp.
 
--   JS 原生语法，模版解析，编译，渲染
--   支持所有浏览器及 Node，支持 TypeScript
--   预编译支持主流打包工具
--   自定义配置、修饰符、函数
--   支持数据过滤
--   异常捕获功能
--   子模版
--   沙箱模式
--   支持 JIT 和 AOT 两种编译模式
--   提供 cli 集成化工具
--   提供编辑器插件支持
+## Features
 
-## 使用者指南
+-   Native JS syntax, template parsing, compilation, and rendering
+-   Supports all browsers and Node, supports TypeScript
+-   Precompilation supports mainstream packaging tools
+-   Custom configurations, decorators, and functions
+-   Data filtering support
+-   Exception capture functionality
+-   Subtemplates
+-   Sandbox mode
+-   Supports JIT and AOT compilation modes
+-   Provides CLI integrated tools
+-   Provides support for editor plugins
 
-template.js 是比拼接字符串更好的方式
+## User Guide
 
-模板例子
+template.js is a better way than concatenating strings
+
+Template example
 
 ```
 <ul>
@@ -34,7 +35,7 @@ template.js 是比拼接字符串更好的方式
 </ul>
 ```
 
-数据例子
+Data example
 
 ```js
 const data = {
@@ -42,7 +43,7 @@ const data = {
 };
 ```
 
-渲染输出
+Render output
 
 ```html
 <ul>
@@ -51,20 +52,20 @@ const data = {
 </ul>
 ```
 
-template.js 支持的编辑器插件
+Editor plugins supported by template.js
 
-| 编辑器   | 插件                                                                                      |
+| Editor   | Plugin                                                                                      |
 | -------- | ----------------------------------------------------------------------------------------- |
-| Vscode   | [高亮插件](https://marketplace.visualstudio.com/items?itemName=yanhaijing1234.templatejs) |
-| Sublime  | [高亮插件](https://packagecontrol.io/packages/templatejs)                                 |
-| Atom     | [高亮插件](https://atom.io/packages/language-templatejs)                                  |
+| Vscode   | [highlight plugin](https://marketplace.visualstudio.com/items?itemName=yanhaijing1234.templatejs) |
+| Sublime  | [highlight plugin](https://packagecontrol.io/packages/templatejs)                                 |
+| Atom     | [highlight plugin](https://atom.io/packages/language-templatejs)                                  |
 | WebStorm | TODO                                                                                      |
 
-通过 cli 工具快速初始化项目
+Quickly initialize a project using CLI tools
 
 ```bash
 $ npx @templatejs/cli new myapp
-# 选择对应的平台
+# Choose the corresponding platform
 # ❯ webpack
 #   rspack
 #   vite
@@ -77,42 +78,42 @@ $ npx @templatejs/cli new myapp
 #   browser
 ```
 
-如果已有项目，可以选择对应的插件，template.js 支持多种使用方式
+If you already have a project, you can choose a corresponding plugin, template.js supports different usage methods
 
-| 平台             | 插件                                                                                                                             |
+| Platform             | Plugin                                                                                                                             |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | webpack / rspack | [template-loader](https://github.com/yanhaijing/template.js/blob/master/packages/template-loader)                                |
 | vite / rollup    | [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs)              |
-| esbuild           | [esbuild-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/esbuild-plugin-templatejs)                  |
+| esbuild          | [esbuild-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/esbuild-plugin-templatejs)            |
 | parcel           | [parcel-plugin-template](https://github.com/yanhaijing/template.js/blob/master/packages/parcel-plugin-template)                  |
 | fis              | [fis-parser-template](https://github.com/yanhaijing/template.js/blob/master/packages/fis-parser-template)                        |
 | browserify       | [browserify-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/browserify-templatejs)                    |
 | gulp             | [gulp-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/gulp-templatejs)                                |
-| 原生 web 与 Node | [template_js](https://github.com/yanhaijing/template.js/blob/master/packages/template)                                           |
-| 不支持的平台     | 可以自己写一个插件，请查看 [@templatejs/precompiler](https://github.com/yanhaijing/template.js/blob/master/packages/precompiler) |
+| Native web & Node.js | [template_js](https://github.com/yanhaijing/template.js/blob/master/packages/template)                                           |
+| Unsupported platforms     | You can write a plugin yourself, please see [@templatejs/precompiler](https://github.com/yanhaijing/template.js/blob/master/packages/precompiler) |
 
-其他 packages 简介
+Other packages summary
 
--   [@templatejs/runtime](https://github.com/yanhaijing/template.js/blob/master/packages/runtime) template.js 的运行时，给 precompiler 生成的渲染函数提供运行时支持
--   [@templatejs/parser](https://github.com/yanhaijing/template.js/blob/master/packages/parser) template.js 的模板解析器
--   [template-vscode](https://github.com/yanhaijing/template-vscode) template.js 的 vscode 插件
+-   [@templatejs/runtime](https://github.com/yanhaijing/template.js/blob/master/packages/runtime) The template.js runtime, providing runtime support for the rendering function generated by precompiler.
+-   [@templatejs/parser](https://github.com/yanhaijing/template.js/blob/master/packages/parser) The template.js template parser.
+-   [template-vscode](https://github.com/yanhaijing/template-vscode) The template.js vscode plugin.
 
-## 开发者指南
+## Developer Guide
 
-本项目使用 lerna 来管理多个插件，lerna 常用命令如下，注意这里不能缺省`npx`前缀：
+This project uses lerna to manage multiple plugins. Common lerna commands are as follows, note that the npx prefix cannot be left out:
 
 ```bash
-$ npx lerna init # 初始化
-$ npx lerna create @templatejs/parser # 创建一个package
-$ npx lerna add yargs --scope=@templatejs/parser # 给package安装依赖
-$ npx lerna list # 列出所有的包
-$ npx lerna bootstrap # 安装全部依赖
-$ npx lerna link # 建立全部软连接
-$ npx lerna changed # 列出下次发版lerna publish 要更新的包
-$ npx lerna publish # 会打tag，上传git,上传npm
+$ npx lerna init # Initialize
+$ npx lerna create @templatejs/parser # Create a package
+$ npx lerna add yargs --scope=@templatejs/parser # Install package dependencies
+$ npx lerna list # List all packages
+$ npx lerna bootstrap # Install all dependencies
+$ npx lerna link # Create all soft links
+$ npx lerna changed # List the packages to be updated next time when using lerna publish
+$ npx lerna publish # Will tag, upload git, upload npm
 ```
 
-发布步骤，修改 changelog
+Release steps, modify changelog
 
 ```bash
 $ yarn test
@@ -120,37 +121,37 @@ $ yarn build
 $ npx lerna publish
 ```
 
-## 贡献者列表
+## Contributors List
 
 [contributors](https://github.com/yanhaijing/template.js/graphs/contributors)
 
-## 更新日志
+## Changelog
 
 [CHANGELOG.md](https://github.com/yanhaijing/template.js/blob/master/CHANGELOG.md)
 
-## 计划列表
+## Planned Feature List
 
 [TODO.md](https://github.com/yanhaijing/template.js/blob/master/TODO.md)
 
-## 谁在使用
+## Who is Using
 
--   [百度知道](http://zhidao.baidu.com/)
--   [百度经验](http://jingyan.baidu.com/)
--   [百度师傅](http://shifu.baidu.com/)
--   美团外卖
--   猿辅导
--   [58 金融](https://npm.taobao.org/package/jr58)
--   神州泰岳
--   优信
+-   [Baidu Zhidao](http://zhidao.baidu.com/)
+-   [Baidu Jingyan](http://jingyan.baidu.com/)
+-   [Baidu Shifu](http://shifu.baidu.com/)
+-   Meituan Waimai
+-   Yuanfudao
+-   [58 Financial](https://npm.taobao.org/package/jr58)
+-   Unisplendour
+-   Uxin
 
-想了解都有谁在使用，[点击这里](https://github.com/yanhaijing/template.js/issues/6)。
+To learn about who is using this, [click here](https://github.com/yanhaijing/template.js/issues/6).
 
-## 相关链接
+## Related Links
 
 -   [BaiduTemplate](http://tangram.baidu.com/BaiduTemplate/)
 -   [artTemplate](https://github.com/aui/artTemplate/)
 -   [Juicer](https://github.com/PaulGuo/Juicer)
 -   [handlebarsjs](http://handlebarsjs.com/)
--   [PUG(原 Jade)](https://pugjs.org/api/getting-started.html)
+-   [PUG(Originally Jade)](https://pugjs.org/api/getting-started.html)
 -   [EJS](https://ejs.co/)
--   [只有 20 行 Javascript 代码！手把手教你写一个页面模板引擎](https://juejin.im/entry/56258da860b294bcf7955883)
+-   [Only 20 lines of Javascript code! A step-by-step guide to creating a webpage template engine](https://juejin.im/entry/56258da860b294bcf7955883)
