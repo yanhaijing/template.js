@@ -1,7 +1,7 @@
 {
   "name": "template_js",
   "version": "2.4.0",
-  "description": "一款javascript模板引擎，简单，好用，支持webpack, rollup和fis",
+  "description": "A javascript template engine, simple, easy & extras, support webpack, rspack, vite, rollup, esbuild, parcel, browserify, fis and gulp.",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
