@@ -1,6 +1,6 @@
 {
   "name": "template_js",
-  "version": "2.4.0",
+  "version": "2.8.1",
   "description": "A javascript template engine, simple, easy & extras, support webpack, rspack, vite, rollup, esbuild, parcel, browserify, fis and gulp.",
   "main": "dist/index.js",
   "jsnext:main": "dist/index.esm.js",
