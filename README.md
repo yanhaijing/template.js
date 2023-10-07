@@ -23,7 +23,7 @@ A javascript template engine that is simple, easy to use, and supports webpack, 
 
 ## User Guide
 
-template.js is a better way than concatenating strings
+template.js is a better way than concatenating strings, Click to use [codesandbox](https://codesandbox.io/s/template-js-demo-6xgjxw?file=/src/index.mjs) for a quick demo
 
 Template example
 

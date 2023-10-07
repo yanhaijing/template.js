@@ -6,6 +6,9 @@ module.exports = {
         path: __dirname + "/dist",
         filename: "bundle.js"
     },
+    optimization: {
+        minimize: false,
+    },
     module: {
         rules: [
             {

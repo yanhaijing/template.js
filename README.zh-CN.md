@@ -23,7 +23,7 @@
 
 ## 使用者指南
 
-template.js 是比拼接字符串更好的方式
+template.js 是比拼接字符串更好的方式，点击使用[codesandbox](https://codesandbox.io/s/template-js-demo-6xgjxw?file=/src/index.mjs)快速体验效果。
 
 模板例子
 

@@ -3,8 +3,8 @@
       "build": "webpack"
     },
     "devDependencies": {
-      "webpack": "4.19.1",
-      "webpack-cli": "3.1.0",
+      "webpack": "^5.74.0",
+      "webpack-cli": "^4.10.0",
       "templatejs-loader": "^2.4.2",
       "@templatejs/runtime": "^2.4.0"
     }

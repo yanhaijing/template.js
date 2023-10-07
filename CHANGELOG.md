@@ -1,5 +1,10 @@
 # 变更日志
 
+## 2.8.1 / 2023-10-1
+
+-   修复 cli new demo error
+-   升级 webpack demo 为 webpack5
+
 ## 2.8.0 / 2023-9-18
 
 -   添加对 esbuild 的支持

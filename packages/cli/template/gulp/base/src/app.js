@@ -23,6 +23,7 @@ class App {
         const that = this;
         document.body.addEventListener("click", function (e) {
             if (e.target.className.indexOf("add-todo") !== -1) {
+                e.preventDefault();
                 that.data.list.push({
                     text: "增加待办" + parseInt(Math.random() * 100, 10),
                 });
