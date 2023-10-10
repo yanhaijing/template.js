@@ -6,7 +6,6 @@
 ## 安装
 
 ``` bash
-$ npm install --save-dev parcel@1.12.3 # 安装template编译插件
 $ npm install --save @templatejs/runtime # 安装template运行时
 $ npm install --save-dev parcel-plugin-template # 安装template编译插件
 ```
