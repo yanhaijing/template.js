@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "rollup": "^1.24.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup": "^3.29.4",
+    "@rollup/plugin-node-resolve": "^15.2.3",
     "rollup-plugin-templatejs": "^0.1.0"
   }
 }

@@ -1,7 +1,7 @@
 // rollup.config.js
-import template from 'rollup-plugin-templatejs';
+const template = require('rollup-plugin-templatejs');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-var nodeResolve = require('rollup-plugin-node-resolve');
+const nodeResolve = require('@rollup/plugin-node-resolve');
 
 module.exports = {
     input: 'app.js',

@@ -1,5 +1,13 @@
 # 变更日志
 
+## 2.8.2 / 2023-10-1
+
+- 升级 browserify v17 demo
+- 升级 esbuild v0.19 demo
+- 升级 parcel v1.12 demo
+- 升级 rollup v3 demo
+- 升级 vite v4.4 demo
+
 ## 2.8.1 / 2023-10-1
 
 -   修复 cli new demo error

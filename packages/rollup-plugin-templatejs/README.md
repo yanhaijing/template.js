@@ -59,7 +59,7 @@ document.getElementById("test").innerHTML = tpl({ abc: "yanhaijing" });
 配置参数同[template.js](https://github.com/yanhaijing/template.js/blob/master/doc/api.md#templateconfig)参数一样，其中 expression 参数会作为获取 template 的表达式。
 
 ```js
-import template from "rollup-plugin-templatejs";
+const template = require('rollup-plugin-templatejs');
 
 module.exports = {
     // 省略其他配置

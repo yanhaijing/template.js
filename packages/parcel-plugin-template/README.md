@@ -1,11 +1,12 @@
 # [parcel-plugin-template](https://github.com/yanhaijing/template.js/blob/master/packages/parcel-plugin-template)
 [![](https://img.shields.io/badge/Powered%20by-jslib%20base-brightgreen.svg)](https://github.com/yanhaijing/jslib-base)
 
-[template.js](https://github.com/yanhaijing/template.js)的parcel编译插件。
+[template.js](https://github.com/yanhaijing/template.js)的 parcel v1 编译插件。
 
 ## 安装
 
 ``` bash
+$ npm install --save-dev parcel@1.12.3 # 安装template编译插件
 $ npm install --save @templatejs/runtime # 安装template运行时
 $ npm install --save-dev parcel-plugin-template # 安装template编译插件
 ```

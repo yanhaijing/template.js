@@ -10,6 +10,7 @@
       "@templatejs/runtime": "^2.4.0"
     },
     "devDependencies": {
+      "parcel": "1.12.3",
       "parcel-plugin-template": "^2.4.0"
     }
   }

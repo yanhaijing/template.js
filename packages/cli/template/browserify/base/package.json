@@ -10,8 +10,8 @@
       "@templatejs/runtime": "^2.4.0"
     },
     "devDependencies": {
-      "browserify": "^16.5.2",
-      "browserify-templatejs": "^2.4.0"
+      "browserify": "^17.0.0",
+      "browserify-templatejs": "^2.4.2"
     }
   }
   
