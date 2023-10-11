@@ -1,0 +1,108 @@
+
+function render(__data__) {
+    var __runtime__ = require("@templatejs/runtime").default;
+    var __root__ = (typeof self === 'object' && self.self === self && self) ||
+        (typeof global === 'object' && global.global === global && global) ||
+        this;
+    var __hasOwnProp__ = ({}).hasOwnProperty;
+
+        var name = __hasOwnProp__.call(__data__, 'name') ? __data__['name'] : __hasOwnProp__.call(__runtime__.functionMap, 'name') ? __runtime__.functionMap['name'] : __hasOwnProp__.call(__root__, 'name') ? __root__['name'] : undefined;
+    var b = __hasOwnProp__.call(__data__, 'b') ? __data__['b'] : __hasOwnProp__.call(__runtime__.functionMap, 'b') ? __runtime__.functionMap['b'] : __hasOwnProp__.call(__root__, 'b') ? __root__['b'] : undefined;
+    var if1 = __hasOwnProp__.call(__data__, 'if1') ? __data__['if1'] : __hasOwnProp__.call(__runtime__.functionMap, 'if1') ? __runtime__.functionMap['if1'] : __hasOwnProp__.call(__root__, 'if1') ? __root__['if1'] : undefined;
+    var for1 = __hasOwnProp__.call(__data__, 'for1') ? __data__['for1'] : __hasOwnProp__.call(__runtime__.functionMap, 'for1') ? __runtime__.functionMap['for1'] : __hasOwnProp__.call(__root__, 'for1') ? __root__['for1'] : undefined;
+    var yan6 = __hasOwnProp__.call(__data__, 'yan6') ? __data__['yan6'] : __hasOwnProp__.call(__runtime__.functionMap, 'yan6') ? __runtime__.functionMap['yan6'] : __hasOwnProp__.call(__root__, 'yan6') ? __root__['yan6'] : undefined;
+    var console = __hasOwnProp__.call(__data__, 'console') ? __data__['console'] : __hasOwnProp__.call(__runtime__.functionMap, 'console') ? __runtime__.functionMap['console'] : __hasOwnProp__.call(__root__, 'console') ? __root__['console'] : undefined;
+    var aa1 = __hasOwnProp__.call(__data__, 'aa1') ? __data__['aa1'] : __hasOwnProp__.call(__runtime__.functionMap, 'aa1') ? __runtime__.functionMap['aa1'] : __hasOwnProp__.call(__root__, 'aa1') ? __root__['aa1'] : undefined;
+    var aaif1 = __hasOwnProp__.call(__data__, 'aaif1') ? __data__['aaif1'] : __hasOwnProp__.call(__runtime__.functionMap, 'aaif1') ? __runtime__.functionMap['aaif1'] : __hasOwnProp__.call(__root__, 'aaif1') ? __root__['aaif1'] : undefined;
+    var aaiffor1 = __hasOwnProp__.call(__data__, 'aaiffor1') ? __data__['aaiffor1'] : __hasOwnProp__.call(__runtime__.functionMap, 'aaiffor1') ? __runtime__.functionMap['aaiffor1'] : __hasOwnProp__.call(__root__, 'aaiffor1') ? __root__['aaiffor1'] : undefined;
+    var window = __hasOwnProp__.call(__data__, 'window') ? __data__['window'] : __hasOwnProp__.call(__runtime__.functionMap, 'window') ? __runtime__.functionMap['window'] : __hasOwnProp__.call(__root__, 'window') ? __root__['window'] : undefined;
+    var document = __hasOwnProp__.call(__data__, 'document') ? __data__['document'] : __hasOwnProp__.call(__runtime__.functionMap, 'document') ? __runtime__.functionMap['document'] : __hasOwnProp__.call(__root__, 'document') ? __root__['document'] : undefined;
+    
+    try {
+        var __code__ = '';
+        var __modifierMap__ = __runtime__.modifierMap;
+
+        ;__code__ += ("<div>\n")
+;__code__ += ("    test\n")
+;__code__ += ("    ")
+;__code__ += __modifierMap__["h"](typeof (name) !== "undefined" ? (name) : "")
+;__code__ += ("\n")
+;__code__ += ("    ")
+;var a = 1
+;__code__ += ("\n")
+;__code__ += ("    <span>\n")
+;__code__ += ("        ")
+;if (b) {
+;__code__ += ("\n")
+;__code__ += ("            ")
+;const yan = 3
+;__code__ += ("\n")
+;__code__ += ("            ")
+;__code__ += __modifierMap__["h"](typeof (yan) !== "undefined" ? (yan) : "")
+;__code__ += ("\n")
+;__code__ += ("            ")
+;if (1) {
+;__code__ += ("\n")
+;__code__ += ("                ")
+;__code__ += __modifierMap__["h"](typeof (if1) !== "undefined" ? (if1) : "")
+;__code__ += ("\n")
+;__code__ += ("            ")
+;}
+;__code__ += ("\n")
+;__code__ += ("            ")
+;for(let i = 1; i < 10; i++) {
+;__code__ += ("\n")
+;__code__ += ("                ")
+;__code__ += __modifierMap__["h"](typeof (i) !== "undefined" ? (i) : "")
+;__code__ += ("\n")
+;__code__ += ("                ")
+;__code__ += __modifierMap__["h"](typeof (for1) !== "undefined" ? (for1) : "")
+;__code__ += ("\n")
+;__code__ += ("            ")
+;}
+;__code__ += ("\n")
+;__code__ += ("            ")
+;for (let i in yan6) {}
+;__code__ += ("\n")
+;__code__ += ("            ")
+;function aa(aa) {
+                console.log(aa)
+                console.log(aa1)
+                if (1) {
+                    console.log(aaif1)
+                    for (;;) {
+                        console.log(aaiffor1)
+                    }
+                }
+            }
+;__code__ += ("\n")
+;__code__ += ("        ")
+;}
+;__code__ += ("\n")
+;__code__ += ("        ")
+;__code__ += __modifierMap__["h"](typeof (window) !== "undefined" ? (window) : "")
+;__code__ += ("\n")
+;__code__ += ("        ")
+;__code__ += __modifierMap__["h"](typeof (window.yan) !== "undefined" ? (window.yan) : "")
+;__code__ += ("\n")
+;__code__ += ("        ")
+;__code__ += __modifierMap__["h"](typeof (window.document) !== "undefined" ? (window.document) : "")
+;__code__ += ("\n")
+;__code__ += ("        ")
+;__code__ += __modifierMap__["h"](typeof (window.document.getElementById) !== "undefined" ? (window.document.getElementById) : "")
+;__code__ += ("\n")
+;__code__ += ("        ")
+;__code__ += __modifierMap__["h"](typeof (document) !== "undefined" ? (document) : "")
+;__code__ += ("\n")
+;__code__ += ("    </span>\n")
+;__code__ += ("</div>")
+
+
+        return __code__;
+    } catch(e) {
+        e.name = 'RenderError';
+        e.tpl = '/Users/yan/template/template.js/packages/parcel-transformer-template/example/base/demo.tmpl';
+        __runtime__.handelError(e);
+        return 'template.js error';
+    }
+}

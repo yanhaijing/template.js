@@ -38,7 +38,8 @@ function init(argv, answers) {
         vite: initvite,
         rollup: initrollup,
         esbuild: initesbuild,
-        parcel: initparcel,
+        parcel1: initparcel1,
+        parcel2: initparcel2,
         fis3: initfis3,
         browserify: initbrowserify,
         gulp: initgulp,
@@ -89,7 +90,7 @@ function initwebpack(cmdPath, option) {
     const { pathname, type, version } = option;
 
     copyDir(
-        path.resolve(__dirname, `../template/webpack4/base`),
+        path.resolve(__dirname, `../template/webpack/base`),
         path.resolve(cmdPath, pathname)
     );
 
@@ -155,11 +156,25 @@ function initesbuild(cmdPath, option) {
     });
 }
 
-function initparcel(cmdPath, option) {
+function initparcel1(cmdPath, option) {
     const { pathname } = option;
 
     copyDir(
-        path.resolve(__dirname, `../template/parcel/base`),
+        path.resolve(__dirname, `../template/parcel1/base`),
+        path.resolve(cmdPath, pathname)
+    );
+
+    initManager(cmdPath, option).then(() => {
+        const spinner = ora();
+        spinner.succeed("Create project successfully");
+    });
+}
+
+function initparcel2(cmdPath, option) {
+    const { pathname } = option;
+
+    copyDir(
+        path.resolve(__dirname, `../template/parcel2/base`),
         path.resolve(cmdPath, pathname)
     );
 

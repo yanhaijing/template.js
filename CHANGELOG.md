@@ -1,6 +1,11 @@
 # 变更日志
 
-## 2.8.3 / 2023-10-1
+## 2.9.0 / 2023-10-3
+
+- 添加对 parcel v2 的支持
+- 新增 parcel-transformer-template 插件
+
+## 2.8.3 / 2023-10-2
 
 - 修复 parcel v1 demo
 

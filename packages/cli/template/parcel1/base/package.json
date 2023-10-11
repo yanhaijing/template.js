@@ -4,7 +4,7 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-      "build": "parcel --no-cache index.html"
+      "start": "parcel --no-cache index.html"
     },
     "dependencies": {
       "@templatejs/runtime": "^2.4.0"

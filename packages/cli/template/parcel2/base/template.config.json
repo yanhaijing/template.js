@@ -1,0 +1,5 @@
+{
+    "sTag": "<%",
+    "eTag": "%>",
+    "expression": "require(\"@templatejs/runtime\").default"
+}

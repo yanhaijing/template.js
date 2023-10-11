@@ -1,0 +1,11 @@
+{
+    "name": "parcel-transformer-template",
+    "npmname": "parcel-transformer-template",
+    "umdname": "parcel-transformer-template",
+    "username": "yanhaijing",
+    "type": "ts",
+    "module": "commonjs",
+    "test": "mocha",
+    "lang": "zh",
+    "version": "1.5.1"
+}

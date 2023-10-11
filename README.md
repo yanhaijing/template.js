@@ -71,7 +71,8 @@ $ npx @templatejs/cli new myapp
 #   vite
 #   rollup
 #   esbuild
-#   parcel
+#   parcel2
+#   parcel1
 #   fis3
 #   browserify
 #   gulp
@@ -85,7 +86,8 @@ If you already have a project, you can choose a corresponding plugin, template.j
 | webpack / rspack | [template-loader](https://github.com/yanhaijing/template.js/blob/master/packages/template-loader)                                |
 | vite / rollup    | [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs)              |
 | esbuild          | [esbuild-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/esbuild-plugin-templatejs)            |
-| parcel           | [parcel-plugin-template](https://github.com/yanhaijing/template.js/blob/master/packages/parcel-plugin-template)                  |
+| parcel2           | [parcel-transformer-template](https://github.com/yanhaijing/template.js/blob/master/packages/parcel-transformer-template)                  |
+| parcel1          | [parcel-plugin-template](https://github.com/yanhaijing/template.js/blob/master/packages/parcel-plugin-template)                  |
 | fis              | [fis-parser-template](https://github.com/yanhaijing/template.js/blob/master/packages/fis-parser-template)                        |
 | browserify       | [browserify-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/browserify-templatejs)                    |
 | gulp             | [gulp-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/gulp-templatejs)                                |

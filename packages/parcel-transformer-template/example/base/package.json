@@ -1,0 +1,13 @@
+{
+  "name": "base",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "parcel --no-cache index.html"
+  },
+  "dependencies": {
+    "@templatejs/runtime": "^2.2.1",
+    "parcel": "^2.9.3"
+  }
+}

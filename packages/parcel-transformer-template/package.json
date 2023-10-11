@@ -1,7 +1,7 @@
 {
-  "name": "parcel-plugin-template",
+  "name": "parcel-transformer-template",
   "version": "2.8.3",
-  "description": "template.js 的 parcel v1 编译插件",
+  "description": "template.js 的 parcel v2 编译插件",
   "main": "dist/index.js",
   "sideEffects": false,
   "scripts": {
@@ -28,7 +28,8 @@
     "*.d.ts"
   ],
   "engines": {
-    "node": ">= 6.0.0"
+    "node": ">= 6.0.0",
+    "parcel": ">=2.0.0"
   },
   "keywords": [
     "template",
@@ -60,10 +61,11 @@
     "typescript": "3.3.3333"
   },
   "dependencies": {
-    "@templatejs/precompiler": "^2.4.2",
-    "parcel-bundler": "^1.12.4"
+    "@parcel/plugin": "^2.9.3",
+    "@templatejs/precompiler": "^2.4.2"
   },
   "peerDependencies": {
-    "@templatejs/runtime": "^2.0.0"
+    "@templatejs/runtime": "^2.0.0",
+    "parcel": "^2.6.3"
   }
 }
