@@ -23,9 +23,9 @@ export default function (options: Options = {}): object {
 
             options.tplName = id.split('/').pop();
 
-            const source = precompile(tpl, options);
+            const source = precompile(tpl, {...options, expression: 'template'});
             
-            const compiled = `export default ${source}`;
+            const compiled = `import template from '@templatejs/runtime'; export default ${source}`;
 
             return {
                 code: compiled,

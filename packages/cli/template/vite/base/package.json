@@ -10,7 +10,7 @@
     },
     "devDependencies": {
         "vite": "^4.4.11",
-        "rollup-plugin-templatejs": "^2.4.2",
+        "rollup-plugin-templatejs": "^2.10.0",
         "@templatejs/runtime": "^2.4.0"
     }
 }

@@ -12,7 +12,7 @@
     "devDependencies": {
       "rollup": "^3.29.4",
       "@rollup/plugin-node-resolve": "^15.2.3",
-      "rollup-plugin-templatejs": "^2.4.2",
+      "rollup-plugin-templatejs": "^2.10.0",
       "@templatejs/runtime": "^2.4.0"
     }
   }

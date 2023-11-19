@@ -12,9 +12,7 @@ module.exports = {
         // legacy: true,
     },
     plugins: [
-        template({
-            expression: 'window.template', // 获取template的表达式，如 `window.template`
-        }),
+        template(),
         nodeResolve({
             main: true,
             extensions: ['.js']

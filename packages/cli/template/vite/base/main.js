@@ -1,4 +1,3 @@
-import "./template.js";
 import tpl from "./demo.tmpl";
 
 class App {

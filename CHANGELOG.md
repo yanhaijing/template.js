@@ -1,5 +1,10 @@
 # 变更日志
 
+## 2.10.0 / 2023-11-19
+
+- rollup-plugin-templatejs 插件
+  - 去掉 expression 参数，现在默认import runtime 不需要了
+
 ## 2.9.0 / 2023-10-3
 
 - 添加对 parcel v2 的支持
