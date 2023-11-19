@@ -1,6 +1,6 @@
 {
   "name": "@templatejs/cli",
-  "version": "2.9.0",
+  "version": "2.10.0",
   "description": "template.js的cli工具",
   "main": "lib/cli.js",
   "bin": {
