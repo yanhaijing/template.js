@@ -1,11 +1,10 @@
 {
-    "name": "gulp-templatejs",
-    "npmname": "gulp-templatejs",
-    "umdname": "gulp-templatejs",
-    "username": "yanhaijing",
-    "type": "ts",
-    "module": "commonjs",
-    "test": "mocha",
-    "lang": "zh",
-    "version": "1.5.1"
+  "name": "gulp-templatejs",
+  "npmname": "gulp-templatejs",
+  "umdname": "gulp-templatejs",
+  "username": "yanhaijing",
+  "type": "ts",
+  "module": "commonjs",
+  "lang": "zh",
+  "version": "1.5.1"
 }

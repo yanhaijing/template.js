@@ -2,6 +2,7 @@
 
 [![](https://img.shields.io/badge/Powered%20by-jslib%20base-brightgreen.svg)](https://github.com/yanhaijing/jslib-base)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yanhaijing/template.js/blob/master/LICENSE)
+[![CI](https://github.com/yanhaijing/template.js/actions/workflows/ci.yml/badge.svg?branch=v3)](https://github.com/yanhaijing/template.js/actions/workflows/ci.yml)
 
 English | [简体中文](./README.zh-CN.md)
 
@@ -9,17 +10,17 @@ A javascript template engine that is simple, easy to use, and supports webpack, 
 
 ## Features
 
--   Native JS syntax, template parsing, compilation, and rendering
--   Supports all browsers and Node, supports TypeScript
--   Precompilation supports mainstream packaging tools
--   Custom configurations, decorators, and functions
--   Data filtering support
--   Exception capture functionality
--   Subtemplates
--   Sandbox mode
--   Supports JIT and AOT compilation modes
--   Provides CLI integrated tools
--   Provides support for editor plugins
+- Native JS syntax, template parsing, compilation, and rendering
+- Supports all browsers and Node, supports TypeScript
+- Precompilation supports mainstream packaging tools
+- Custom configurations, decorators, and functions
+- Data filtering support
+- Exception capture functionality
+- Subtemplates
+- Sandbox mode
+- Supports JIT and AOT compilation modes
+- Provides CLI integrated tools
+- Provides support for editor plugins
 
 ## User Guide
 
@@ -39,7 +40,7 @@ Data example
 
 ```js
 const data = {
-    list: [{ name: "yan" }, { name: "haijing" }],
+  list: [{ name: 'yan' }, { name: 'haijing' }],
 };
 ```
 
@@ -47,19 +48,19 @@ Render output
 
 ```html
 <ul>
-    <li>yan</li>
-    <li>haijing</li>
+  <li>yan</li>
+  <li>haijing</li>
 </ul>
 ```
 
 Editor plugins supported by template.js
 
-| Editor   | Plugin                                                                                      |
-| -------- | ----------------------------------------------------------------------------------------- |
+| Editor   | Plugin                                                                                            |
+| -------- | ------------------------------------------------------------------------------------------------- |
 | Vscode   | [highlight plugin](https://marketplace.visualstudio.com/items?itemName=yanhaijing1234.templatejs) |
 | Sublime  | [highlight plugin](https://packagecontrol.io/packages/templatejs)                                 |
 | Atom     | [highlight plugin](https://atom.io/packages/language-templatejs)                                  |
-| WebStorm | TODO                                                                                      |
+| WebStorm | TODO                                                                                              |
 
 Quickly initialize a project using CLI tools
 
@@ -81,24 +82,24 @@ $ npx @templatejs/cli new myapp
 
 If you already have a project, you can choose a corresponding plugin, template.js supports different usage methods
 
-| Platform             | Plugin                                                                                                                             |
-| ---------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| webpack / rspack | [template-loader](https://github.com/yanhaijing/template.js/blob/master/packages/template-loader)                                |
-| vite / rollup    | [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs)              |
-| esbuild          | [esbuild-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/esbuild-plugin-templatejs)            |
-| parcel2           | [parcel-transformer-template](https://github.com/yanhaijing/template.js/blob/master/packages/parcel-transformer-template)                  |
-| parcel1          | [parcel-plugin-template](https://github.com/yanhaijing/template.js/blob/master/packages/parcel-plugin-template)                  |
-| fis              | [fis-parser-template](https://github.com/yanhaijing/template.js/blob/master/packages/fis-parser-template)                        |
-| browserify       | [browserify-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/browserify-templatejs)                    |
-| gulp             | [gulp-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/gulp-templatejs)                                |
-| Native web & Node.js | [template_js](https://github.com/yanhaijing/template.js/blob/master/packages/template)                                           |
-| Unsupported platforms     | You can write a plugin yourself, please see [@templatejs/precompiler](https://github.com/yanhaijing/template.js/blob/master/packages/precompiler) |
+| Platform              | Plugin                                                                                                                                            |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| webpack / rspack      | [template-loader](https://github.com/yanhaijing/template.js/blob/master/packages/template-loader)                                                 |
+| vite / rollup         | [rollup-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/rollup-plugin-templatejs)                               |
+| esbuild               | [esbuild-plugin-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/esbuild-plugin-templatejs)                             |
+| parcel2               | [parcel-transformer-template](https://github.com/yanhaijing/template.js/blob/master/packages/parcel-transformer-template)                         |
+| parcel1               | [parcel-plugin-template](https://github.com/yanhaijing/template.js/blob/master/packages/parcel-plugin-template)                                   |
+| fis                   | [fis-parser-template](https://github.com/yanhaijing/template.js/blob/master/packages/fis-parser-template)                                         |
+| browserify            | [browserify-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/browserify-templatejs)                                     |
+| gulp                  | [gulp-templatejs](https://github.com/yanhaijing/template.js/blob/master/packages/gulp-templatejs)                                                 |
+| Native web & Node.js  | [template_js](https://github.com/yanhaijing/template.js/blob/master/packages/template)                                                            |
+| Unsupported platforms | You can write a plugin yourself, please see [@templatejs/precompiler](https://github.com/yanhaijing/template.js/blob/master/packages/precompiler) |
 
 Other packages summary
 
--   [@templatejs/runtime](https://github.com/yanhaijing/template.js/blob/master/packages/runtime) The template.js runtime, providing runtime support for the rendering function generated by precompiler.
--   [@templatejs/parser](https://github.com/yanhaijing/template.js/blob/master/packages/parser) The template.js template parser.
--   [template-vscode](https://github.com/yanhaijing/template-vscode) The template.js vscode plugin.
+- [@templatejs/runtime](https://github.com/yanhaijing/template.js/blob/master/packages/runtime) The template.js runtime, providing runtime support for the rendering function generated by precompiler.
+- [@templatejs/parser](https://github.com/yanhaijing/template.js/blob/master/packages/parser) The template.js template parser.
+- [template-vscode](https://github.com/yanhaijing/template-vscode) The template.js vscode plugin.
 
 ## Developer Guide
 
@@ -118,8 +119,9 @@ $ npx lerna publish # Will tag, upload git, upload npm
 Release steps, modify changelog
 
 ```bash
-$ yarn test
+$ yarn lint
 $ yarn build
+$ yarn test
 $ npx lerna publish
 ```
 
@@ -137,23 +139,23 @@ $ npx lerna publish
 
 ## Who is Using
 
--   [Baidu Zhidao](http://zhidao.baidu.com/)
--   [Baidu Jingyan](http://jingyan.baidu.com/)
--   [Baidu Shifu](http://shifu.baidu.com/)
--   Meituan Waimai
--   Yuanfudao
--   [58 Financial](https://npm.taobao.org/package/jr58)
--   Unisplendour
--   Uxin
+- [Baidu Zhidao](http://zhidao.baidu.com/)
+- [Baidu Jingyan](http://jingyan.baidu.com/)
+- [Baidu Shifu](http://shifu.baidu.com/)
+- Meituan Waimai
+- Yuanfudao
+- [58 Financial](https://npm.taobao.org/package/jr58)
+- Unisplendour
+- Uxin
 
 To learn about who is using this, [click here](https://github.com/yanhaijing/template.js/issues/6).
 
 ## Related Links
 
--   [BaiduTemplate](http://tangram.baidu.com/BaiduTemplate/)
--   [artTemplate](https://github.com/aui/artTemplate/)
--   [Juicer](https://github.com/PaulGuo/Juicer)
--   [handlebarsjs](http://handlebarsjs.com/)
--   [PUG(Originally Jade)](https://pugjs.org/api/getting-started.html)
--   [EJS](https://ejs.co/)
--   [Only 20 lines of Javascript code! A step-by-step guide to creating a webpage template engine](https://juejin.im/entry/56258da860b294bcf7955883)
+- [BaiduTemplate](http://tangram.baidu.com/BaiduTemplate/)
+- [artTemplate](https://github.com/aui/artTemplate/)
+- [Juicer](https://github.com/PaulGuo/Juicer)
+- [handlebarsjs](http://handlebarsjs.com/)
+- [PUG(Originally Jade)](https://pugjs.org/api/getting-started.html)
+- [EJS](https://ejs.co/)
+- [Only 20 lines of Javascript code! A step-by-step guide to creating a webpage template engine](https://juejin.im/entry/56258da860b294bcf7955883)

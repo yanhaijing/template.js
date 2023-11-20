@@ -2,7 +2,18 @@
   "npmClient": "yarn",
   "useWorkspaces": true,
   "packages": [
-    "packages/*"
+    "packages/parser",
+    "packages/precompiler",
+    "packages/runtime",
+    "packages/template",
+    "packages/browserify-templatejs",
+    "packages/esbuild-plugin-templatejs",
+    "packages/fis-parser-template",
+    "packages/gulp-templatejs",
+    "packages/parcel-transformer-template",
+    "packages/rollup-plugin-templatejs",
+    "packages/template-loader",
+    "packages/cli"
   ],
-  "version": "2.10.0"
+  "version": "3.0.0-alpha.0"
 }

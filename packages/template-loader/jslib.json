@@ -1,11 +1,10 @@
 {
-    "name": "template-loader",
-    "npmname": "template-loader",
-    "umdname": "template-loader",
-    "username": "yanhaijing",
-    "type": "ts",
-    "module": "esm,commonjs",
-    "test": "mocha",
-    "lang": "zh",
-    "version": "1.5.1"
+  "name": "template-loader",
+  "npmname": "template-loader",
+  "umdname": "template-loader",
+  "username": "yanhaijing",
+  "type": "ts",
+  "module": "esm,commonjs",
+  "lang": "zh",
+  "version": "1.5.1"
 }

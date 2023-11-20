@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-module.exports = bundler => {
-    bundler.addAssetType('tmpl', require.resolve('./template'));
+/* eslint-disable @typescript-eslint/no-explicit-any */
+module.exports = (bundler: any) => {
+  bundler.addAssetType('tmpl', require.resolve('./template'));
 };

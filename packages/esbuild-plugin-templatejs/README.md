@@ -22,20 +22,20 @@ https://github.com/yanhaijing/template.js/tree/master/packages/cli/template/esbu
 在esbuild配置文件，添加如下内容：
 
 ```js
-import * as esbuild from "esbuild";
-import templatejs from "esbuild-plugin-templatejs";
+import * as esbuild from 'esbuild';
+import templatejs from 'esbuild-plugin-templatejs';
 
 await esbuild.build({
-    entryPoints: ["./src/app.js"],
-    bundle: true,
-    outfile: "./dist/index.js",
-    plugins: [
-        templatejs({
-            sTag: "<%",
-            eTag: "%>",
-            expression: 'require("@templatejs/runtime")',
-        }),
-    ],
+  entryPoints: ['./src/app.js'],
+  bundle: true,
+  outfile: './dist/index.js',
+  plugins: [
+    templatejs({
+      sTag: '<%',
+      eTag: '%>',
+      expression: 'require("@templatejs/runtime")',
+    }),
+  ],
 });
 ```
 
@@ -48,11 +48,10 @@ await esbuild.build({
 在 js 中`import`模版文件，并渲染
 
 ```js
-import tpl from "./demo.tmpl";
+import tpl from './demo.tmpl';
 
-document.getElementById("test").innerHTML = tpl({ abc: "yanhaijing" });
+document.getElementById('test').innerHTML = tpl({ abc: 'yanhaijing' });
 ```
-
 
 ## 贡献者列表
 

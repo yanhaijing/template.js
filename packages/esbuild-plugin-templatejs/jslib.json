@@ -1,11 +1,10 @@
 {
-    "name": "esbuild-plugin-templatejs",
-    "npmname": "esbuild-plugin-templatejs",
-    "umdname": "esbuild-plugin-templatejs",
-    "username": "yanhaijing",
-    "type": "ts",
-    "module": "esm,commonjs",
-    "test": "mocha",
-    "lang": "zh",
-    "version": "1.5.1"
+  "name": "esbuild-plugin-templatejs",
+  "npmname": "esbuild-plugin-templatejs",
+  "umdname": "esbuild-plugin-templatejs",
+  "username": "yanhaijing",
+  "type": "ts",
+  "module": "esm,commonjs",
+  "lang": "zh",
+  "version": "1.5.1"
 }

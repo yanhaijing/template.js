@@ -1,11 +1,9 @@
 {
-    "name": "browserify-templatejs",
-    "npmname": "browserify-templatejs",
-    "umdname": "browserify-templatejs",
-    "username": "yanhaijing",
-    "type": "ts",
-    "module": "commonjs",
-    "test": "mocha",
-    "lang": "zh",
-    "version": "1.5.1"
+  "name": "browserify-templatejs",
+  "npmname": "browserify-templatejs",
+  "umdname": "browserify-templatejs",
+  "username": "yanhaijing",
+  "type": "ts",
+  "lang": "zh",
+  "version": "1.5.1"
 }

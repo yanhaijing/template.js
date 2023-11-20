@@ -1,11 +1,9 @@
 {
-    "name": "parser",
-    "npmname": "@templatejs/parser",
-    "umdname": "templatejs_parser",
-    "username": "templatejs",
-    "type": "ts",
-    "module": "esm,commonjs",
-    "test": "mocha",
-    "lang": "zh",
-    "version": "1.5.0"
+  "name": "parser",
+  "npmname": "@templatejs/parser",
+  "umdname": "templatejs_parser",
+  "username": "templatejs",
+  "type": "ts",
+  "lang": "zh",
+  "version": "1.5.0"
 }

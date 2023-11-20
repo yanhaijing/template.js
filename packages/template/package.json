@@ -1,23 +1,35 @@
 {
   "name": "template_js",
-  "version": "2.8.1",
+  "version": "3.0.0-alpha.0",
   "description": "A javascript template engine, simple, easy & extras, support webpack, rspack, vite, rollup, esbuild, parcel, browserify, fis and gulp.",
   "main": "dist/index.js",
-  "jsnext:main": "dist/index.esm.js",
   "module": "dist/index.esm.js",
   "sideEffects": false,
+  "exports": {
+    "node": {
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.js"
+    },
+    "default": {
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.js"
+    }
+  },
+  "types": "./types/index.d.ts",
   "scripts": {
-    "clean": "rimraf ./dist",
-    "test": "npm run lint && nyc mocha",
+    "clean": "rimraf ./dist ./types",
+    "test": "nyc mocha",
     "release": "npm test && npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags",
-    "lint": "eslint -c .eslintrc.js 'src/**/*.ts'",
-    "lint:fix": "eslint -c .eslintrc.js 'src/**/*.ts' --fix",
-    "build:self": "rollup -c config/rollup.config.js",
-    "build:esm": "rollup -c config/rollup.config.esm.js",
-    "build:aio": "rollup -c config/rollup.config.aio.js",
-    "build:aio.min": "cross-env NODE_ENV=production npm run build:aio",
-    "build": "npm run clean && npm run build:self && npm run build:esm && npm run build:aio && npm run build:aio.min",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "lint": "eslint -c .eslintrc.cjs 'src/**/*.ts'",
+    "lint:fix": "eslint --fix -c .eslintrc.cjs 'src/**/*.ts' --fix",
+    "build:self": "rollup -c config/rollup.config.cjs",
+    "build:esm": "rollup -c config/rollup.config.esm.cjs",
+    "build:aio": "rollup -c config/rollup.config.aio.cjs",
+    "build": "npm run clean && npm run build:self && npm run build:esm && npm run build:aio",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "start": "http-server -p 3000 -c-1",
+    "ci": "commit",
+    "cz": "git-cz"
   },
   "author": "yanhaijing",
   "license": "MIT",
@@ -30,51 +42,73 @@
   },
   "files": [
     "/dist",
+    "/types",
     "*.d.ts"
   ],
   "engines": {
-    "node": ">= 0.12.0"
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
   },
   "keywords": [
     "template",
     "template.js",
     "js"
   ],
-  "devDependencies": {
-    "@babel/cli": "7.1.5",
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/register": "7.0.0",
-    "@js-lib/cli": "^1.5.1",
-    "@typescript-eslint/eslint-plugin": "^1.4.2",
-    "@typescript-eslint/parser": "^1.4.2",
-    "babel-plugin-istanbul": "5.1.0",
-    "coveralls": "3.0.2",
-    "cross-env": "5.2.0",
-    "es5-shim": "4.5.10",
-    "eslint": "^5.15.1",
-    "expect.js": "0.3.1",
-    "mocha": "3.5.3",
-    "nyc": "13.1.0",
-    "rimraf": "2.6.2",
-    "rollup": "0.57.1",
-    "rollup-plugin-babel": "^4.0.3",
-    "rollup-plugin-commonjs": "8.3.0",
-    "rollup-plugin-node-resolve": "3.0.3",
-    "rollup-plugin-typescript2": "0.18.0",
-    "rollup-plugin-uglify": "1.0.0",
-    "source-map-support": "0.5.9",
-    "ts-node": "7.0.1",
-    "tslib": "1.9.3",
-    "typescript": "3.3.3333"
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/cz-commitlint"
+    }
   },
   "dependencies": {
-    "@babel/runtime": "^7.1.2",
-    "@jsmini/extend": "^0.3.3",
-    "@jsmini/type": "^0.9.2",
-    "@templatejs/parser": "^2.4.0",
-    "@templatejs/runtime": "^2.4.0"
+    "@jsmini/extend": "^0.5.0",
+    "@jsmini/type": "^0.11.0",
+    "@templatejs/parser": "^3.0.0-alpha.0",
+    "@templatejs/runtime": "^3.0.0-alpha.0"
   },
-  "gitHead": "0b4e07375fdbe6816fae9bb8edcee8208def3078"
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.23.3",
+    "@babel/preset-env": "^7.23.3",
+    "@babel/register": "7.0.0",
+    "@commitlint/cli": "^16.3.0",
+    "@commitlint/config-conventional": "^16.2.4",
+    "@commitlint/cz-commitlint": "^16.3.0",
+    "@commitlint/format": "^12.1.1",
+    "@commitlint/prompt-cli": "^16.3.0",
+    "@js-lib/cli": "^2.3.2",
+    "@jsmini/extend": "^0.5.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
+    "babel-plugin-istanbul": "^6.1.1",
+    "commitizen": "^4.2.4",
+    "coveralls": "^3.1.1",
+    "cross-env": "^7.0.3",
+    "es5-shim": "^4.6.7",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "expect.js": "^0.3.1",
+    "http-server": "^14.1.1",
+    "husky": "^8.0.0",
+    "lint-staged": "^14.0.1",
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0",
+    "prettier": "3.1.0",
+    "rimraf": "^5.0.5",
+    "rollup": "^3.29.4",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "source-map-support": "^0.5.21",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2"
+  },
+  "gitHead": "cebd8b4d696d9f8ed39c45bef68f79c382cd0389"
 }

@@ -7,7 +7,18 @@
   "license": "MIT",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/parser",
+    "packages/precompiler",
+    "packages/runtime",
+    "packages/template",
+    "packages/browserify-templatejs",
+    "packages/esbuild-plugin-templatejs",
+    "packages/fis-parser-template",
+    "packages/gulp-templatejs",
+    "packages/parcel-transformer-template",
+    "packages/rollup-plugin-templatejs",
+    "packages/template-loader",
+    "packages/cli"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
@@ -19,6 +30,14 @@
     "build": "yarn workspaces run build"
   },
   "devDependencies": {
+    "typescript": "^5.2.2",
+    "eslint": "^8.54.0",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "prettier": "3.1.0",
     "lerna": "^3.16.4"
   },
   "dependencies": {}

@@ -1,7 +1,7 @@
-*.d.ts
-.rpt2_cache
 coverage
 node_modules
 dist
+.eslintcache
 .nyc_output
+types
 o
