@@ -19,23 +19,23 @@ webpack 4-5，在 webpack.config.js 配置文件中增加如下内容：
 
 ```js
 module.exports = {
-    module: {
-        rules: [
-            {
-                test: /\.tmpl/,
-                use: [
-                    {
-                        loader: 'templatejs-loader',
-                        options: {
-                            sTag: '<%',
-                            eTag: '%>',
-                            expression: 'require("@templatejs/runtime").default'
-                        }
-                    }
-                ]
-            }
-        ]
-    }
+  module: {
+    rules: [
+      {
+        test: /\.tmpl/,
+        use: [
+          {
+            loader: 'templatejs-loader',
+            options: {
+              sTag: '<%',
+              eTag: '%>',
+              expression: 'require("@templatejs/runtime").default',
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 ```
 
@@ -43,17 +43,17 @@ webpack 1-3，在 webpack.config.js 配置文件中增加如下内容：
 
 ```js
 loaders: [
-    {
-        test: /\.tmpl/,
-        loader: "templatejs-loader",
-        query: {
-            sTag: "<#",
-            eTag: "#>",
-            sandbox: false, // 沙箱模式
-            expression: 'require("@templatejs/runtime").default', // webpack 2-4
-            // expression: 'require("@templatejs/runtime")' // webpack 1
-        },
+  {
+    test: /\.tmpl/,
+    loader: 'templatejs-loader',
+    query: {
+      sTag: '<#',
+      eTag: '#>',
+      sandbox: false, // 沙箱模式
+      expression: 'require("@templatejs/runtime").default', // webpack 2-4
+      // expression: 'require("@templatejs/runtime")' // webpack 1
     },
+  },
 ];
 ```
 
@@ -68,9 +68,9 @@ loaders: [
 在 js 中`require`模版文件，并渲染
 
 ```js
-var tpl = require("./demo.tmpl");
+var tpl = require('./demo.tmpl');
 
-document.getElementById("test").innerHTML = tpl({ abc: "yanhaijing" });
+document.getElementById('test').innerHTML = tpl({ abc: 'yanhaijing' });
 ```
 
 ## rspack 配置
@@ -81,24 +81,23 @@ document.getElementById("test").innerHTML = tpl({ abc: "yanhaijing" });
 
 ```js
 module.exports = {
-    module: {
-        rules: [
-            {
-                test: /\.tmpl/,
-                use: [
-                    {
-                        loader: "templatejs-loader",
-                        options: {
-                            sTag: "<%",
-                            eTag: "%>",
-                            expression:
-                                'require("@templatejs/runtime").default',
-                        },
-                    },
-                ],
+  module: {
+    rules: [
+      {
+        test: /\.tmpl/,
+        use: [
+          {
+            loader: 'templatejs-loader',
+            options: {
+              sTag: '<%',
+              eTag: '%>',
+              expression: 'require("@templatejs/runtime").default',
             },
+          },
         ],
-    },
+      },
+    ],
+  },
 };
 ```
 
@@ -113,9 +112,9 @@ module.exports = {
 在 js 中`require`模版文件，并渲染
 
 ```js
-var tpl = require("./demo.tmpl");
+var tpl = require('./demo.tmpl');
 
-document.getElementById("test").innerHTML = tpl({ abc: "yanhaijing" });
+document.getElementById('test').innerHTML = tpl({ abc: 'yanhaijing' });
 ```
 
 ## 贡献者列表
@@ -132,4 +131,4 @@ document.getElementById("test").innerHTML = tpl({ abc: "yanhaijing" });
 
 ## 相关链接
 
--   [webpack](http://webpack.github.io/)
+- [webpack](http://webpack.github.io/)

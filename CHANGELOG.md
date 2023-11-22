@@ -1,27 +1,50 @@
 # 变更日志
 
+## 3.1.4 / 2023-11-19
+
+- browserify-templatejs 插件
+  - feat: 去掉 expression 参数，现在自动添加 require @templatejs/runtime
+- esbuild-plugin-templatejs 插件
+  - feat: 去掉 expression 参数，现`在自动添加 import @templatejs/runtime
+  - fix: tplName 在windows下显示不正确
+- gulp-templatejs 插件
+  - feat: 去掉 expression 参数，现在自动添加 require @templatejs/runtime
+  - fix: Buffer() is deprecated
+- parcel-transformer-template 插件
+  - feat: 去掉 expression 参数，现在自动添加 import @templatejs/runtime
+  - fix: tplName 只显示文件名，不再显示全路径
+- rollup-plugin-templatejs 插件
+  - fix: tplName 在windows下显示不正确
+- template-loader 插件
+  - feat: 去掉 expression 参数，现在自动添加 require @templatejs/runtime
+  - fix: tplName 在windows下显示不正确
+  - fix: 不同版本 webpack export defalut 处理错误问题
+- fix: 修复打包文件的 banner 信息
+- fix: cli template 升级为 3.x
+- fix: 修复插件 peerDependencies 为 3.x
+
 ## 3.0.0-alpha.0 / 2023-11-19
 
 - feat: 支持 nodejs esm exports
 - feat: 支持 sourceMap
-- 升级 jslib-base 为 2.3.2
-- 升级 @jsmini/extend 0.5.0
-- 升级 @jsmini/type 0.11.0
-- parcel-plugin-template 改为单独发包，从 yarn workspace 和 lerna publish 移出
+- refact: 升级 jslib-base 为 2.3.2
+- refact: 升级 @jsmini/extend 0.5.0
+- refact: 升级 @jsmini/type 0.11.0
+- refact: parcel-plugin-template 改为单独发包，从 yarn workspace 和 lerna publish 移出
 
 ## 2.10.0 / 2023-11-18
 
 - rollup-plugin-templatejs 插件
-  - 去掉 expression 参数，现在默认import runtime 不需要了
+  - feat: 去掉 expression 参数，现在自动添加 import @templatejs/runtime
 
 ## 2.9.0 / 2023-10-3
 
-- 添加对 parcel v2 的支持
-- 新增 parcel-transformer-template 插件
+- feat: 添加对 parcel v2 的支持
+  - 新增 parcel-transformer-template 插件
 
 ## 2.8.3 / 2023-10-2
 
-- 修复 parcel v1 demo
+- fix: 修复 parcel v1 demo
 
 ## 2.8.2 / 2023-10-1
 

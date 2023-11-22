@@ -113,8 +113,7 @@ $ npx lerna list # 列出所有的包
 $ npx lerna bootstrap # 安装全部依赖
 $ npx lerna link # 建立全部软连接
 $ npx lerna changed # 列出下次发版lerna publish 要更新的包
-$ npx lerna publish # 会打tag，上传git,上传npm
-$ npx lerna publish from-package # 跳过选版本过程，从package.json的version发版
+$ npx lerna publish # 会打tag，上传git, 上传npm
 ```
 
 发布步骤，修改 changelog
@@ -124,7 +123,16 @@ $ yarn lint
 $ yarn build
 $ yarn test
 $ npx lerna publish # 正式包
-$ npx lerna publish --dist-tag next # 测试包
+```
+
+不打 tag 发包，适合测试包
+
+```bash
+$ yarn lint
+$ yarn build
+$ yarn test
+$ lerna version --no-git-tag-version # 修改版本号，不打tag
+$ npx lerna publish from-package --dist-tag next # 测试包
 ```
 
 ## 贡献者列表

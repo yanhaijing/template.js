@@ -125,6 +125,16 @@ $ yarn test
 $ npx lerna publish
 ```
 
+Release without tagging, suitable for test package.
+
+```bash
+$ yarn lint
+$ yarn build
+$ yarn test
+$ lerna version --no-git-tag-version
+$ npx lerna publish from-package --dist-tag next
+```
+
 ## Contributors List
 
 [contributors](https://github.com/yanhaijing/template.js/graphs/contributors)

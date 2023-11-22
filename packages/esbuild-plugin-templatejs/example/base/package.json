@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "esbuild": "^0.19.3",
-    "esbuild-plugin-templatejs": "^0.1.0"
+    "esbuild": "^0.19.3"
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 import { extendDeep } from '@jsmini/extend';
 
 export interface ParserOption {

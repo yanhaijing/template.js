@@ -20,7 +20,7 @@ export interface Options extends PrecompileOption {
 const PLUGIN_NAME = 'gulp-templatejs';
 
 function wrapCode(code: string, module: Module) {
-  return `module.exports = ${code}`;
+  return `var template = require("@templatejs/runtime");\nmodule.exports = ${code}`;
 }
 
 function templatejs(options: Options = {}) {
@@ -50,7 +50,10 @@ function templatejs(options: Options = {}) {
     let code = '';
     try {
       const contents = file.contents.toString();
-      code = wrapCode(precompile(contents, options), module);
+      code = wrapCode(
+        precompile(contents, { ...options, expression: 'template' }),
+        module,
+      );
     } catch (e) {
       this.emit(
         'error',
@@ -61,7 +64,7 @@ function templatejs(options: Options = {}) {
       return callback();
     }
 
-    file.contents = new Buffer(code);
+    file.contents = Buffer.from(code);
     file.path = replaceExt(file.path, '.js');
 
     this.push(file);

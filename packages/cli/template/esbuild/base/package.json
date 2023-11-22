@@ -9,8 +9,11 @@
   },
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "@templatejs/runtime": "^3.1.4"
+  },
   "devDependencies": {
-    "esbuild": "^0.19.4",
-    "esbuild-plugin-templatejs": "^2.7.0"
+    "esbuild": "^0.19.7",
+    "esbuild-plugin-templatejs": "^3.1.4"
   }
 }

@@ -7,10 +7,10 @@ var pkg = require('../package.json');
 var version = pkg.version;
 
 var banner = `/*!
- * ${pkg.name} ${version} (https://github.com/yanhaijing/browserify-templatejs)
- * API https://github.com/yanhaijing/browserify-templatejs/blob/master/doc/api.md
+ * ${pkg.name} ${version} (https://github.com/yanhaijing/template.js)
+ * API https://github.com/yanhaijing/template.js
  * Copyright 2017-${new Date().getFullYear()} yanhaijing. All Rights Reserved
- * Licensed under MIT (https://github.com/yanhaijing/browserify-templatejs/blob/master/LICENSE)
+ * Licensed under MIT (https://github.com/yanhaijing/template.js/blob/master/LICENSE)
  */
 `;
 

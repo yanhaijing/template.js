@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "webpack": "3.12.0",
+    "templatejs-loader": "^3.1.4",
+    "@templatejs/runtime": "^3.1.4"
+  }
+}

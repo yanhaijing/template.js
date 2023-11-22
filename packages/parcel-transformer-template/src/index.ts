@@ -2,6 +2,7 @@
 /* eslint-disable quotes */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { Transformer } from '@parcel/plugin';
+import path from 'path';
 import { precompile, PrecompileOption } from '@templatejs/precompiler';
 
 export default new Transformer({
@@ -21,12 +22,15 @@ export default new Transformer({
     // Run it through some compiler, and set the results
     // on the asset.
     const code = precompile(source, {
-      tplName: asset.filePath,
+      tplName: path.basename(asset.filePath),
       ...(config as PrecompileOption),
+      expression: 'template',
     });
 
     asset.type = 'js';
-    asset.setCode(`export default ${code}`);
+    asset.setCode(
+      `import template from '@templatejs/runtime';\nexport default ${code}`,
+    );
     // asset.setMap(map);
 
     // Return the asset

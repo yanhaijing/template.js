@@ -1,3 +1,3 @@
-const tpl = require("./demo.tmpl");
+var tpl = require('./demo.tmpl');
 
 console.log('run', tpl({}));

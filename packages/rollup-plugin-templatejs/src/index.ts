@@ -1,3 +1,4 @@
+import path from 'path';
 import { createFilter } from 'rollup-pluginutils';
 import { extendDeep } from '@jsmini/extend';
 import { precompile, PrecompileOption } from '@templatejs/precompiler';
@@ -24,7 +25,7 @@ export default function (options: Options = {}): object {
     transform(tpl: string, id: string): object | undefined {
       if (!filter(id)) return;
 
-      options.tplName = id.split('/').pop();
+      options.tplName = path.basename(id);
 
       const source = precompile(tpl, { ...options, expression: 'template' });
 

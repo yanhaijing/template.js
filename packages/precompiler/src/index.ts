@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { parse, ParserOption } from '@templatejs/parser';
 import { extendDeep } from '@jsmini/extend';
 import { parseScript, Syntax } from 'esprima';
@@ -161,7 +163,7 @@ export function detectVar(code: string) {
     },
   ];
 
-  let unVarList: string[] = [];
+  const unVarList: string[] = [];
 
   traverse(ast, {
     enter(node, parent) {

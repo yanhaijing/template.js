@@ -4,3 +4,4 @@ dist
 .eslintcache
 .nyc_output
 types
+.parcel-cache

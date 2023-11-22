@@ -1,6 +1,8 @@
 {
   "extends": "@parcel/config-default",
   "transformers": {
-    "*.tmpl": ["parcel-transformer-template"]
+    "*.tmpl": [
+      "parcel-transformer-template"
+    ]
   }
 }

@@ -1,17 +1,16 @@
 {
-    "name": "base",
-    "version": "1.0.0",
-    "main": "index.js",
-    "license": "MIT",
-    "scripts": {
-      "start": "parcel --no-cache index.html"
-    },
-    "dependencies": {
-      "@templatejs/runtime": "^2.4.0"
-    },
-    "devDependencies": {
-      "parcel-bundler": "^1.12.5",
-      "parcel-plugin-template": "^2.4.0"
-    }
+  "name": "base",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel --no-cache index.html"
+  },
+  "dependencies": {
+    "@templatejs/runtime": "^2.4.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-template": "^2.4.0"
   }
-  
+}

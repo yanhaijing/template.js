@@ -8,20 +8,26 @@ import through from 'through';
 const filenamePattern = /\.(tmpl)$/;
 
 const wrap = function (template: string) {
-  return 'module.exports = ' + template + ';';
+  return (
+    'var template = require("@templatejs/runtime");\nmodule.exports = ' +
+    template +
+    ';'
+  );
 };
 module.exports = function (file: string) {
   if (!filenamePattern.test(file)) return through();
 
   let templateOption: PrecompileOption = {
     tplName: path.basename(file),
-    expression: 'require("@templatejs/runtime")',
+    // expression: 'require("@templatejs/runtime")',
   };
 
   const filepath = path.resolve(process.cwd(), 'template.config.json');
 
   if (fs.existsSync(filepath)) {
-    templateOption = Object.assign(templateOption, require(filepath));
+    templateOption = Object.assign(templateOption, require(filepath), {
+      expression: 'template',
+    });
   }
 
   let input = '';
