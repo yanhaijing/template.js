@@ -1,6 +1,6 @@
 {
   "name": "@templatejs/parser",
-  "version": "3.1.3-alpha.0",
+  "version": "3.1.4",
   "description": "template.js的模板编译器",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

@@ -1,6 +1,6 @@
 {
   "name": "parcel-transformer-template",
-  "version": "3.1.3-alpha.0",
+  "version": "3.1.4",
   "description": "template.js 的 parcel v2 编译插件",
   "main": "dist/index.js",
   "sideEffects": false,
@@ -86,7 +86,7 @@
   },
   "dependencies": {
     "@parcel/plugin": "^2.9.3",
-    "@templatejs/precompiler": "^3.1.3-alpha.0"
+    "@templatejs/precompiler": "^3.1.4"
   },
   "peerDependencies": {
     "@templatejs/runtime": "^3.1.4",
